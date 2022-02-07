@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'prefix' => env('SCOUT_PREFIX', 'demo_store'),
+    'prefix' => env('SCOUT_PREFIX', 'demo_store_'),
 
     /*
     |--------------------------------------------------------------------------

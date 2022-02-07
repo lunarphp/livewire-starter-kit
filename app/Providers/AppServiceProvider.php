@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use GetCandy\Base\ShippingModifiers;
+use App\Modifiers\ShippingModifier;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +23,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(ShippingModifiers $shippingModifiers)
     {
-        //
+        $shippingModifiers->add(
+            ShippingModifier::class
+        );
     }
 }

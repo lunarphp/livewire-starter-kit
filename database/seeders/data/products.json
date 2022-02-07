@@ -1,0 +1,79 @@
+[
+    {
+        "attributes": {
+            "name": "Levi's® 501® Straight Fit Jeans",
+            "description": "A cultural icon worn by generations, defining style for decades. The iconic straight fit with the signature button fly. Since Levi's® invented it in 1873, people have made them their own by ripping, tearing, repairing, dying and marking them up for total "
+        },
+        "collection": "trousers",
+        "sku": "LEV-856",
+        "price": "8599",
+        "image": "black_jeans.jpg",
+        "brand": "Levis",
+        "options": [
+            {
+                "name": "Size",
+                "values": [
+                    "30 S (L30)",
+                    "32 S (L30)",
+                    "34 S (L30)",
+                    "36 S (L30)"
+                ]
+            }
+        ]
+    },
+    {
+        "attributes": {
+            "name": "Chuck 70 Raw Edge",
+            "description": "A cultural icon worn by generations, defining style for decades. The iconic straight fit with the signature button fly. Since Levi's® invented it in 1873, people have made them their own by ripping, tearing, repairing, dying and marking them up for total ",
+            "product_details": [
+                "High-top sneaker, crafted with organic canvas for an elevated look and feel",
+                "OrthoLite cushioning for all-day comfort",
+                "Raw-cut textile inserts for added padding",
+                "Shiny rubber sidewall and winged tongue stitching",
+                "Heritage details like a 1970s heel logo nod to its legacy"
+            ]
+        },
+        "brand": "Converse",
+        "collection": "shoes",
+        "sku": "CONV-70",
+        "price": "15000",
+        "image": "converse.jpg",
+        "options": [
+            {
+                "name": "Shoe Size",
+                "values": [
+                    "UK 5",
+                    "UK 6",
+                    "UK 7",
+                    "UK 8",
+                    "UK 9",
+                    "UK 10"
+                ]
+            }
+        ]
+    },
+    {
+        "attributes": {
+            "name": "Air Jordan",
+            "description": "Cold, wet weather usually means it's time to put away your J's until the spring.With the Air Jordan 1 Acclimate, those days are over.Part boot, part sneaker, it uses winterized materials in a toe-to-heel overhaul that's designed to help you stay warm and dry without losing the iconic AJ1 appeal."
+        },
+        "brand": "Nike",
+        "collection": "shoes",
+        "sku": "AIRJ-70",
+        "price": "18599",
+        "image": "nike_hightop.jpg",
+        "options": [
+            {
+                "name": "Shoe Size",
+                "values": [
+                    "UK 5",
+                    "UK 6",
+                    "UK 7",
+                    "UK 8",
+                    "UK 9",
+                    "UK 10"
+                ]
+            }
+        ]
+    }
+]
