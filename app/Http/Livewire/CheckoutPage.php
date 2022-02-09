@@ -74,6 +74,7 @@ class CheckoutPage extends Component
     protected $listeners = [
         'cartUpdated' => 'refreshCart',
         'selectedShippingOption' => 'refreshCart',
+        'selectedShippingOption' => 'refreshCart',
     ];
 
     /**
@@ -148,6 +149,9 @@ class CheckoutPage extends Component
             if ($this->shippingOption) {
                 $this->chosenShipping = $this->shippingOption->getIdentifier();
                 $this->currentStep = $this->steps['shipping_option'] + 1;
+            } else {
+                $this->currentStep = $this->steps['shipping_option'];
+                return;
             }
         }
 
@@ -239,6 +243,8 @@ class CheckoutPage extends Component
 
         CartSession::current()->getManager()->setShippingOption($option);
 
+        $this->refreshCart();
+
         $this->determineCheckoutStep();
     }
 
@@ -297,7 +303,7 @@ class CheckoutPage extends Component
             "{$type}.line_three" => 'nullable',
             "{$type}.state" => 'nullable',
             "{$type}.delivery_instructions" => 'nullable',
-            "{$type}.contact_email" => 'nullable|email',
+            "{$type}.contact_email" => 'required|email',
             "{$type}.contact_phone" => 'nullable',
         ];
     }
