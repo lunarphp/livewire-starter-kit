@@ -24,7 +24,7 @@
     {
         "attributes": {
             "name": "Chuck 70 Raw Edge",
-            "description": "A cultural icon worn by generations, defining style for decades. The iconic straight fit with the signature button fly. Since Levi's® invented it in 1873, people have made them their own by ripping, tearing, repairing, dying and marking them up for total ",
+            "description": "The timeless style you know and love gets remixed with light padding and unexpected raw-edge details. An elevated style icon, it features more cushioning to keep you looking ”and feeling” good all day. The Chuck 70 holds its own on fashion week runways and city streets, making it the go-to sneaker for those looking to enhance and express their style.",
             "product_details": [
                 "High-top sneaker, crafted with organic canvas for an elevated look and feel",
                 "OrthoLite cushioning for all-day comfort",
@@ -75,5 +75,143 @@
                 ]
             }
         ]
+    },
+    {
+        "attributes": {
+            "name": "WORKER 20.5\" - CHINO SHORTS FOR MEN",
+            "description": "Our mens Original 20 joggers are a basic staple. Featuring everything you need from the perfect pair of relaxed trousers; draw cord and elasticated waist, elasticated cuffs for comfort fit, side and back pockets with a popper fastening and Saltrock branding. With a super soft, peach fluff finished inside for warmth and comfort."
+        },
+        "brand": "Saltrock",
+        "collection": "trousers",
+        "sku": "SLTRCK-70",
+        "price": "2500",
+        "image": "beige_trousers.jpg"
+    },
+    {
+        "attributes": {
+            "name": "Nike Sportswear Tech Fleece",
+            "description": "Ready for cooler weather, the Nike Sportswear Tech Fleece Joggers feature an updated fit perfect for everyday wear. Roomy through the thigh, this tapered design narrows at the knee to give you a comfortable feel without losing the clean, tailored look you love. Tall ribbed cuffs complete the jogger look while a zipped pocket on the right leg provides secure small-item storage and elevates the look."
+        },
+        "brand": "Nike",
+        "collection": "trousers",
+        "sku": "CU4495-410",
+        "price": "7995",
+        "image": "green_trousers.jpg"
+    },
+    {
+        "attributes": {
+            "name": "NICCE Mens Original Hood",
+            "description": "Original overhead hood featuring a white chest logo, with a drawstring hood, pouch pocket and cuffed sleeves and hem. A simple and easy piece, great to layer and throw on with jeans or joggers."
+        },
+        "brand": "NICCE",
+        "collection": "hoodies",
+        "sku": "NICCE-50",
+        "price": "5000",
+        "image": "nicce_hoodie.jpg"
+    },
+    {
+        "attributes": {
+            "name": "Nike Pegasus Trail 3",
+            "description": "Find your wings with an off-road run. The Nike Pegasus Trail 3 has the same cushioned comfort you love, with a design that nods to the classic Pegasus look. It's got tough traction to help you stay moving through rocky terrain. More support around the midfoot helps you feel secure on your journey."
+        },
+        "brand": "Nike",
+        "collection": "shoes",
+        "sku": "DA8698-001",
+        "price": "11495",
+        "image": "nike_black.jpg",
+        "options": [
+            {
+                "name": "Shoe Size",
+                "values": [
+                    "UK 5",
+                    "UK 6",
+                    "UK 7",
+                    "UK 8",
+                    "UK 9",
+                    "UK 10"
+                ]
+            }
+        ]
+    },
+    {
+        "attributes": {
+            "name": "Men's Full-Zip Fleece Hoodie",
+            "description": "Made in Milan, Italy with thoughtful consideration of every last detail, this full-zip hoodie is designed for lightweight warmth and 360 degrees of comfort. A buttery-soft blend of cotton, cashmere and elastane lies flat on your skin for a smooth feel."
+        },
+        "brand": "Nike",
+        "collection": "hoodies",
+        "sku": "NIKE-FOO-50",
+        "price": "8000",
+        "image": "nike_hoodie_blue.jpg"
+    },
+    {
+        "attributes": {
+            "name": "Nike Red Hoodie",
+            "description": "This Hoodie outfits you in cosy comfort that's easy to layer. It's made from soft, warm fleece with an oversized chest graphic to make it clear who you're repping."
+        },
+        "brand": "Nike",
+        "collection": "hoodies",
+        "sku": "DH9320-657",
+        "price": "5495",
+        "image": "nike_hoodie_red.jpg"
+    },
+    {
+        "attributes": {
+            "name": "Nike Metcon 7",
+            "description": "The Nike Metcon 7 is the gold standard for weight training—even tougher and more stable than previous versions.We've also added React foam that ups the comfort to keep you ready for high-intensity cardio.Plus, a tab locks down your laces so you can forget about them coming untied when you're focused on your next PR."
+        },
+        "brand": "Nike",
+        "collection": "shoes",
+        "sku": "CZ8281-234",
+        "price": "11495",
+        "image": "nike_orange_white.jpg",
+        "options": [
+            {
+                "name": "Shoe Size",
+                "values": [
+                    "UK 5",
+                    "UK 6",
+                    "UK 7",
+                    "UK 8",
+                    "UK 9",
+                    "UK 10"
+                ]
+            }
+        ]
+    },
+    {
+        "attributes": {
+            "name": "Nike Air Huarache",
+            "description": "Built to fit your foot and designed for comfort, the Nike Air Huarache brings back a street-level favourite. Updated with sleek colours, this version has soft, synthetic leather accents on the upper that mix with super-breathable, perfectly shined neoprene-like fabric for easy styling."
+        },
+        "brand": "Nike",
+        "collection": "shoes",
+        "sku": "DR0141-001",
+        "price": "11495",
+        "image": "nike_shoe_1.jpg",
+        "options": [
+            {
+                "name": "Shoe Size",
+                "values": [
+                    "UK 5",
+                    "UK 6",
+                    "UK 7",
+                    "UK 8",
+                    "UK 9",
+                    "UK 10"
+                ]
+            }
+        ]
+    },
+    {
+        "attributes": {
+            "name": "Women's Woven Tennis Trousers",
+            "description": "Made with multiple oversized pockets, the Naomi Osaka Trousers are a wardrobe staple with plenty of storage.Signature Naomi Osaka details, like her logo on the left pocket, put a premium spin on any outfit."
+        },
+        "brand": "Nike",
+        "collection": "trousers",
+        "sku": "DJ4661-010",
+        "price": "9995",
+        "image": "nike_trousers.jpg"
     }
 ]

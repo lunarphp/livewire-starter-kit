@@ -112,14 +112,14 @@ class ProductSeeder extends AbstractSeeder
 
                 $collection->products()->attach($productModel->id);
 
-                if (!count($product->options)) {
+                if (!count($product->options ?? [])) {
                     return;
                 }
 
                 $options = ProductOption::get();
                 $optionValues = ProductOptionValue::get();
 
-                foreach ($product->options as $option) {
+                foreach ($product->options ?? [] as $option) {
                     // Do we have this option already?
                     $optionModel = $options->first(fn($opt) => $option->name == $opt->translate('name'));
 
