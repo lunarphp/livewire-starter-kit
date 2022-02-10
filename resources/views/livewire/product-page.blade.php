@@ -30,7 +30,7 @@
 
             <div class="md:col-span-5 md:py-12 md:sticky md:top-0">
                 <div class="flex justify-between">
-                    <div>
+                    <div class="max-w-xs">
                         <h1 class="text-3xl font-bold">
                             {{ $this->product->translateAttribute('name') }}
                         </h1>
