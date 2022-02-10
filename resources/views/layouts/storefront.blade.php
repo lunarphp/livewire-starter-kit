@@ -111,20 +111,6 @@
 
                     <div>
                         <p class="font-medium">
-                            Services
-                        </p>
-
-                        <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                            <a class="hover:opacity-75" href=""> 1on1 Coaching </a>
-                            <a class="hover:opacity-75" href=""> Company Review </a>
-                            <a class="hover:opacity-75" href=""> Accounts Review </a>
-                            <a class="hover:opacity-75" href=""> HR Consulting </a>
-                            <a class="hover:opacity-75" href=""> SEO Optimisation </a>
-                        </nav>
-                    </div>
-
-                    <div>
-                        <p class="font-medium">
                             Helpful Links
                         </p>
 
