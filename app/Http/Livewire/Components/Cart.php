@@ -23,6 +23,16 @@ class Cart extends Component
     /**
      * {@inheritDoc}
      */
+    public function rules()
+    {
+        return [
+            'lines.*.quantity' => 'required|numeric|min:1|max:10000',
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function mount()
     {
         $this->mapLines();
@@ -55,6 +65,8 @@ class Cart extends Component
      */
     public function updateLines()
     {
+        $this->validate();
+
         CartSession::manager()->updateLines(
             collect($this->lines)
         );

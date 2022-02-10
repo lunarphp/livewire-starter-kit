@@ -55,7 +55,16 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
+                        @if($errors->get('lines.'.$index.'.quantity'))
+                            <div class="py-1 text-sm text-red-500">
+                            @foreach($errors->get('lines.'.$index.'.quantity') as $error)
+                                {{ $error }}
+                            @endforeach
+                            </div>
+                        @endif
                     @empty
                         <span class="text-xs">Go buy something :)</span>
                     @endforelse

@@ -28,12 +28,13 @@ class AddToCart extends Component
     public function rules()
     {
         return [
-            'quantity' => 'min:1',
+            'quantity' => 'required|numeric|min:1|max:10000',
         ];
     }
 
     public function addToCart()
     {
+        $this->validate();
         CartSession::manager()->add($this->purchasable, $this->quantity);
         $this->emit('add-to-cart');
     }
