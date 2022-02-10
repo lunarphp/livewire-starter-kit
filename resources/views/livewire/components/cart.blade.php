@@ -43,7 +43,7 @@
                                             wire:model="lines.{{ $index }}.quantity"
                                         />
                                         <div class="grow">
-                                            @ {{ $line['sub_total'] }}
+                                            @ {{ $line['unit_price'] }}
                                         </div>
                                     </div>
                                     <div class="px-3">

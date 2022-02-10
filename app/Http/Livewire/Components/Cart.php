@@ -87,6 +87,7 @@ class Cart extends Component
                 'thumbnail' => $line->purchasable->getThumbnail(),
                 'option' => $line->purchasable->getOption(),
                 'sub_total' => $line->subTotal->formatted(),
+                'unit_price' => $line->unitPrice->formatted(),
             ];
         })->toArray();
     }
