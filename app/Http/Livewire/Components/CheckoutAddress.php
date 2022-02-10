@@ -21,19 +21,19 @@ class CheckoutAddress extends Component
     /**
      * The ID of the cart.
      *
-     * @var string|integer
+     * @var string|int
      */
     public Cart $cart;
 
     /**
      * Whether we are currently editing the address.
      *
-     * @var boolean
+     * @var bool
      */
     public bool $editing = false;
 
     /**
-     * The checkout address model
+     * The checkout address model.
      *
      * @var \GetCandy\Models\CartAddress
      */
@@ -42,7 +42,7 @@ class CheckoutAddress extends Component
     /**
      * Whether billing is the same as shipping.
      *
-     * @var boolean
+     * @var bool
      */
     public bool $shippingIsBilling = false;
 
@@ -57,10 +57,10 @@ class CheckoutAddress extends Component
     {
         $this->cart = CartSession::current();
 
-        $this->address = $this->cart->addresses->first(fn($add) => $add->type == $this->type) ?: new CartAddress;
+        $this->address = $this->cart->addresses->first(fn ($add) => $add->type == $this->type) ?: new CartAddress;
 
         // If we have an existing ID then it should already be valid and ready to go.
-        $this->editing = (bool) !$this->address->id;
+        $this->editing = (bool) ! $this->address->id;
     }
 
     /**

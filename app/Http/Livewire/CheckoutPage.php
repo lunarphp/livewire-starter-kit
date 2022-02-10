@@ -38,14 +38,14 @@ class CheckoutPage extends Component
     /**
      * The current checkout step.
      *
-     * @var integer
+     * @var int
      */
     public int $currentStep = 1;
 
     /**
      * Whether the shipping address is the billing address too.
      *
-     * @var boolean
+     * @var bool
      */
     public bool $shippingIsBilling = true;
 
@@ -99,8 +99,9 @@ class CheckoutPage extends Component
      */
     public function mount()
     {
-        if (!$this->cart = CartSession::current()) {
+        if (! $this->cart = CartSession::current()) {
             $this->redirect('/');
+
             return;
         }
 
@@ -151,6 +152,7 @@ class CheckoutPage extends Component
                 $this->currentStep = $this->steps['shipping_option'] + 1;
             } else {
                 $this->currentStep = $this->steps['shipping_option'];
+
                 return;
             }
         }
@@ -179,7 +181,7 @@ class CheckoutPage extends Component
     {
         $shippingAddress = $this->cart->shippingAddress;
 
-        if (!$shippingAddress) {
+        if (! $shippingAddress) {
             return;
         }
 
@@ -195,7 +197,7 @@ class CheckoutPage extends Component
     /**
      * Save the address for a given type.
      *
-     * @param string $type
+     * @param  string  $type
      * @return void
      */
     public function saveAddress($type)
@@ -205,7 +207,6 @@ class CheckoutPage extends Component
         );
 
         $address = $this->{$type};
-
 
         if ($type == 'billing') {
             $this->cart->getManager()->setBillingAddress($address);
@@ -239,7 +240,7 @@ class CheckoutPage extends Component
      */
     public function saveShippingOption()
     {
-        $option = $this->shippingOptions->first(fn($option) => $option->getIdentifier() == $this->chosenShipping);
+        $option = $this->shippingOptions->first(fn ($option) => $option->getIdentifier() == $this->chosenShipping);
 
         CartSession::current()->getManager()->setShippingOption($option);
 
@@ -286,7 +287,7 @@ class CheckoutPage extends Component
     /**
      * Return the address validation rules for a given type.
      *
-     * @param string $type
+     * @param  string  $type
      * @return array
      */
     protected function getAddressValidation($type)

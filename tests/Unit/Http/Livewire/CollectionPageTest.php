@@ -66,7 +66,7 @@ class CollectionPageTest extends TestCase
     }
 
     /**
-     * Test products are loaded on the page
+     * Test products are loaded on the page.
      *
      * @return void
      */
