@@ -20,6 +20,8 @@
                 <a
                     class="text-blue-500 underline underline-offset-2"
                     href="https://docs.getcandy.io/screencasts"
+                    target="_blank"
+                    rel="noopener"
                 >
                     screencast series in the docs
                 </a>
