@@ -21,7 +21,7 @@ class ProductPage extends Component
     /**
      * {@inheritDoc}
      *
-     * @param string $slug
+     * @param  string  $slug
      * @return void
      */
     public function mount($slug)
@@ -33,7 +33,7 @@ class ProductPage extends Component
                 'element.media',
                 'element.variants.basePrices.currency',
                 'element.variants.basePrices.priceable',
-                'element.variants.values.option'
+                'element.variants.values.option',
             ]
         );
 
@@ -41,7 +41,7 @@ class ProductPage extends Component
             return [$data['option']->id => $data['values']->first()->id];
         })->toArray();
 
-        if (!$this->variant) {
+        if (! $this->variant) {
             abort(404);
         }
     }
@@ -54,7 +54,7 @@ class ProductPage extends Component
     public function getVariantProperty()
     {
         return $this->product->variants->first(function ($variant) {
-            return !$variant->values->pluck('id')
+            return ! $variant->values->pluck('id')
                 ->diff(
                     collect($this->selectedOptionValues)->values()
                 )->count();
@@ -118,7 +118,7 @@ class ProductPage extends Component
             return $this->variant->thumbnail;
         }
 
-        if ($primary = $this->images->first(fn($media) => $media->getCustomProperty('primary'))) {
+        if ($primary = $this->images->first(fn ($media) => $media->getCustomProperty('primary'))) {
             return $primary;
         }
 

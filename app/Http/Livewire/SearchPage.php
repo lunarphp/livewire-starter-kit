@@ -24,7 +24,6 @@ class SearchPage extends Component
      */
     public ?string $term = null;
 
-
     /**
      * Return the search results.
      *

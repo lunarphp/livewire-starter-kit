@@ -18,7 +18,7 @@ class AddToCart extends Component
     /**
      * The quantity to add to cart.
      *
-     * @var integer
+     * @var int
      */
     public $quantity = 1;
 

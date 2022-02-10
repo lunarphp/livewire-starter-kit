@@ -31,9 +31,9 @@ class CollectionSeeder extends AbstractSeeder
                     'collection_group_id' => CollectionGroup::first()->id,
                     'attribute_data' =>  [
                         'name' => new TranslatedText([
-                            'en' => new Text($collection->name)
+                            'en' => new Text($collection->name),
                         ]),
-                    ]
+                    ],
                 ]);
 
                 $model->urls()->create([
