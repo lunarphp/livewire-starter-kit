@@ -51,11 +51,11 @@ class ProductSeeder extends AbstractSeeder
                 $attributeData = [];
 
                 foreach ($product->attributes as $attributeHandle => $value) {
-                    $attribute = $attributes->first(fn($att) => $att->handle == $attributeHandle);
+                    $attribute = $attributes->first(fn ($att) => $att->handle == $attributeHandle);
 
                     if ($attribute->type == TranslatedText::class) {
                         $attributeData[$attributeHandle] = new TranslatedText([
-                            'en' => new Text($value)
+                            'en' => new Text($value),
                         ]);
                         continue;
                     }
@@ -112,7 +112,7 @@ class ProductSeeder extends AbstractSeeder
 
                 $collection->products()->attach($productModel->id);
 
-                if (!count($product->options ?? [])) {
+                if (! count($product->options ?? [])) {
                     return;
                 }
 
@@ -121,9 +121,9 @@ class ProductSeeder extends AbstractSeeder
 
                 foreach ($product->options ?? [] as $option) {
                     // Do we have this option already?
-                    $optionModel = $options->first(fn($opt) => $option->name == $opt->translate('name'));
+                    $optionModel = $options->first(fn ($opt) => $option->name == $opt->translate('name'));
 
-                    if (!$optionModel) {
+                    if (! $optionModel) {
                         $optionModel = ProductOption::create([
                             'name' => [
                                 'en' => $option->name,
@@ -135,9 +135,9 @@ class ProductSeeder extends AbstractSeeder
 
                     foreach ($option->values as $value) {
                         // Does this exist?
-                        $valueModel = $optionValues->first(fn($val) => $value == $val->translate('name'));
+                        $valueModel = $optionValues->first(fn ($val) => $value == $val->translate('name'));
 
-                        if (!$valueModel) {
+                        if (! $valueModel) {
                             $valueModel = ProductOptionValue::create([
                                 'product_option_id' => $optionModel->id,
                                 'name' => [

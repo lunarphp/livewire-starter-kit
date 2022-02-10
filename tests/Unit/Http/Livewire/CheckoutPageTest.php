@@ -44,6 +44,7 @@ class CheckoutPageTest extends TestCase
      * Test the component mounts correctly.
      *
      * @group moomoo
+     *
      * @return void
      */
     public function test_checkout_step_is_correct_on_load()
@@ -158,7 +159,7 @@ class CheckoutPageTest extends TestCase
     }
 
     /**
-     * Test we can save the shipping address
+     * Test we can save the shipping address.
      *
      * @return void
      */
@@ -188,13 +189,13 @@ class CheckoutPageTest extends TestCase
             ->assertViewIs('livewire.checkout-page')
             ->call('saveAddress', 'shipping')
             ->assertHasErrors([
-                "shipping.first_name" => 'required',
-                "shipping.last_name" => 'required',
-                "shipping.line_one" => 'required',
-                "shipping.country_id" => 'required',
-                "shipping.city" => 'required',
-                "shipping.postcode" => 'required',
-                "shipping.contact_email" => 'required',
+                'shipping.first_name' => 'required',
+                'shipping.last_name' => 'required',
+                'shipping.line_one' => 'required',
+                'shipping.country_id' => 'required',
+                'shipping.city' => 'required',
+                'shipping.postcode' => 'required',
+                'shipping.contact_email' => 'required',
             ])
             ->set('shipping.first_name', 'Tony')
             ->set('shipping.last_name', 'Stark')
@@ -212,24 +213,24 @@ class CheckoutPageTest extends TestCase
             ->call('saveAddress', 'shipping')
             ->assertHasNoErrors();
 
-            $this->assertDatabaseHas((new CartAddress)->getTable(), [
-                'first_name' => 'Tony',
-                'last_name' => 'Stark',
-                'company_name' => 'Stark Industries',
-                'line_one' => '1200 Industrial Ave',
-                'city' => 'Long Beach',
-                'state' => 'CA',
-                'postcode' => '90803',
-                'delivery_instructions' => 'Press the buzzer',
-                'contact_email' => 'deliveries@stark.co',
-                'contact_phone' => '123123123',
-                'country_id' => $country->id,
-                'type' => 'shipping',
-            ]);
+        $this->assertDatabaseHas((new CartAddress)->getTable(), [
+            'first_name' => 'Tony',
+            'last_name' => 'Stark',
+            'company_name' => 'Stark Industries',
+            'line_one' => '1200 Industrial Ave',
+            'city' => 'Long Beach',
+            'state' => 'CA',
+            'postcode' => '90803',
+            'delivery_instructions' => 'Press the buzzer',
+            'contact_email' => 'deliveries@stark.co',
+            'contact_phone' => '123123123',
+            'country_id' => $country->id,
+            'type' => 'shipping',
+        ]);
     }
 
     /**
-     * Test we can save the shipping address
+     * Test we can save the shipping address.
      *
      * @return void
      */
@@ -259,13 +260,13 @@ class CheckoutPageTest extends TestCase
             ->assertViewIs('livewire.checkout-page')
             ->call('saveAddress', 'billing')
             ->assertHasErrors([
-                "billing.first_name" => 'required',
-                "billing.last_name" => 'required',
-                "billing.line_one" => 'required',
-                "billing.country_id" => 'required',
-                "billing.city" => 'required',
-                "billing.postcode" => 'required',
-                "billing.contact_email" => 'required',
+                'billing.first_name' => 'required',
+                'billing.last_name' => 'required',
+                'billing.line_one' => 'required',
+                'billing.country_id' => 'required',
+                'billing.city' => 'required',
+                'billing.postcode' => 'required',
+                'billing.contact_email' => 'required',
             ])
             ->set('billing.first_name', 'Tony')
             ->set('billing.last_name', 'Stark')
@@ -283,20 +284,19 @@ class CheckoutPageTest extends TestCase
             ->call('saveAddress', 'billing')
             ->assertHasNoErrors();
 
-            $this->assertDatabaseHas((new CartAddress)->getTable(), [
-                'first_name' => 'Tony',
-                'last_name' => 'Stark',
-                'company_name' => 'Stark Industries',
-                'line_one' => '1200 Industrial Ave',
-                'city' => 'Long Beach',
-                'state' => 'CA',
-                'postcode' => '90803',
-                'delivery_instructions' => 'Press the buzzer',
-                'contact_email' => 'deliveries@stark.co',
-                'contact_phone' => '123123123',
-                'country_id' => $country->id,
-                'type' => 'billing',
-            ]);
+        $this->assertDatabaseHas((new CartAddress)->getTable(), [
+            'first_name' => 'Tony',
+            'last_name' => 'Stark',
+            'company_name' => 'Stark Industries',
+            'line_one' => '1200 Industrial Ave',
+            'city' => 'Long Beach',
+            'state' => 'CA',
+            'postcode' => '90803',
+            'delivery_instructions' => 'Press the buzzer',
+            'contact_email' => 'deliveries@stark.co',
+            'contact_phone' => '123123123',
+            'country_id' => $country->id,
+            'type' => 'billing',
+        ]);
     }
-
 }

@@ -24,8 +24,9 @@ class CheckoutSuccessPage extends Component
     public function mount()
     {
         $this->cart = CartSession::getCart();
-        if (!$this->cart || !$this->cart->order) {
+        if (! $this->cart || ! $this->cart->order) {
             $this->redirect('/');
+
             return;
         }
         $this->order = $this->cart->order;

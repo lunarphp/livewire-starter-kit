@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use GetCandy\Base\ShippingModifiers;
 use App\Modifiers\ShippingModifier;
+use GetCandy\Base\ShippingModifiers;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

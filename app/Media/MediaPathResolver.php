@@ -11,7 +11,7 @@ class MediaPathResolver implements PathGenerator
     /**
      * Get the root folder for the media relative to the model name.
      *
-     * @param Media $media
+     * @param  Media  $media
      * @return string
      */
     public function getRootMediaFolder($media)
@@ -26,7 +26,7 @@ class MediaPathResolver implements PathGenerator
      */
     public function getPath(Media $media): string
     {
-        return $this->getRootMediaFolder($media) . '/' . $media->created_at->format('Y/m/d') . '/';
+        return $this->getRootMediaFolder($media).'/'.$media->created_at->format('Y/m/d').'/';
     }
 
     /*
@@ -34,7 +34,7 @@ class MediaPathResolver implements PathGenerator
      */
     public function getPathForConversions(Media $media): string
     {
-        return $this->getRootMediaFolder($media) . '/' . $media->created_at->format('Y/m/d').'/conversions/';
+        return $this->getRootMediaFolder($media).'/'.$media->created_at->format('Y/m/d').'/conversions/';
     }
 
     /*
@@ -42,6 +42,6 @@ class MediaPathResolver implements PathGenerator
      */
     public function getPathForResponsiveImages(Media $media): string
     {
-        return $this->getRootMediaFolder($media) . '/' . $media->created_at->format('Y/m/d') .'/responsive-images/';
+        return $this->getRootMediaFolder($media).'/'.$media->created_at->format('Y/m/d').'/responsive-images/';
     }
 }

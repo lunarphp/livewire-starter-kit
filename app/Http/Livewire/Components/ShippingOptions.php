@@ -61,7 +61,7 @@ class ShippingOptions extends Component
     {
         $this->validate();
 
-        $option = $this->shippingOptions->first(fn($option) => $option->getIdentifier() == $this->chosenOption);
+        $option = $this->shippingOptions->first(fn ($option) => $option->getIdentifier() == $this->chosenOption);
 
         CartSession::current()->getManager()->setShippingOption($option);
 
@@ -69,7 +69,7 @@ class ShippingOptions extends Component
     }
 
     /**
-     * Return whether we have a shipping address
+     * Return whether we have a shipping address.
      *
      * @return void
      */

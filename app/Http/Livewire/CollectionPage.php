@@ -16,9 +16,10 @@ class CollectionPage extends Component
     /**
      * {@inheritDoc}
      *
-     * @param string $slug
-     * @throws \Http\Client\Exception\HttpException
+     * @param  string  $slug
      * @return void
+     *
+     * @throws \Http\Client\Exception\HttpException
      */
     public function mount($slug)
     {
@@ -28,11 +29,11 @@ class CollectionPage extends Component
             [
                 'element.thumbnail',
                 'element.products.variants.basePrices',
-                'element.products.defaultUrl'
+                'element.products.defaultUrl',
             ]
         );
 
-        if (!$this->url) {
+        if (! $this->url) {
             abort(404);
         }
     }
