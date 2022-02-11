@@ -38,6 +38,7 @@
 
         <div>
             @if ($this->cart)
+                <div class="space-y-4">
                 @forelse($lines as $index => $line)
                     <div class="flow-root">
                         <ul class="-my-4 overflow-y-auto divide-y divide-gray-100 max-h-96">
@@ -96,6 +97,7 @@
                         Your cart is empty
                     </p>
                 @endforelse
+                </div>
 
                 <dl class="pt-4 mt-6 text-sm border-t border-gray-100">
                     <div class="flex items-center">
