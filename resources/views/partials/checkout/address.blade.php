@@ -22,8 +22,8 @@
             </div>
 
             <div>
-                <x-input.group label="Company name" :errors="$errors->get($type.'.company_name')" required>
-                    <x-input.text wire:model.defer="{{ $type }}.company_name" required />
+                <x-input.group label="Company name" :errors="$errors->get($type.'.company_name')">
+                    <x-input.text wire:model.defer="{{ $type }}.company_name" />
                 </x-input.group>
             </div>
 
@@ -32,8 +32,8 @@
                     <x-input.text wire:model.defer="{{ $type }}.contact_phone" />
                 </x-input.group>
 
-                <x-input.group label="Contact email" :errors="$errors->get($type.'.contact_email')">
-                    <x-input.text wire:model.defer="{{ $type }}.contact_email" type="email" />
+                <x-input.group label="Contact email" :errors="$errors->get($type.'.contact_email')" required>
+                    <x-input.text wire:model.defer="{{ $type }}.contact_email" type="email" required />
                 </x-input.group>
             </div>
 
@@ -88,10 +88,12 @@
                             <dd>{{ $this->{$type}->first_name }} {{ $this->{$type}->last_name }}</dd>
                         </div>
 
+                        @if($this->{$type}->company_name)
                         <div>
                             <dt class="text-sm font-medium">Company</dt>
                             <dd>{{ $this->{$type}->company_name }}</dd>
                         </div>
+                        @endif
 
                         <div>
                             <dt class="text-sm font-medium">Phone Number</dt>
