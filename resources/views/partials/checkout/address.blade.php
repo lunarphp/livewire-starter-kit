@@ -17,7 +17,7 @@
                 </x-input.group>
 
                 <x-input.group label="Last name" :errors="$errors->get($type.'.last_name')" required>
-                    <x-input.text wire:model.defer="{{ $type }}.last_name" />
+                    <x-input.text wire:model.defer="{{ $type }}.last_name" required />
                 </x-input.group>
             </div>
 
