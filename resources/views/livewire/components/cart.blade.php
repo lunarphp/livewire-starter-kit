@@ -5,7 +5,7 @@
     }"
 >
     <button
-        class="inline-flex flex-col items-center justify-center w-16 h-16 transition-colors"
+        class="inline-flex flex-col items-center justify-center w-16 h-16 transition-colors border-l border-gray-100 lg:border-l-0 hover:opacity-75"
         x-on:click="linesVisible = !linesVisible"
     >
         <svg
@@ -23,7 +23,7 @@
             />
         </svg>
 
-        <span class="block mt-1 text-xs font-medium">
+        <span class="hidden text-xs font-medium lg:mt-1 lg:block">
             Cart
         </span>
     </button>

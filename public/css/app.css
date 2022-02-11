@@ -1599,6 +1599,10 @@ select {
     margin-left: 0px;
   }
 
+  .sm\:mt-1 {
+    margin-top: 0.25rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -1629,6 +1633,10 @@ select {
 
   .sm\:rounded-lg {
     border-radius: 0.5rem;
+  }
+
+  .sm\:border-l-0 {
+    border-left-width: 0px;
   }
 
   .sm\:px-6 {
@@ -1670,6 +1678,15 @@ select {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .sm\:font-medium {
+    font-weight: 500;
   }
 
   .sm\:leading-relaxed {
@@ -1745,6 +1762,14 @@ select {
     margin-left: 2rem;
   }
 
+  .lg\:mt-1 {
+    margin-top: 0.25rem;
+  }
+
+  .lg\:block {
+    display: block;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -1773,6 +1798,10 @@ select {
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:border-l-0 {
+    border-left-width: 0px;
   }
 
   .lg\:px-8 {
