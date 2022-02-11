@@ -7,7 +7,6 @@
     <button
         class="inline-flex flex-col items-center justify-center w-16 h-16 transition-colors"
         x-on:click="linesVisible = !linesVisible"
-        :class="{ 'bg-gray-100': linesVisible }"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +29,7 @@
     </button>
 
     <div
-        class="absolute inset-x-0 top-auto z-50 w-screen max-w-xs px-6 py-8 mx-auto mt-4 bg-white border border-gray-100 shadow-xl sm:left-auto rounded-xl"
+        class="absolute inset-x-0 top-auto z-50 w-screen max-w-sm px-6 py-8 mx-auto mt-4 bg-white border border-gray-100 shadow-xl sm:left-auto rounded-xl"
         x-show="linesVisible"
         x-on:click.away="linesVisible = false"
         x-transition
@@ -75,7 +74,7 @@
                                         >
 
                                         <div class="flex-1 ml-4">
-                                            <p class="text-sm font-medium max-w-[35ch]">
+                                            <p class="max-w-[20ch] text-sm font-medium">
                                                 {{ $line['description'] }}
                                             </p>
 
@@ -156,9 +155,9 @@
         </div>
 
         @if ($this->cart)
-            <div class="mt-4 space-y-4 text-sm text-center">
+            <div class="mt-4 space-y-4 text-center">
                 <button
-                    class="block w-full p-3 text-blue-800 border border-blue-600 rounded-lg hover:ring-1 hover:ring-blue-600"
+                    class="block w-full p-3 text-sm font-medium text-blue-800 border border-blue-600 rounded-lg hover:ring-1 hover:ring-blue-600"
                     type="button"
                     wire:click="updateLines"
                 >
@@ -166,14 +165,14 @@
                 </button>
 
                 <a
-                    class="block w-full p-3 text-center text-white bg-blue-600 rounded-lg hover:ring-1 hover:ring-blue-600"
+                    class="block w-full p-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-500"
                     href="{{ route('checkout.view') }}"
                 >
                     Checkout
                 </a>
 
                 <a
-                    class="inline-block text-gray-500 underline underline-offset-4 hover:text-gray-600"
+                    class="inline-block text-sm font-medium text-gray-600 underline hover:text-gray-500"
                     href="{{ url('/') }}"
                 >
                     Continue Shopping
