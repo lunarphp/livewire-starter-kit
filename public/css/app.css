@@ -614,10 +614,6 @@ select {
   position: -webkit-sticky;
   position: sticky;
 }
-.inset-x-0 {
-  left: 0px;
-  right: 0px;
-}
 .top-0 {
   top: 0px;
 }
@@ -687,11 +683,11 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
-.mt-6 {
-  margin-top: 1.5rem;
-}
 .mt-1 {
   margin-top: 0.25rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 .ml-auto {
   margin-left: auto;
@@ -782,6 +778,9 @@ select {
 }
 .w-16 {
   width: 4rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .w-1\/2 {
   width: 50%;
@@ -1136,11 +1135,11 @@ select {
 .font-semibold {
   font-weight: 600;
 }
-.font-extrabold {
-  font-weight: 800;
-}
 .font-medium {
   font-weight: 500;
+}
+.font-extrabold {
+  font-weight: 800;
 }
 .font-bold {
   font-weight: 700;
@@ -1394,18 +1393,6 @@ select {
 }
 
 @media (min-width: 640px) {
-
-  .sm\:relative {
-    position: relative;
-  }
-
-  .sm\:right-0 {
-    right: 0px;
-  }
-
-  .sm\:left-auto {
-    left: auto;
-  }
 
   .sm\:ml-0 {
     margin-left: 0px;
