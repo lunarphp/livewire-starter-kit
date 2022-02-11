@@ -2,7 +2,7 @@
 
 # Demo Store
 
-This repository is provided as a reference to learn how to use GetCandy Laravel E-Commerce package. It is a classic e-commerce store and we have a [screencast series in the docs](https://docs.getcandy.io/screencasts) which show you how we created each section of the store.
+This repository is provided as a reference to learn how to use GetCandy Laravel E-Commerce package. This example is a classic e-commerce store and we are currently making a screencast series to show you how we did it!
 
 # Requirements
 
