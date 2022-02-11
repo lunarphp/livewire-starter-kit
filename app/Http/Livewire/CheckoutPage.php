@@ -153,6 +153,7 @@ class CheckoutPage extends Component
             } else {
                 $this->currentStep = $this->steps['shipping_option'];
                 $this->chosenShipping = $this->shippingOptions->first()?->getIdentifier();
+
                 return;
             }
         }
