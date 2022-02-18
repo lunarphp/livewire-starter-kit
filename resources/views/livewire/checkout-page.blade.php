@@ -53,7 +53,7 @@
                     @endif
                     @foreach($cart->taxBreakdown as $tax)
                         <div class="flex justify-between pt-4 mt-4 border-t">
-                            <strong class="block">{{ $tax['rate']->name }}</strong>
+                            <strong class="block">{{ $tax['description'] }}</strong>
                             {{ $tax['total']->formatted() }}
                         </div>
                     @endforeach
