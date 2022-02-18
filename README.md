@@ -52,6 +52,12 @@ Seed the demo data.
 php artisan db:seed
 ```
 
+Link the storage directory
+
+```
+php artisan storage:link
+```
+
 ---
 
 This demo store uses Livewire to handle all routing and Laravel components where they make sense.
