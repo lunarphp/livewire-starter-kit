@@ -59,7 +59,7 @@
                         @foreach ($cart->taxBreakdown as $tax)
                             <div class="flex flex-wrap py-4">
                                 <dt class="w-1/2 font-medium">
-                                    {{ $tax['rate']->name }}
+                                    {{ $tax['description'] }}
                                 </dt>
 
                                 <dd class="w-1/2 text-right">
