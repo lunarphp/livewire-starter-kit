@@ -213,5 +213,36 @@
         "sku": "DJ4661-010",
         "price": "9995",
         "image": "nike_trousers.jpg"
+    },
+    {
+        "attributes": {
+            "name": "Classic Hooded Sweat",
+            "description": "Double fabric hood"
+        },
+        "collection": "hoodies",
+        "sku": "LEV-856",
+        "price": "1099",
+        "image": "tshirt.jpg",
+        "brand": "Fruit of the loom",
+        "options": [
+            {
+                "name": "Colour",
+                "values": [
+                    "Black",
+                    "Blue",
+                    "Red",
+                    "Green"
+                ]
+            },
+            {
+                "name": "Size",
+                "values": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            }
+        ]
     }
 ]
