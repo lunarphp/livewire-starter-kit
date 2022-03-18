@@ -1,5 +1,4 @@
-<form
-    wire:submit.prevent="checkout"
+<div
     class="bg-white border border-gray-100 rounded-xl"
 >
     <div class="flex items-center h-16 px-6 border-b border-gray-100">
@@ -9,14 +8,53 @@
     </div>
 
     @if ($currentStep >= $step)
-        <div class="p-6">
-            <div class="p-4 text-sm text-center text-blue-700 rounded-lg bg-blue-50">
-                Payment is offline, no card details needed.
-            </div>
+        <div class="p-4 pb-0">
+            <button
+                class="px-3 py-2 text-sm font-medium
+                    @if($paymentType == 'card')
+                        text-green-600 border border-green-500 bg-green-100
+                    @else
+                        text-gray-400 border hover:text-gray-900
+                    @endif
+                    rounded-lg
+                "
+                type="button"
+                wire:click.prevent="$set('paymentType', 'card')"
+            >
+                Pay by card
+            </button>
 
-            <div class="mt-6 text-right">
+            <button
+                class="px-3 py-2 text-sm font-medium
+                    @if($paymentType == 'cash')
+                        text-green-600 border border-green-500 bg-green-100
+                    @else
+                        text-gray-400 border hover:text-gray-900
+                    @endif
+                    rounded-lg
+                "
+                type="button"
+                wire:click.prevent="$set('paymentType', 'cash')"
+            >
+                Pay with cash
+            </button>
+        </div>
+        @if($paymentType == 'card')
+            <div class="p-6">
+                @livewire('stripe.payment', [
+                    'cart' => $cart,
+                    'returnUrl' => route('checkout.view'),
+                ])
+            </div>
+        @endif
+        @if($paymentType == 'cash')
+            <form class="p-6" wire:submit.prevent="checkout">
+                <div class="p-4 text-sm text-center text-blue-700 rounded-lg bg-blue-50">
+                    Payment is offline, no card details needed.
+                </div>
+
                 <button
-                    class="px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500"
+                    class="px-5 py-3 mt-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500"
                     type="submit"
                     wire:key="payment_submit_btn"
                 >
@@ -24,7 +62,7 @@
                         wire:loading.remove.delay
                         wire:target="checkout"
                     >
-                        Make Payment
+                        Submit Order
                     </span>
                     <span
                         wire:loading.delay
@@ -52,7 +90,7 @@
                         </svg>
                     </span>
                 </button>
-            </div>
-        </div>
+            </form>
+        @endif
     @endif
-</form>
+</div>
