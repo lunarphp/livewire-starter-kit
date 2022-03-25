@@ -21,7 +21,7 @@ class CustomerSeeder extends AbstractSeeder
             $customers = Customer::factory(100)->create();
             foreach ($customers as $customer) {
                 // Add some users...
-                for ($i=0; $i < $faker->numberBetween(1, 10); $i++) {
+                for ($i = 0; $i < $faker->numberBetween(1, 10); $i++) {
                     $user = User::factory()->create();
                     $customer->users()->attach($user);
                 }
