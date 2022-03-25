@@ -91,7 +91,7 @@ class CheckoutPage extends Component
 
     protected $queryString = [
         'payment_intent',
-        'payment_intent_client_secret'
+        'payment_intent_client_secret',
     ];
 
     /**
@@ -130,10 +130,10 @@ class CheckoutPage extends Component
 
             if ($payment->success) {
                 redirect()->route('checkout-success.view');
+
                 return;
             }
         }
-
 
         // Do we have a shipping address?
         $this->shipping = $this->cart->shippingAddress ?: new CartAddress;
@@ -290,6 +290,7 @@ class CheckoutPage extends Component
 
         if ($payment->success) {
             redirect()->route('checkout-success.view');
+
             return;
         }
 
