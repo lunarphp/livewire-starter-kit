@@ -1,0 +1,26 @@
+name: demostore
+recipe: laravel
+config:
+  webroot: public
+  php: '8.0'
+  via: nginx
+  cache: redis
+services:
+  database:
+    portforward: 3307
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+  meilisearch:
+    type: compose
+    app_mount: false
+    services:
+      image: getmeili/meilisearch:latest
+      command: tini -- /bin/sh -c ./meilisearch --master-key="meilisearch"
+      ports:
+        - '7700:7700'
+      volumes:
+        - meilisearch:/data.ms
+    volumes:
+      meilisearch:
