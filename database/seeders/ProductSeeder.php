@@ -106,11 +106,11 @@ class ProductSeeder extends AbstractSeeder
                 $media->setCustomProperty('primary', true);
                 $media->save();
 
-                $collection = $collections->first(function ($coll) use ($product) {
-                    return strtolower($coll->translateAttribute('name')) == $product->collection;
+                $collections->each(function ($coll) use ($product, $productModel) {
+                    if (in_array(strtolower($coll->translateAttribute('name')), $product->collections)) {
+                        $coll->products()->attach($productModel->id);
+                    }
                 });
-
-                $collection->products()->attach($productModel->id);
 
                 if (! count($product->options ?? [])) {
                     return;
