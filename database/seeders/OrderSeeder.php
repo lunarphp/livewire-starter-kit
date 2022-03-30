@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Faker\Factory;
+use GetCandy\Base\OrderReferenceGeneratorInterface;
 use GetCandy\Facades\Pricing;
 use GetCandy\Models\Channel;
 use GetCandy\Models\Currency;
@@ -30,6 +31,9 @@ class OrderSeeder extends Seeder
             $currency = Currency::getDefault();
 
             $cardTypes = ['visa', 'mastercard'];
+
+            $generator = app(OrderReferenceGeneratorInterface::class);
+
 
             for ($i=0; $i < 201; $i++) {
                 $itemModels = $variants->shuffle()->take($faker->numberBetween(1, 15));
@@ -76,6 +80,7 @@ class OrderSeeder extends Seeder
                     'channel_id' => $channel->id,
                     'status' => 'payment-received',
                     'sub_total' => $lines->sum('sub_total'),
+                    'reference' => null,
                     'tax_total' => $lines->sum('tax_total'),
                     'total' => $lines->sum('total'),
                     'currency_code' => $currency->code,
@@ -99,6 +104,9 @@ class OrderSeeder extends Seeder
                 }
 
                 $orderModel = Order::factory()->create($order);
+
+                $orderModel->reference = $generator->generate($orderModel);
+                $orderModel->save();
 
                 // Shipping / Billing address
                 $shipping = OrderAddress::factory()->create([
