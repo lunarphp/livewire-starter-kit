@@ -8,28 +8,46 @@
         content="width=device-width, initial-scale=1"
     >
     <title>Demo Storefront</title>
+    <meta
+        name="description"
+        content="Example of an ecommerce storefront built with GetCandy."
+    >
     <link
         href="{{ asset('css/app.css') }}"
         rel="stylesheet"
     >
+    <script
+        defer
+        src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <link
         rel="icon"
         href="{{ asset('favicon.svg') }}"
     >
     @livewireStyles
+    @stripeScripts
 </head>
 
-<body class="antialiased">
-    <header class="border-b border-gray-100">
-        <div class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-2xl sm:px-6 lg:px-8">
-            <a href="{{ url('/') }}">
-                <x-brand.logo class="h-10" />
-            </a>
+<body class="antialiased text-gray-900">
+    <header class="relative border-b border-gray-100">
+        <div class="flex items-center h-16 px-4 mx-auto max-w-screen-2xl sm:px-6 lg:px-8">
+            <a
+                class="flex items-center flex-shrink-0"
+                href="{{ url('/') }}"
+            >
+                <span class="sr-only">Home</span>
 
+                <x-brand.logo class="w-auto h-6 text-indigo-600" />
+            </a>
         </div>
     </header>
 
-    {{ $slot }}
+
+    <main>
+        {{ $slot }}
+    </main>
+
+    <x-footer />
 
     @livewireScripts
 </body>
