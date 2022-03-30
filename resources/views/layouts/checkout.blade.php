@@ -12,6 +12,10 @@
         href="{{ asset('css/app.css') }}"
         rel="stylesheet"
     >
+    <link
+        rel="icon"
+        href="{{ asset('favicon.svg') }}"
+    >
     @livewireStyles
 </head>
 
