@@ -50,7 +50,7 @@
                     {{ $this->product->translateAttribute('description') }}
                 </article>
 
-                <form class="mt-8">
+                <form class="mt-8 space-y-4">
                     @foreach ($this->productOptions as $option)
                         <fieldset>
                             <legend class="text-sm font-medium">
@@ -64,8 +64,8 @@
                                     selectedValue: '',
                                 }"
                                 x-init="
-                                    selectedValue = Object.values(selectedOption)[0];
-                                    $watch('selectedOption', value => selectedValue = Object.values(selectedOption)[0])
+                                    selectedValue = selectedOption[{{ $option['option']['id'] }}];
+                                    $watch('selectedOption', value => selectedValue = selectedOption[{{ $option['option']['id'] }}])
                                 "
                             >
                                 @foreach ($option['values'] as $value)
