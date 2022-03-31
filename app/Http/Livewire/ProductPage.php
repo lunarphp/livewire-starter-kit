@@ -78,7 +78,7 @@ class ProductPage extends Component
      */
     public function getProductOptionsProperty()
     {
-        return $this->productOptionValues->groupBy('product_option_id')
+        return $this->productOptionValues->unique('id')->groupBy('product_option_id')
             ->map(function ($values) {
                 return [
                     'option' => $values->first()->option,
