@@ -23,10 +23,10 @@ class CustomerSeeder extends AbstractSeeder
             $customers = Customer::get();
             foreach ($customers as $customer) {
                 // Add some users...
-                // for ($i=0; $i < $faker->numberBetween(1, 10); $i++) {
-                //     $user = User::factory()->create();
-                //     $customer->users()->attach($user);
-                // }
+                for ($i = 0; $i < $faker->numberBetween(1, 10); $i++) {
+                    $user = User::factory()->create();
+                    $customer->users()->attach($user);
+                }
 
                 // Add a billing and shipping address.
                 Address::factory()->create([

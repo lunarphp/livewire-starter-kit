@@ -32,10 +32,10 @@ class OrderSeeder extends Seeder
 
             $cardTypes = ['visa', 'mastercard'];
 
-            $generator = app(OrderReferenceGeneratorInterface::class);
+            for ($i = 0; $i < 201; $i++) {
+              
+              $generator = app(OrderReferenceGeneratorInterface::class);
 
-
-            for ($i=0; $i < 201; $i++) {
                 $itemModels = $variants->shuffle()->take($faker->numberBetween(1, 15));
 
                 $lines = collect();
@@ -47,7 +47,7 @@ class OrderSeeder extends Seeder
                     $price = $pricing->matched->price->value;
                     $subTotal = $price * $quantity;
                     $tax = (int) ($subTotal * .2);
-                    $options = $variant->values->map(fn($value) => $value->translate('name'));
+                    $options = $variant->values->map(fn ($value) => $value->translate('name'));
 
                     $lines->push([
                         'quantity' => $quantity,
@@ -69,7 +69,7 @@ class OrderSeeder extends Seeder
                                 'total' => $tax,
                                 'percentage' => 20,
                             ],
-                        ]
+                        ],
                     ]);
                 }
 
@@ -93,7 +93,7 @@ class OrderSeeder extends Seeder
                             'total' => $lines->sum('tax_total'),
                             'percentage' => 20,
                         ],
-                    ]
+                    ],
                 ];
 
                 if ($hasUser) {
