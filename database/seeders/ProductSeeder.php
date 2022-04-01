@@ -119,6 +119,8 @@ class ProductSeeder extends AbstractSeeder
                 $options = ProductOption::get();
                 $optionValues = ProductOptionValue::get();
 
+                $optionValueIds = [];
+
                 foreach ($product->options ?? [] as $option) {
                     // Do we have this option already?
                     $optionModel = $options->first(fn ($opt) => $option->name == $opt->translate('name'));
@@ -130,8 +132,6 @@ class ProductSeeder extends AbstractSeeder
                             ],
                         ]);
                     }
-
-                    $optionValueIds = [];
 
                     foreach ($option->values as $value) {
                         // Does this exist?
@@ -149,8 +149,8 @@ class ProductSeeder extends AbstractSeeder
                         $optionValueIds[] = $valueModel->id;
                     }
 
-                    GenerateVariants::dispatch($productModel, $optionValueIds);
                 }
+                GenerateVariants::dispatch($productModel, $optionValueIds);
             });
         });
     }
