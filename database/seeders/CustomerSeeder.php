@@ -20,7 +20,7 @@ class CustomerSeeder extends AbstractSeeder
         // $country = Country::
         DB::transaction(function () {
             $faker = Factory::create();
-            $customers = Customer::get();
+            $customers = Customer::factory(100)->create();
             foreach ($customers as $customer) {
                 // Add some users...
                 for ($i = 0; $i < $faker->numberBetween(1, 10); $i++) {

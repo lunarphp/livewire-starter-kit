@@ -33,7 +33,7 @@ class OrderSeeder extends Seeder
             $cardTypes = ['visa', 'mastercard'];
 
             for ($i = 0; $i < 201; $i++) {
-              
+
               $generator = app(OrderReferenceGeneratorInterface::class);
 
                 $itemModels = $variants->shuffle()->take($faker->numberBetween(1, 15));
@@ -43,7 +43,7 @@ class OrderSeeder extends Seeder
                 foreach ($itemModels as $variant) {
                     $quantity = $faker->numberBetween(1, 10);
 
-                    $pricing = Pricing::for($variant, $quantity);
+                    $pricing = Pricing::for($variant, $quantity)->get();
                     $price = $pricing->matched->price->value;
                     $subTotal = $price * $quantity;
                     $tax = (int) ($subTotal * .2);
