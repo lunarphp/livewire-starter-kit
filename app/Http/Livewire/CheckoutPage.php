@@ -282,7 +282,6 @@ class CheckoutPage extends Component
 
     public function checkout()
     {
-        // dd(1);
         $payment = Payments::cart($this->cart)->withData([
             'payment_intent_client_secret' => $this->payment_intent_client_secret,
             'payment_intent' => $this->payment_intent,
