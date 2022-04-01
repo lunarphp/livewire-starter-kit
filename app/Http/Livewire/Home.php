@@ -15,7 +15,28 @@ class Home extends Component
      */
     public function getSaleCollectionProperty()
     {
-        return Url::whereElementType(Collection::class)->whereSlug('sale')->first()?->element;
+        return Url::whereElementType(Collection::class)->whereSlug('sale')->first()?->element ?? null;
+    }
+
+    /**
+     * Return all images in sale collection.
+     *
+     * @return void
+     */
+    public function getSaleCollectionImagesProperty()
+    {
+        if (! $this->getSaleCollectionProperty()) {
+            return;
+        }
+
+        $collectionProducts = $this->getSaleCollectionProperty()
+            ->products()->inRandomOrder()->limit(4)->get();
+
+        $saleImages = $collectionProducts->map(function ($product) {
+            return $product->thumbnail;
+        });
+
+        return $saleImages->chunk(2);
     }
 
     /**
@@ -25,7 +46,13 @@ class Home extends Component
      */
     public function getRandomCollectionProperty()
     {
-        return Collection::inRandomOrder()->first();
+        $collections = Url::whereElementType(Collection::class);
+
+        if ($this->getSaleCollectionProperty()) {
+            $collections = $collections->where('element_id', '!=', $this->getSaleCollectionProperty()?->id);
+        }
+
+        return $collections->inRandomOrder()->first()?->element;
     }
 
     public function render()

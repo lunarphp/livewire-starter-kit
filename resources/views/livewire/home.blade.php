@@ -1,25 +1,8 @@
 <x-welcome-banner />
 
-<div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+<div class="max-w-screen-xl px-4 py-12 mx-auto space-y-12 sm:px-6 lg:px-8">
     @if ($this->saleCollection)
-        <a
-            class="relative block"
-            href="{{ route('collection.view', $this->saleCollection->defaultUrl->slug) }}"
-        >
-            <figure>
-                <img src="{{ $this->saleCollection->thumbnail->getUrl() }}" />
-            </figure>
-
-            <div class="absolute bottom-0 p-6 text-white">
-                <strong class="text-6xl shadow">
-                    {{ $this->saleCollection->translateAttribute('name') }}
-                </strong>
-
-                <p class="text-xl shadow">
-                    {{ $this->saleCollection->translateAttribute('description') }}
-                </p>
-            </div>
-        </a>
+        <x-collection-sale />
     @endif
 
     @if ($this->randomCollection)
