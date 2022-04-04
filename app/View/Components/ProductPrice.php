@@ -23,7 +23,7 @@ class ProductPrice extends Component
     {
         $this->price = Pricing::for(
             $variant ?: $product->variants->first()
-        )->matched;
+        )->get()->matched;
     }
 
     /**

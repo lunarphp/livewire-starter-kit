@@ -106,11 +106,11 @@ class ProductSeeder extends AbstractSeeder
                 $media->setCustomProperty('primary', true);
                 $media->save();
 
-                $collection = $collections->first(function ($coll) use ($product) {
-                    return strtolower($coll->translateAttribute('name')) == $product->collection;
+                $collections->each(function ($coll) use ($product, $productModel) {
+                    if (in_array(strtolower($coll->translateAttribute('name')), $product->collections)) {
+                        $coll->products()->attach($productModel->id);
+                    }
                 });
-
-                $collection->products()->attach($productModel->id);
 
                 if (! count($product->options ?? [])) {
                     return;
@@ -118,6 +118,8 @@ class ProductSeeder extends AbstractSeeder
 
                 $options = ProductOption::get();
                 $optionValues = ProductOptionValue::get();
+
+                $optionValueIds = [];
 
                 foreach ($product->options ?? [] as $option) {
                     // Do we have this option already?
@@ -130,8 +132,6 @@ class ProductSeeder extends AbstractSeeder
                             ],
                         ]);
                     }
-
-                    $optionValueIds = [];
 
                     foreach ($option->values as $value) {
                         // Does this exist?
@@ -148,9 +148,8 @@ class ProductSeeder extends AbstractSeeder
 
                         $optionValueIds[] = $valueModel->id;
                     }
-
-                    GenerateVariants::dispatch($productModel, $optionValueIds);
                 }
+                GenerateVariants::dispatch($productModel, $optionValueIds);
             });
         });
     }

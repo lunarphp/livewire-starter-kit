@@ -1,11 +1,18 @@
 [
     {
-        "name": "Shoes"
+        "name": "Shoes",
+        "description": "Collection of Shoes"
     },
     {
-        "name": "Trousers"
+        "name": "Trousers",
+        "description": "Collection of Trousers"
     },
     {
-        "name": "Hoodies"
+        "name": "Hoodies",
+        "description": "Collection of Hoodies"
+    },
+    {
+        "name": "Sale",
+        "description": "50% OFF Selected Items"
     }
 ]

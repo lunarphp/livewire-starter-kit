@@ -13,7 +13,16 @@ return [
     */
     'draft_status' => 'awaiting-payment',
     'statuses'     => [
-        'awaiting-payment' => 'Awaiting Payment',
-        'dispatched'       => 'Dispatched',
+        'awaiting-payment' => [
+            'label' => 'Awaiting Payment',
+        ],
+        'payment-received' => [
+            'label' => 'Payment Received',
+            'color' => '#179669',
+        ],
+        'dispatched' => [
+            'label' => 'Dispatched',
+            'color' => '#0A81D7',
+        ],
     ],
 ];

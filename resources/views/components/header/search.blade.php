@@ -3,16 +3,16 @@
     action="{{ route('search.view') }}"
 >
     <input
-        class="w-full pl-10 text-sm transition-colors border border-gray-100 rounded-lg hover:border-gray-200"
-        type="search"
         name="term"
+        type="search"
         placeholder="Search for products"
+        class="w-full pl-10 text-sm border-2 border-gray-100 rounded-lg"
         value="{{ $this->term }}"
     />
 
-    <button
-        class="absolute p-2 text-gray-600 transition-colors -translate-y-1/2 rounded-md left-1 top-1/2 hover:bg-gray-100 hover:text-gray-700"
-    >
+    <button class="absolute p-2 text-gray-600 transition -translate-y-1/2 rounded-md left-1 top-1/2 hover:bg-gray-50">
+        <span class="sr-only">Submit Search</span>
+
         <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-4 h-4"
