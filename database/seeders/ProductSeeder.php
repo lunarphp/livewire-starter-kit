@@ -148,7 +148,6 @@ class ProductSeeder extends AbstractSeeder
 
                         $optionValueIds[] = $valueModel->id;
                     }
-
                 }
                 GenerateVariants::dispatch($productModel, $optionValueIds);
             });

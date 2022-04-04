@@ -35,7 +35,7 @@ class CollectionSeeder extends AbstractSeeder
                         ]),
                         'description' => new TranslatedText([
                             'en' => new Text($collection->description),
-                        ])
+                        ]),
                     ],
                 ]);
 

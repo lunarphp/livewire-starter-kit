@@ -33,8 +33,7 @@ class OrderSeeder extends Seeder
             $cardTypes = ['visa', 'mastercard'];
 
             for ($i = 0; $i < 201; $i++) {
-
-              $generator = app(OrderReferenceGeneratorInterface::class);
+                $generator = app(OrderReferenceGeneratorInterface::class);
 
                 $itemModels = $variants->shuffle()->take($faker->numberBetween(1, 15));
 
