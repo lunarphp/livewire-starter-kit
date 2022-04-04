@@ -14,7 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "meilisearch/meilisearch-php": "^0.21.0",
-        "getcandy/stripe": "dev-main"
+        "getcandy/stripe": "^1.0-alpha"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
