@@ -6,11 +6,11 @@ return [
     'types' => [
         'cash' => [
             'driver' => 'offline',
-            'released' => 'payment-offline',
+            'authorized' => 'payment-offline',
         ],
         'card' => [
             'driver' => 'stripe',
-            'released' => 'payment-received',
+            'authorized' => 'payment-received',
         ],
     ],
 ];
