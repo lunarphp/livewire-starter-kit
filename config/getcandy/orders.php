@@ -24,5 +24,9 @@ return [
             'label' => 'Dispatched',
             'color' => '#0A81D7',
         ],
+        'payment-offline' => [
+            'label' => 'Payment Offline',
+            'color' => '#0A81D7',
+        ],
     ],
 ];
