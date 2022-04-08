@@ -126,7 +126,7 @@ class CheckoutPage extends Component
             $payment = Payments::driver($this->paymentType)->cart($this->cart)->withData([
                 'payment_intent_client_secret' => $this->payment_intent_client_secret,
                 'payment_intent' => $this->payment_intent,
-            ])->release();
+            ])->authorize();
 
             if ($payment->success) {
                 redirect()->route('checkout-success.view');
@@ -285,7 +285,7 @@ class CheckoutPage extends Component
         $payment = Payments::cart($this->cart)->withData([
             'payment_intent_client_secret' => $this->payment_intent_client_secret,
             'payment_intent' => $this->payment_intent,
-        ])->release();
+        ])->authorize();
 
         if ($payment->success) {
             redirect()->route('checkout-success.view');
