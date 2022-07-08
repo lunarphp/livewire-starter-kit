@@ -185,7 +185,7 @@
             "description": "Double fabric hood"
         },
         "collections": ["hoodies"],
-        "sku": "LEV-856",
+        "sku": "HOOD-123",
         "price": "1099",
         "image": "tshirt.jpg",
         "brand": "Fruit of the loom",
