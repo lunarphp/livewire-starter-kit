@@ -5,26 +5,26 @@
     }"
 >
     <button
-        class="inline-flex flex-col items-center justify-center w-16 h-16 transition-colors border-l border-gray-100 lg:border-l-0 hover:opacity-75"
+        class="grid w-16 h-16 transition border-l border-gray-100 lg:border-l-transparent hover:opacity-75"
         x-on:click="linesVisible = !linesVisible"
     >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-        >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-            />
-        </svg>
+        <span class="sr-only">Cart</span>
 
-        <span class="hidden text-xs font-medium lg:mt-1 lg:block">
-            Cart
+        <span class="place-self-center">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+            </svg>
         </span>
     </button>
 
@@ -79,7 +79,7 @@
                                             </p>
 
                                             <span class="block mt-1 text-xs text-gray-500">
-                                                {{ $line['identifier'] }} / {{ $line['option'] }}
+                                                {{ $line['identifier'] }} / {{ $line['options'] }}
                                             </span>
 
                                             <div class="flex items-center mt-2">
@@ -131,7 +131,6 @@
                             @endforeach
                         </ul>
                     </div>
-
                 @else
                     <p class="py-4 text-sm font-medium text-center text-gray-500">
                         Your cart is empty

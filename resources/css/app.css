@@ -12,6 +12,6 @@
 
 .no-spinners::-webkit-outer-spin-button,
 .no-spinners::-webkit-inner-spin-button {
-    margin: 0;
     -webkit-appearance: none;
+    margin: 0;
 }

@@ -1,5 +1,5 @@
 <div>
-    <div class="flex">
+    <div class="flex gap-4">
         <div>
             <label
                 for="quantity"
@@ -9,7 +9,7 @@
             </label>
 
             <input
-                class="w-12 h-full p-2 text-xs font-medium text-center transition-colors border border-gray-100 rounded-lg hover:border-gray-200 no-spinners"
+                class="w-16 px-1 py-4 text-sm text-center transition border border-gray-100 rounded-lg no-spinners"
                 type="number"
                 id="quantity"
                 min="1"
@@ -20,22 +20,10 @@
 
         <button
             type="submit"
-            class="block w-full p-3 ml-4 font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+            class="w-full px-6 py-4 text-sm font-medium text-center text-white bg-indigo-600 rounded-lg hover:bg-indigo-700"
             wire:click.prevent="addToCart"
         >
-            <span
-                wire:loading.remove.delay
-                wire:target="addToCart"
-            >
-                Add to Cart
-            </span>
-
-            <span
-                wire:loading.delay
-                wire:target="addToCart"
-            >
-                Adding...
-            </span>
+            Add to Cart
         </button>
     </div>
 

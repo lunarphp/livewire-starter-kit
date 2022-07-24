@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use GetCandy\Facades\CartSession;
+use GetCandy\Facades\Payments;
 use GetCandy\Facades\ShippingManifest;
 use GetCandy\Models\Cart;
 use GetCandy\Models\CartAddress;
@@ -69,12 +70,28 @@ class CheckoutPage extends Component
     ];
 
     /**
+     * The payment type we want to use.
+     *
+     * @var string
+     */
+    public $paymentType = 'card';
+
+    /**
      * {@inheritDoc}
      */
     protected $listeners = [
         'cartUpdated' => 'refreshCart',
         'selectedShippingOption' => 'refreshCart',
         'selectedShippingOption' => 'refreshCart',
+    ];
+
+    public $payment_intent = null;
+
+    public $payment_intent_client_secret = null;
+
+    protected $queryString = [
+        'payment_intent',
+        'payment_intent_client_secret',
     ];
 
     /**
@@ -103,6 +120,19 @@ class CheckoutPage extends Component
             $this->redirect('/');
 
             return;
+        }
+
+        if ($this->payment_intent) {
+            $payment = Payments::driver($this->paymentType)->cart($this->cart)->withData([
+                'payment_intent_client_secret' => $this->payment_intent_client_secret,
+                'payment_intent' => $this->payment_intent,
+            ])->authorize();
+
+            if ($payment->success) {
+                redirect()->route('checkout-success.view');
+
+                return;
+            }
         }
 
         // Do we have a shipping address?
@@ -252,13 +282,16 @@ class CheckoutPage extends Component
 
     public function checkout()
     {
-        // Create the order or sutin.
-        $order = $this->cart->getManager()->createOrder();
+        $payment = Payments::cart($this->cart)->withData([
+            'payment_intent_client_secret' => $this->payment_intent_client_secret,
+            'payment_intent' => $this->payment_intent,
+        ])->authorize();
 
-        $order->update([
-            'placed_at' => now(),
-            'status' => 'paid',
-        ]);
+        if ($payment->success) {
+            redirect()->route('checkout-success.view');
+
+            return;
+        }
 
         return redirect()->route('checkout-success.view');
     }
@@ -312,6 +345,7 @@ class CheckoutPage extends Component
 
     public function render()
     {
-        return view('livewire.checkout-page');
+        return view('livewire.checkout-page')
+            ->layout('layouts.checkout');
     }
 }

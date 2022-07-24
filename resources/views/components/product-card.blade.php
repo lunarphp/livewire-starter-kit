@@ -10,14 +10,13 @@
                 class="object-cover transition-transform duration-300 group-hover:scale-105"
                 src="{{ $product->thumbnail->getUrl('medium') }}"
                 alt="{{ $product->translateAttribute('name') }}"
-                loading="lazy"
             />
         @endif
     </div>
 
-    <h5 class="mt-2 text-sm font-medium">
+    <strong class="mt-2 text-sm font-medium">
         {{ $product->translateAttribute('name') }}
-    </h5>
+    </strong>
 
     <p class="mt-1 text-sm text-gray-600">
         <span class="sr-only">
