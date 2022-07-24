@@ -7,7 +7,7 @@ config:
   cache: redis
 services:
   database:
-    portforward: 3307
+    portforward: 3306
   mailhog:
     type: mailhog
     hogfrom:
@@ -24,3 +24,8 @@ services:
         - meilisearch:/data.ms
     volumes:
       meilisearch:
+  node:
+    type: node:16
+tooling:
+  npm:
+    service: node
