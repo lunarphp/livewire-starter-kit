@@ -14,3 +14,4 @@ yarn-error.log
 /.idea
 /.vscode
 .DS_Store
+.lando.local.yml
