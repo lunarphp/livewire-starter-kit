@@ -36,11 +36,13 @@ class ProductSeeder extends AbstractSeeder
 
         $attributes = Attribute::get();
 
-        $productType = ProductType::first();
+        $productType = ProductType::factory()->create();
 
         $taxClass = TaxClass::getDefault();
 
-        $currency = Currency::getDefault();
+        $currency = Currency::factory()->create([
+            'default' => true
+        ]);
 
         $collections = Collection::get();
 
@@ -78,7 +80,6 @@ class ProductSeeder extends AbstractSeeder
                     'language_id' => $language->id,
                 ]);
 
-                // Only one variant...
                 $variant = ProductVariant::create([
                     'product_id' => $productModel->id,
                     'purchasable' => 'always',
@@ -134,7 +135,6 @@ class ProductSeeder extends AbstractSeeder
                     }
 
                     foreach ($option->values as $value) {
-                        // Does this exist?
                         $valueModel = $optionValues->first(fn ($val) => $value == $val->translate('name'));
 
                         if (! $valueModel) {

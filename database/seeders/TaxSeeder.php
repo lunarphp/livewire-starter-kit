@@ -18,20 +18,25 @@ class TaxSeeder extends Seeder
      */
     public function run()
     {
-        /**
-         * Tax Zones.
-         */
-        $ukTaxZone = TaxZone::factory()->create([
-            'name' => 'UK',
-            'zone_type' => 'country',
+        $taxClass = TaxClass::factory()->create([
             'default' => true,
-            'active' => true,
         ]);
 
-        $uk = Country::where('iso3', '=', 'GBR')->first();
+        $ukCountry = Country::factory()->create([
+            'id' => 235,
+            'iso3' => 'GBR',
+            'name' => 'United Kingdom',
+        ]);
+
+        $ukTaxZone = TaxZone::factory()->create([
+            'name' => 'UK',
+            'active' => true,
+            'default' => true,
+            'zone_type' => 'country',
+        ]);
 
         TaxZoneCountry::factory()->create([
-            'country_id' => $uk->id,
+            'country_id' => $ukCountry->id,
             'tax_zone_id' => $ukTaxZone->id,
         ]);
 
@@ -44,7 +49,7 @@ class TaxSeeder extends Seeder
         $ukRate->taxRateAmounts()->createMany([
             [
                 'percentage' => 20,
-                'tax_class_id' => TaxClass::first()->id,
+                'tax_class_id' => $taxClass->id,
             ],
         ]);
     }
