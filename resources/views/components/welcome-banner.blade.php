@@ -10,10 +10,8 @@
 
                 Demo Store
 
-                <span
-                    role="img"
-                    aria-hidden="true"
-                >
+                <span role="img"
+                      aria-hidden="true">
                     👋
                 </span>
             </h1>
@@ -24,21 +22,17 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 mt-8">
-                <a
-                    class="block w-full px-12 py-3 font-medium text-white bg-indigo-600 rounded shadow sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring"
-                    href="https://getcandy.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="block w-full px-12 py-3 font-medium text-white bg-indigo-600 rounded shadow sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring"
+                   href="https://getcandy.io/"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     GetCandy Website
                 </a>
 
-                <a
-                    class="block w-full px-12 py-3 font-medium text-indigo-600 rounded shadow sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-none focus:ring"
-                    href="https://github.com/getcandy/demo-store"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="block w-full px-12 py-3 font-medium text-indigo-600 rounded shadow sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-none focus:ring"
+                   href="https://github.com/getcandy/demo-store"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Demo Store Repo
                 </a>
             </div>
