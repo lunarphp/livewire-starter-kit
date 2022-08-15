@@ -9,9 +9,7 @@ This repository is provided as a reference to learn how to use GetCandy Laravel 
 
 # Requirements
 
-This demo store uses Meilisearch, for the best experience it is recommended you use this as well. If you want to use MySQL for search then you need to make sure you follow the configuration steps:
-
-https://docs.getcandy.io/installation.html#search-configuration
+This demo store uses MySQL as the Scout driver. This is not the recommended approach for a production environment, but it works well for development.
 
 # Installation
 
