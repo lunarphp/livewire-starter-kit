@@ -33,6 +33,10 @@ composer install
 
 Copy the `.env.example` file to `.env` and make sure the details match to your install.
 
+```shell
+cp .env.example .env
+```
+
 All the relevant configuration files should be present in the repo.
 
 ## Migrate and seed.
