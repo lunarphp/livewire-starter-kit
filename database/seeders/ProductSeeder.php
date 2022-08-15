@@ -39,7 +39,7 @@ class ProductSeeder extends AbstractSeeder
         $taxClass = TaxClass::getDefault();
 
         $currency = Currency::factory()->create([
-            'default' => true
+            'default' => true,
         ]);
 
         $collections = Collection::get();
