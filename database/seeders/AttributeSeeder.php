@@ -2,15 +2,9 @@
 
 namespace Database\Seeders;
 
-use GetCandy\FieldTypes\Text;
-use GetCandy\FieldTypes\TranslatedText;
 use GetCandy\Models\Attribute;
 use GetCandy\Models\AttributeGroup;
-use GetCandy\Models\Collection;
-use GetCandy\Models\CollectionGroup;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class AttributeSeeder extends AbstractSeeder
 {

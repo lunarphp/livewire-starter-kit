@@ -9,7 +9,6 @@ use GetCandy\FieldTypes\TranslatedText;
 use GetCandy\Hub\Jobs\Products\GenerateVariants;
 use GetCandy\Models\Attribute;
 use GetCandy\Models\Collection;
-use GetCandy\Models\CollectionGroup;
 use GetCandy\Models\Currency;
 use GetCandy\Models\Language;
 use GetCandy\Models\Price;
@@ -19,7 +18,6 @@ use GetCandy\Models\ProductOptionValue;
 use GetCandy\Models\ProductType;
 use GetCandy\Models\ProductVariant;
 use GetCandy\Models\TaxClass;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
