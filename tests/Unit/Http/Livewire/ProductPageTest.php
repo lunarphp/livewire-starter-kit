@@ -2,10 +2,9 @@
 
 namespace Tests\Unit\Http\Livewire;
 
-use App\Http\Livewire\CollectionPage;
 use App\Http\Livewire\ProductPage;
-use GetCandy\Models\Collection;
 use GetCandy\Models\Currency;
+use GetCandy\Models\Language;
 use GetCandy\Models\Price;
 use GetCandy\Models\Product;
 use GetCandy\Models\ProductVariant;
@@ -24,6 +23,10 @@ class ProductPageTest extends TestCase
      */
     public function test_component_can_mount()
     {
+        Language::factory()->create([
+            'default' => true,
+        ]);
+
         $currency = Currency::factory()->create([
             'default' => true,
         ]);
@@ -40,7 +43,7 @@ class ProductPageTest extends TestCase
             }), 'variants')
             ->create();
 
-        Livewire::test(ProductPage::class, ['slug' => $product->urls->first()->slug])
+        Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page');
     }
 
@@ -51,6 +54,10 @@ class ProductPageTest extends TestCase
      */
     public function test_correct_product_is_loaded()
     {
+        Language::factory()->create([
+            'default' => true,
+        ]);
+
         $currency = Currency::factory()->create([
             'default' => true,
         ]);
@@ -67,7 +74,7 @@ class ProductPageTest extends TestCase
             }), 'variants')
             ->create();
 
-        Livewire::test(ProductPage::class, ['slug' => $product->urls->first()->slug])
+        Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page')
             ->assertSet('product.id', $product->id);
     }
@@ -79,6 +86,10 @@ class ProductPageTest extends TestCase
      */
     public function test_product_is_visible()
     {
+        Language::factory()->create([
+            'default' => true,
+        ]);
+
         $currency = Currency::factory()->create([
             'default' => true,
         ]);
@@ -95,7 +106,7 @@ class ProductPageTest extends TestCase
             }), 'variants')
             ->create();
 
-        Livewire::test(ProductPage::class, ['slug' => $product->urls->first()->slug])
+        Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page')
             ->assertSee($product->translateAttribute('name'));
     }

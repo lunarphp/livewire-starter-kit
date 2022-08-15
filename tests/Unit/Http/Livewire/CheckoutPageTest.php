@@ -3,19 +3,16 @@
 namespace Tests\Unit\Http\Livewire;
 
 use App\Http\Livewire\CheckoutPage;
-use App\Http\Livewire\Components\CheckoutAddress;
-use App\Http\Livewire\Components\Navigation;
-use App\Http\Livewire\Home;
 use GetCandy\Facades\CartSession;
 use GetCandy\Models\Cart;
 use GetCandy\Models\CartAddress;
-use GetCandy\Models\Collection;
 use GetCandy\Models\Country;
 use GetCandy\Models\TaxClass;
 use GetCandy\Models\TaxZone;
 use GetCandy\Models\Url;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use Stripe\Stripe;
 use Tests\TestCase;
 
 /**
@@ -154,6 +151,7 @@ class CheckoutPageTest extends TestCase
         );
 
         Livewire::test(CheckoutPage::class)
+            ->set('paymentType', 'cash')
             ->assertViewIs('livewire.checkout-page')
             ->assertSet('currentStep', 4);
     }
@@ -186,6 +184,7 @@ class CheckoutPageTest extends TestCase
         $country = Country::factory()->create();
 
         Livewire::test(CheckoutPage::class)
+            ->set('paymentType', 'cash')
             ->assertViewIs('livewire.checkout-page')
             ->call('saveAddress', 'shipping')
             ->assertHasErrors([
@@ -257,6 +256,7 @@ class CheckoutPageTest extends TestCase
         $country = Country::factory()->create();
 
         Livewire::test(CheckoutPage::class)
+            ->set('paymentType', 'cash')
             ->assertViewIs('livewire.checkout-page')
             ->call('saveAddress', 'billing')
             ->assertHasErrors([
