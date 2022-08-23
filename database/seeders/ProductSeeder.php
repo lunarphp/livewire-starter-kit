@@ -34,13 +34,11 @@ class ProductSeeder extends AbstractSeeder
 
         $attributes = Attribute::get();
 
-        $productType = ProductType::factory()->create();
+        $productType = ProductType::first();
 
         $taxClass = TaxClass::getDefault();
 
-        $currency = Currency::factory()->create([
-            'default' => true,
-        ]);
+        $currency = Currency::getDefault();
 
         $collections = Collection::get();
 

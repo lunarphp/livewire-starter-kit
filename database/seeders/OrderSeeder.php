@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
             $variants = ProductVariant::get();
             $users = User::get();
             $faker = Factory::create();
-            $channel = Channel::factory()->create();
+            $channel = Channel::getDefault();
             $currency = Currency::getDefault();
 
             $cardTypes = ['visa', 'mastercard'];
