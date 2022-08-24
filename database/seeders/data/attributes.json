@@ -1,20 +1,6 @@
 [
     {
-        "name": "Product Name",
-        "handle": "name",
-        "type": "GetCandy\\FieldTypes\\TranslatedText",
-        "attribute_type": "GetCandy\\FieldTypes\\Product",
-        "configuration": {}
-    },
-    {
-        "name": "Product Description",
-        "handle": "description",
-        "type": "GetCandy\\FieldTypes\\TranslatedText",
-        "attribute_type": "GetCandy\\FieldTypes\\Product",
-        "configuration": {}
-    },
-    {
-        "name": "Product Details",
+        "name": "Details",
         "handle": "details",
         "type": "GetCandy\\FieldTypes\\ListField",
         "attribute_type": "GetCandy\\FieldTypes\\Product",

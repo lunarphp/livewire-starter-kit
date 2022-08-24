@@ -70,12 +70,6 @@ class ProductSeeder extends AbstractSeeder
                     'brand' => $product->brand,
                 ]);
 
-                $productModel->urls()->create([
-                    'default' => true,
-                    'slug' => Str::slug($product->attributes->name),
-                    'language_id' => $language->id,
-                ]);
-
                 $variant = ProductVariant::create([
                     'product_id' => $productModel->id,
                     'purchasable' => 'always',

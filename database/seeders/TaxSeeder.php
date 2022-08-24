@@ -18,9 +18,7 @@ class TaxSeeder extends Seeder
      */
     public function run()
     {
-        $taxClass = TaxClass::factory()->create([
-            'default' => true,
-        ]);
+        $taxClass = TaxClass::first();
 
         $ukCountry = Country::firstWhere('iso3', 'GBR');
 
