@@ -17,8 +17,6 @@ class AttributeSeeder extends AbstractSeeder
     {
         $attributes = $this->getSeedData('attributes');
 
-        // dd($attributes);
-
         $attributeGroup = AttributeGroup::first();
 
         DB::transaction(function () use ($attributes, $attributeGroup) {
