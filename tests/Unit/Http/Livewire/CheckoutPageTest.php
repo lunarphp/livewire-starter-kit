@@ -9,10 +9,8 @@ use GetCandy\Models\CartAddress;
 use GetCandy\Models\Country;
 use GetCandy\Models\TaxClass;
 use GetCandy\Models\TaxZone;
-use GetCandy\Models\Url;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Stripe\Stripe;
 use Tests\TestCase;
 
 /**
