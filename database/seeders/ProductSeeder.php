@@ -44,8 +44,8 @@ class ProductSeeder extends AbstractSeeder
 
         $language = Language::getDefault();
 
-        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections, $language) {
-            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections, $language) {
+        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections) {
+            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections) {
                 $attributeData = [];
 
                 foreach ($product->attributes as $attributeHandle => $value) {
