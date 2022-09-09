@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Traits\FetchesUrls;
 use GetCandy\Models\Collection;
-use GetCandy\Models\Url;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
 

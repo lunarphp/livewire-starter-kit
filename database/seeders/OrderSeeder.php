@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Faker\Factory;
-use GetCandy\Base\OrderReferenceGeneratorInterface;
+use GetCandy\Base\OrderReferenceGenerator;
 use GetCandy\Facades\Pricing;
 use GetCandy\Models\Channel;
 use GetCandy\Models\Currency;
@@ -33,7 +33,7 @@ class OrderSeeder extends Seeder
             $cardTypes = ['visa', 'mastercard'];
 
             for ($i = 0; $i < 201; $i++) {
-                $generator = app(OrderReferenceGeneratorInterface::class);
+                $generator = app(OrderReferenceGenerator::class);
 
                 $itemModels = $variants->shuffle()->take($faker->numberBetween(1, 15));
 

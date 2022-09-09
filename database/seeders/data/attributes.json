@@ -1,7 +1,7 @@
 [
     {
-        "name": "Product Details",
-        "handle": "product_details",
+        "name": "Details",
+        "handle": "details",
         "type": "GetCandy\\FieldTypes\\ListField",
         "attribute_type": "GetCandy\\FieldTypes\\Product",
         "configuration": {}
