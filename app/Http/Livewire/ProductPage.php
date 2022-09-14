@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Traits\FetchesUrls;
-use GetCandy\Models\Product;
+use Lunar\Models\Product;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
 
@@ -49,7 +49,7 @@ class ProductPage extends Component
     /**
      * Computed property to get variant.
      *
-     * @return \GetCandy\Models\ProductVariant
+     * @return \Lunar\Models\ProductVariant
      */
     public function getVariantProperty()
     {
@@ -90,7 +90,7 @@ class ProductPage extends Component
     /**
      * Computed property to return product.
      *
-     * @return \GetCandy\Models\Product
+     * @return \Lunar\Models\Product
      */
     public function getProductProperty()
     {

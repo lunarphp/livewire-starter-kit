@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Components;
 
-use GetCandy\Base\Purchasable;
-use GetCandy\Facades\CartSession;
+use Lunar\Base\Purchasable;
+use Lunar\Facades\CartSession;
 use Livewire\Component;
 
 class AddToCart extends Component

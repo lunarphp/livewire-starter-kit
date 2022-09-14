@@ -2,11 +2,11 @@
 
 namespace App\Modifiers;
 
-use GetCandy\DataTypes\Price;
-use GetCandy\DataTypes\ShippingOption;
-use GetCandy\Facades\ShippingManifest;
-use GetCandy\Models\Cart;
-use GetCandy\Models\TaxClass;
+use Lunar\DataTypes\Price;
+use Lunar\DataTypes\ShippingOption;
+use Lunar\Facades\ShippingManifest;
+use Lunar\Models\Cart;
+use Lunar\Models\TaxClass;
 
 class ShippingModifier
 {

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use GetCandy\Models\Attribute;
-use GetCandy\Models\AttributeGroup;
+use Lunar\Models\Attribute;
+use Lunar\Models\AttributeGroup;
 use Illuminate\Support\Facades\DB;
 
 class AttributeSeeder extends AbstractSeeder

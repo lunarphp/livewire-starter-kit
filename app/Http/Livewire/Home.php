@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use GetCandy\Models\Collection;
-use GetCandy\Models\Url;
+use Lunar\Models\Collection;
+use Lunar\Models\Url;
 use Livewire\Component;
 
 class Home extends Component

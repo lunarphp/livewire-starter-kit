@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use GetCandy\Facades\CartSession;
-use GetCandy\Facades\Payments;
-use GetCandy\Facades\ShippingManifest;
-use GetCandy\Models\Cart;
-use GetCandy\Models\CartAddress;
-use GetCandy\Models\Country;
+use Lunar\Facades\CartSession;
+use Lunar\Facades\Payments;
+use Lunar\Facades\ShippingManifest;
+use Lunar\Models\Cart;
+use Lunar\Models\CartAddress;
+use Lunar\Models\Country;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Components;
 
-use GetCandy\Facades\CartSession;
-use GetCandy\Models\Cart;
-use GetCandy\Models\CartAddress;
-use GetCandy\Models\Country;
+use Lunar\Facades\CartSession;
+use Lunar\Models\Cart;
+use Lunar\Models\CartAddress;
+use Lunar\Models\Country;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -35,7 +35,7 @@ class CheckoutAddress extends Component
     /**
      * The checkout address model.
      *
-     * @var \GetCandy\Models\CartAddress
+     * @var \Lunar\Models\CartAddress
      */
     public CartAddress $address;
 

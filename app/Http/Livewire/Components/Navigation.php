@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Components;
 
-use GetCandy\Models\Collection;
+use Lunar\Models\Collection;
 use Livewire\Component;
 
 class Navigation extends Component

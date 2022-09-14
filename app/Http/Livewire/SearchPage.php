@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use GetCandy\Models\Product;
+use Lunar\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 

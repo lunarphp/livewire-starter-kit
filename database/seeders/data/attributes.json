@@ -2,8 +2,8 @@
     {
         "name": "Details",
         "handle": "details",
-        "type": "GetCandy\\FieldTypes\\ListField",
-        "attribute_type": "GetCandy\\FieldTypes\\Product",
+        "type": "Lunar\\FieldTypes\\ListField",
+        "attribute_type": "Lunar\\FieldTypes\\Product",
         "configuration": {}
     }
 ]
