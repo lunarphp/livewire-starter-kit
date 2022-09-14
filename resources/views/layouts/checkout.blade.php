@@ -10,7 +10,7 @@
     <title>Demo Storefront</title>
     <meta
         name="description"
-        content="Example of an ecommerce storefront built with GetCandy."
+        content="Example of an ecommerce storefront built with Lunar."
     >
     <link
         href="{{ asset('css/app.css') }}"

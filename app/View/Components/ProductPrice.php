@@ -2,10 +2,10 @@
 
 namespace App\View\Components;
 
-use GetCandy\Facades\Pricing;
-use GetCandy\Models\Price;
-use GetCandy\Models\Product;
-use GetCandy\Models\ProductVariant;
+use Lunar\Facades\Pricing;
+use Lunar\Models\Price;
+use Lunar\Models\Product;
+use Lunar\Models\ProductVariant;
 use Illuminate\View\Component;
 
 class ProductPrice extends Component

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Modifiers\ShippingModifier;
-use GetCandy\Base\ShippingModifiers;
+use Lunar\Base\ShippingModifiers;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

@@ -2,14 +2,14 @@
 
 namespace App\Traits;
 
-use GetCandy\Models\Url;
+use Lunar\Models\Url;
 
 trait FetchesUrls
 {
     /**
      * The URL model from the slug.
      *
-     * @var \GetCandy\Models\Url
+     * @var \Lunar\Models\Url
      */
     public ?Url $url = null;
 
@@ -19,7 +19,7 @@ trait FetchesUrls
      * @param  string  $slug
      * @param  string  $type
      * @param  array  $eagerLoad
-     * @return \GetCandy\Models\Url|null
+     * @return \Lunar\Models\Url|null
      */
     public function fetchUrl($slug, $type, $eagerLoad = [])
     {

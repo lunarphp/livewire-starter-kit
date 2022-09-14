@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Components;
 
-use GetCandy\Facades\CartSession;
+use Lunar\Facades\CartSession;
 use Livewire\Component;
 
 class Cart extends Component
@@ -41,7 +41,7 @@ class Cart extends Component
     /**
      * Get the current cart instance.
      *
-     * @return \GetCandy\Managers\CartManager
+     * @return \Lunar\Managers\CartManager
      */
     public function getCartProperty()
     {

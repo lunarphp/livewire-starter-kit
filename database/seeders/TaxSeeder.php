@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use GetCandy\Models\Country;
-use GetCandy\Models\TaxClass;
-use GetCandy\Models\TaxRate;
-use GetCandy\Models\TaxZone;
-use GetCandy\Models\TaxZoneCountry;
+use Lunar\Models\Country;
+use Lunar\Models\TaxClass;
+use Lunar\Models\TaxRate;
+use Lunar\Models\TaxZone;
+use Lunar\Models\TaxZoneCountry;
 use Illuminate\Database\Seeder;
 
 class TaxSeeder extends Seeder

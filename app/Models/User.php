@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use GetCandy\Base\Traits\GetCandyUser;
+use Lunar\Base\Traits\LunarUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, GetCandyUser;
+    use HasApiTokens, HasFactory, Notifiable, LunarUser;
 
     /**
      * The attributes that are mass assignable.

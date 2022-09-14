@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use GetCandy\Facades\CartSession;
-use GetCandy\Models\Cart;
-use GetCandy\Models\Order;
+use Lunar\Facades\CartSession;
+use Lunar\Models\Cart;
+use Lunar\Models\Order;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
 

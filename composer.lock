@@ -1223,7 +1223,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "GetCandy\\Hub\\AdminHubServiceProvider"
+                        "Lunar\\Hub\\AdminHubServiceProvider"
                     ]
                 }
             },
@@ -1232,8 +1232,8 @@
                     "src/helpers.php"
                 ],
                 "psr-4": {
-                    "GetCandy\\Hub\\": "src",
-                    "GetCandy\\Hub\\Database\\Factories\\": "database/factories"
+                    "Lunar\\Hub\\": "src",
+                    "Lunar\\Hub\\Database\\Factories\\": "database/factories"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1242,11 +1242,11 @@
             ],
             "authors": [
                 {
-                    "name": "GetCandy",
+                    "name": "Lunar",
                     "homepage": "https://getcandy.io/"
                 }
             ],
-            "description": "Admin Hub for GetCandy. A modern headless e-commerce solution for Laravel PHP framework.",
+            "description": "Admin Hub for Lunar. A modern headless e-commerce solution for Laravel PHP framework.",
             "keywords": [
                 "cart",
                 "e-commerce",
@@ -1301,7 +1301,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "GetCandy\\GetCandyServiceProvider"
+                        "Lunar\\LunarServiceProvider"
                     ]
                 }
             },
@@ -1310,10 +1310,10 @@
                     "src/helpers.php"
                 ],
                 "psr-4": {
-                    "GetCandy\\": "src",
-                    "GetCandy\\Database\\State\\": "database/state",
-                    "GetCandy\\Database\\Seeders\\": "database/seeders",
-                    "GetCandy\\Database\\Factories\\": "database/factories"
+                    "Lunar\\": "src",
+                    "Lunar\\Database\\State\\": "database/state",
+                    "Lunar\\Database\\Seeders\\": "database/seeders",
+                    "Lunar\\Database\\Factories\\": "database/factories"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1322,11 +1322,11 @@
             ],
             "authors": [
                 {
-                    "name": "GetCandy",
+                    "name": "Lunar",
                     "homepage": "https://getcandy.io/"
                 }
             ],
-            "description": "GetCandy Laravel e-commerce core functionality.",
+            "description": "Lunar Laravel e-commerce core functionality.",
             "keywords": [
                 "cart",
                 "e-commerce",
@@ -1375,20 +1375,20 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "GetCandy\\Licensing\\LicensingServiceProvider"
+                        "Lunar\\Licensing\\LicensingServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "GetCandy\\Licensing\\": "src"
+                    "Lunar\\Licensing\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "GetCandy Licensing Package",
+            "description": "Lunar Licensing Package",
             "support": {
                 "issues": "https://github.com/getcandy/licensing/issues",
                 "source": "https://github.com/getcandy/licensing/tree/main"
@@ -1427,13 +1427,13 @@
                 },
                 "laravel": {
                     "providers": [
-                        "GetCandy\\Stripe\\StripePaymentsServiceProvider"
+                        "Lunar\\Stripe\\StripePaymentsServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "GetCandy\\Stripe\\": "src/"
+                    "Lunar\\Stripe\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1442,11 +1442,11 @@
             ],
             "authors": [
                 {
-                    "name": "GetCandy",
+                    "name": "Lunar",
                     "homepage": "https://getcandy.io/"
                 }
             ],
-            "description": "Stripe payment driver for GetCandy.",
+            "description": "Stripe payment driver for Lunar.",
             "keywords": [
                 "cart",
                 "e-commerce",

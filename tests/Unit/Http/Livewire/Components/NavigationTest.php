@@ -3,8 +3,8 @@
 namespace Tests\Unit\Http\Livewire\Components;
 
 use App\Http\Livewire\Components\Navigation;
-use GetCandy\Models\Collection;
-use GetCandy\Models\Language;
+use Lunar\Models\Collection;
+use Lunar\Models\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
