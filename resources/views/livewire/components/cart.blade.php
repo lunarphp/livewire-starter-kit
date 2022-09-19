@@ -73,7 +73,7 @@
 
                                                 <button class="p-2 ml-auto text-gray-600 transition-colors rounded-lg hover:bg-gray-100 hover:text-gray-700"
                                                         type="button"
-                                                        wire:click="removeLine('{{ $line['id'] }}') }}">
+                                                        wire:click="removeLine('{{ $line['id'] }}')">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                          class="w-4 h-4"
                                                          fill="none"
