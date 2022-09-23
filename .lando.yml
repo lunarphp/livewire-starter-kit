@@ -1,0 +1,19 @@
+name: demostore
+recipe: laravel
+config:
+  webroot: public
+  php: '8.0'
+  via: nginx
+  cache: redis
+services:
+  database:
+    portforward: 3306
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+  node:
+    type: node:16
+tooling:
+  npm:
+    service: node
