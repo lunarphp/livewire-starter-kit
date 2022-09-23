@@ -6,12 +6,13 @@
     display: none;
 }
 
-.no-spinners {
-    -moz-appearance: textfield;
-}
+@layer components {
+    .no-spinner {
+        @apply [-moz-appearance:_textfield];
+    }
 
-.no-spinners::-webkit-outer-spin-button,
-.no-spinners::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    .no-spinner::-webkit-outer-spin-button,
+    .no-spinner::-webkit-inner-spin-button {
+        @apply appearance-none m-0;
+    }
 }
