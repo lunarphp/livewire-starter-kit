@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'mysql'),
+    'driver' => env('SCOUT_DRIVER', 'database_index'),
 
     /*
     |--------------------------------------------------------------------------
