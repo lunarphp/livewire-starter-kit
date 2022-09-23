@@ -6,13 +6,13 @@ Ensure you have Lando installed first https://lando.dev/
 lando start
 ````
 
-Then set-up GetCandy...
+Then set-up Lunar...
 
 ```sh
 lando composer install
 cp .env.lando.example .env
 lando artisan migrate
-lando artisan getcandy:install
+lando artisan lunar:install
 lando artisan db:seed
 lando artisan storage:link
 ````
