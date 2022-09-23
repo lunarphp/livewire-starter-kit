@@ -9,14 +9,10 @@
                 <div class="flow-root">
                     <div class="-my-4 divide-y divide-gray-100">
                         @foreach ($cart->lines as $line)
-                            <div
-                                class="flex items-center py-4"
-                                wire:key="cart_line_{{ $line->id }}"
-                            >
-                                <img
-                                    class="object-cover w-16 h-16 rounded"
-                                    src="{{ $line->purchasable->getThumbnail() }}"
-                                />
+                            <div class="flex items-center py-4"
+                                 wire:key="cart_line_{{ $line->id }}">
+                                <img class="object-cover w-16 h-16 rounded"
+                                     src="{{ $line->purchasable->getThumbnail() }}" />
 
                                 <div class="flex-1 ml-4">
                                     <p class="text-sm font-medium max-w-[35ch]">
@@ -83,21 +79,21 @@
 
             <div class="space-y-6 lg:col-span-2">
                 @include('partials.checkout.address', [
-                'type' => 'shipping',
-                'step' => $steps['shipping_address'],
+                    'type' => 'shipping',
+                    'step' => $steps['shipping_address'],
                 ])
 
                 @include('partials.checkout.shipping_option', [
-                'step' => $steps['shipping_option'],
+                    'step' => $steps['shipping_option'],
                 ])
 
                 @include('partials.checkout.address', [
-                'type' => 'billing',
-                'step' => $steps['billing_address'],
+                    'type' => 'billing',
+                    'step' => $steps['billing_address'],
                 ])
 
                 @include('partials.checkout.payment', [
-                'step' => $steps['payment']
+                    'step' => $steps['payment'],
                 ])
             </div>
         </div>

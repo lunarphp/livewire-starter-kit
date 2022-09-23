@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Components;
 
-use GetCandy\Facades\CartSession;
-use GetCandy\Facades\ShippingManifest;
+use Lunar\Facades\CartSession;
+use Lunar\Facades\ShippingManifest;
 use Livewire\Component;
 
 class ShippingOptions extends Component

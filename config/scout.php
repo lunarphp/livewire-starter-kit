@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'soft_delete' => true,
+    'soft_delete' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -132,6 +132,15 @@ return [
     'meilisearch' => [
         'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
         'key' => env('MEILISEARCH_KEY', null),
+    ],
+
+    'mysql' => [
+        'mode' => 'LIKE_EXPANDED',
+        'model_directories' => [app_path()],
+        'min_search_length' => 0,
+        'min_fulltext_search_length' => 4,
+        'min_fulltext_search_fallback' => 'LIKE',
+        'query_expansion' => false,
     ],
 
 ];

@@ -2,15 +2,9 @@
 
 namespace Database\Seeders;
 
-use GetCandy\FieldTypes\Text;
-use GetCandy\FieldTypes\TranslatedText;
-use GetCandy\Models\Attribute;
-use GetCandy\Models\AttributeGroup;
-use GetCandy\Models\Collection;
-use GetCandy\Models\CollectionGroup;
-use Illuminate\Database\Seeder;
+use Lunar\Models\Attribute;
+use Lunar\Models\AttributeGroup;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class AttributeSeeder extends AbstractSeeder
 {
@@ -23,21 +17,21 @@ class AttributeSeeder extends AbstractSeeder
     {
         $attributes = $this->getSeedData('attributes');
 
-        $group = AttributeGroup::first();
+        $attributeGroup = AttributeGroup::first();
 
-        DB::transaction(function () use ($attributes, $group) {
+        DB::transaction(function () use ($attributes, $attributeGroup) {
             foreach ($attributes as $attribute) {
                 Attribute::create([
-                    'attribute_group_id' => $group->id,
+                    'attribute_group_id' => $attributeGroup->id,
                     'attribute_type' => $attribute->attribute_type,
-                    'handle' => Str::snake($attribute->name),
+                    'handle' => $attribute->handle,
                     'section' => 'main',
                     'type' => $attribute->type,
                     'required' => false,
                     'searchable' => true,
                     'filterable' => false,
                     'system' => false,
-                    'position' => $group->attributes()->count() + 1,
+                    'position' => $attributeGroup->attributes()->count() + 1,
                     'name' => [
                         'en' => $attribute->name,
                     ],

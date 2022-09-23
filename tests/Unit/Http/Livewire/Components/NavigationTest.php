@@ -3,9 +3,8 @@
 namespace Tests\Unit\Http\Livewire\Components;
 
 use App\Http\Livewire\Components\Navigation;
-use App\Http\Livewire\Home;
-use GetCandy\Models\Collection;
-use GetCandy\Models\Url;
+use Lunar\Models\Collection;
+use Lunar\Models\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -32,6 +31,10 @@ class NavigationTest extends TestCase
      */
     public function test_collections_are_visible()
     {
+        Language::factory()->create([
+            'default' => true,
+        ]);
+
         $collections = Collection::factory(5)
             ->hasUrls(1, [
                 'default' => true,

@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-use GetCandy\FieldTypes\Text;
-use GetCandy\FieldTypes\TranslatedText;
-use GetCandy\Models\Collection;
-use GetCandy\Models\CollectionGroup;
-use GetCandy\Models\Language;
-use GetCandy\Models\Url;
-use Illuminate\Database\Seeder;
+use Lunar\FieldTypes\Text;
+use Lunar\FieldTypes\TranslatedText;
+use Lunar\Models\Collection;
+use Lunar\Models\CollectionGroup;
+use Lunar\Models\Language;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -23,12 +21,14 @@ class CollectionSeeder extends AbstractSeeder
     {
         $collections = $this->getSeedData('collections');
 
-        $defaultLanguage = Language::getDefault();
+        $collectionGroup = CollectionGroup::factory()->create();
 
-        DB::transaction(function () use ($collections, $defaultLanguage) {
+        $defaultLanguage = Language::factory()->create();
+
+        DB::transaction(function () use ($collections, $collectionGroup, $defaultLanguage) {
             foreach ($collections as $collection) {
                 $model = Collection::create([
-                    'collection_group_id' => CollectionGroup::first()->id,
+                    'collection_group_id' => $collectionGroup->id,
                     'attribute_data' =>  [
                         'name' => new TranslatedText([
                             'en' => new Text($collection->name),

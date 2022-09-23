@@ -1,21 +1,22 @@
-<p align="center"><a href="https://getcandy.io/" target="_blank"><img src="https://getcandy.io/getcandy_logo.svg" width="400" alt="GetCandy"></a></p>
+<p align="center"><a href="https://lunarphp.io/" target="_blank"><img src="https://lunarphp.io/logo.svg" width="400" alt="Lunar"></a></p>
 
 # Demo Store
 
-This repository is provided as a reference to learn how to use GetCandy Laravel E-Commerce package. This example is a classic e-commerce store and we are currently making a screencast series to show you how we did it!
+This repository is provided as a reference to learn how to use Lunar Laravel E-Commerce package. This example is a classic e-commerce store.
+
+> **Warning**
+> This application is purely an example of how you can implement Lunar headless e-commerce for Laravel. It is not production ready or complete.
 
 # Requirements
 
-This demo store uses Meilisearch, for the best experience it is recommended you use this as well. If you want to use MySQL for search then you need to make sure you follow the configuration steps:
-
-https://docs.getcandy.io/installation.html#search-configuration
+This demo store uses MySQL as the Scout driver. This is not the recommended approach for a production environment, but it works well for development.
 
 # Installation
 
 ## Clone the repo
 
 ```bash
-git clone --depth=1 https://github.com/getcandy/demo-store.git
+git clone --depth=1 https://github.com/lunarphp/demo-store.git
 ```
 
 This will create a shallow clone of the repo, from there you would just need to remove the `.git` folder and reinitialise it to make it your own.
@@ -30,6 +31,10 @@ composer install
 
 Copy the `.env.example` file to `.env` and make sure the details match to your install.
 
+```shell
+cp .env.example .env
+```
+
 All the relevant configuration files should be present in the repo.
 
 ## Migrate and seed.
@@ -40,10 +45,10 @@ Run the migrations
 php artisan migrate
 ```
 
-Install GetCandy
+Install Lunar
 
 ```
-php artisan getcandy:install
+php artisan lunar:install
 ```
 
 Seed the demo data.

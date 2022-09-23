@@ -3,7 +3,7 @@
         <x-brand.logo class="w-auto h-8 text-indigo-600" />
 
         <p class="max-w-sm mt-4 text-gray-700">
-            This is an example of a classic e-commerce store built with GetCandy.
+            This is an example of a classic e-commerce store built with Lunar.
             We are currently making a screencast series to show you how we did it!
         </p>
 

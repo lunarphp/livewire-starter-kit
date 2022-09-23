@@ -3,23 +3,21 @@
 namespace Database\Seeders;
 
 use Database\Seeders\AbstractSeeder;
-use GetCandy\FieldTypes\ListField;
-use GetCandy\FieldTypes\Text;
-use GetCandy\FieldTypes\TranslatedText;
-use GetCandy\Hub\Jobs\Products\GenerateVariants;
-use GetCandy\Models\Attribute;
-use GetCandy\Models\Collection;
-use GetCandy\Models\CollectionGroup;
-use GetCandy\Models\Currency;
-use GetCandy\Models\Language;
-use GetCandy\Models\Price;
-use GetCandy\Models\Product;
-use GetCandy\Models\ProductOption;
-use GetCandy\Models\ProductOptionValue;
-use GetCandy\Models\ProductType;
-use GetCandy\Models\ProductVariant;
-use GetCandy\Models\TaxClass;
-use Illuminate\Database\Seeder;
+use Lunar\FieldTypes\ListField;
+use Lunar\FieldTypes\Text;
+use Lunar\FieldTypes\TranslatedText;
+use Lunar\Hub\Jobs\Products\GenerateVariants;
+use Lunar\Models\Attribute;
+use Lunar\Models\Collection;
+use Lunar\Models\Currency;
+use Lunar\Models\Language;
+use Lunar\Models\Price;
+use Lunar\Models\Product;
+use Lunar\Models\ProductOption;
+use Lunar\Models\ProductOptionValue;
+use Lunar\Models\ProductType;
+use Lunar\Models\ProductVariant;
+use Lunar\Models\TaxClass;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -46,8 +44,8 @@ class ProductSeeder extends AbstractSeeder
 
         $language = Language::getDefault();
 
-        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections, $language) {
-            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections, $language) {
+        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections) {
+            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections) {
                 $attributeData = [];
 
                 foreach ($product->attributes as $attributeHandle => $value) {
@@ -72,13 +70,6 @@ class ProductSeeder extends AbstractSeeder
                     'brand' => $product->brand,
                 ]);
 
-                $productModel->urls()->create([
-                    'default' => true,
-                    'slug' => Str::slug($product->attributes->name),
-                    'language_id' => $language->id,
-                ]);
-
-                // Only one variant...
                 $variant = ProductVariant::create([
                     'product_id' => $productModel->id,
                     'purchasable' => 'always',
@@ -134,7 +125,6 @@ class ProductSeeder extends AbstractSeeder
                     }
 
                     foreach ($option->values as $value) {
-                        // Does this exist?
                         $valueModel = $optionValues->first(fn ($val) => $value == $val->translate('name'));
 
                         if (! $valueModel) {

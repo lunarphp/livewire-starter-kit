@@ -2,19 +2,22 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "getcandy/admin": "^2.0-beta",
+        "lunarphp/admin": "^0.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "meilisearch/meilisearch-php": "^0.21.0",
-        "getcandy/stripe": "^1.0-alpha"
+        "lunarphp/stripe": "^0.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
