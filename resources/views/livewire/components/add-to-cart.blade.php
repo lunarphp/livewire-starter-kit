@@ -6,7 +6,7 @@
                 Quantity
             </label>
 
-            <input class="w-16 px-1 py-4 text-sm text-center transition border border-gray-100 rounded-lg no-spinners"
+            <input class="w-16 px-1 py-4 text-sm text-center transition border border-gray-100 rounded-lg no-spinner"
                    type="number"
                    id="quantity"
                    min="1"
