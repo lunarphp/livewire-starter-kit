@@ -12,18 +12,6 @@ services:
     type: mailhog
     hogfrom:
       - appserver
-  meilisearch:
-    type: compose
-    app_mount: false
-    services:
-      image: getmeili/meilisearch:latest
-      command: tini -- /bin/sh -c ./meilisearch --master-key="meilisearch"
-      ports:
-        - '7700:7700'
-      volumes:
-        - meilisearch:/data.ms
-    volumes:
-      meilisearch:
   node:
     type: node:16
 tooling:
