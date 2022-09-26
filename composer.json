@@ -16,7 +16,6 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "meilisearch/meilisearch-php": "^0.21.0",
         "lunarphp/stripe": "^0.1"
     },
     "require-dev": {
