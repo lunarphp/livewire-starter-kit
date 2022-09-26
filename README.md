@@ -39,12 +39,6 @@ All the relevant configuration files should be present in the repo.
 
 ## Migrate and seed.
 
-Run the migrations
-
-```
-php artisan migrate
-```
-
 Install Lunar
 
 ```
