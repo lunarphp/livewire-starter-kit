@@ -3,11 +3,13 @@
 namespace Database\Seeders;
 
 use Database\Seeders\AbstractSeeder;
+use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
 use Lunar\Hub\Jobs\Products\GenerateVariants;
 use Lunar\Models\Attribute;
+use Lunar\Models\Brand;
 use Lunar\Models\Collection;
 use Lunar\Models\Currency;
 use Lunar\Models\Language;
@@ -18,8 +20,6 @@ use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ProductSeeder extends AbstractSeeder
 {
@@ -63,11 +63,15 @@ class ProductSeeder extends AbstractSeeder
                     }
                 }
 
+                $brand = Brand::firstOrCreate([
+                    'name' => $product->brand,
+                ]);
+
                 $productModel = Product::create([
                     'attribute_data' => $attributeData,
                     'product_type_id' => $productType->id,
                     'status' => 'published',
-                    'brand' => $product->brand,
+                    'brand_id' => $brand->id,
                 ]);
 
                 $variant = ProductVariant::create([
