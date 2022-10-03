@@ -114,8 +114,8 @@ class ProductPage extends Component
      */
     public function getImageProperty()
     {
-        if ($this->variant->thumbnail) {
-            return $this->variant->thumbnail;
+        if (count($this->variant->images)) {
+            return $this->variant->images->first();
         }
 
         if ($primary = $this->images->first(fn ($media) => $media->getCustomProperty('primary'))) {
