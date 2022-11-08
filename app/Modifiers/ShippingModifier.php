@@ -17,6 +17,7 @@ class ShippingModifier
 
         ShippingManifest::addOption(
             new ShippingOption(
+                name: 'Basic Shipping',
                 description: 'Basic Delivery',
                 identifier: 'BASDEL',
                 price: new Price(500, $cart->currency, 1),
@@ -26,6 +27,7 @@ class ShippingModifier
 
         ShippingManifest::addOption(
             new ShippingOption(
+                name: 'Express Shipping',
                 description: 'Express Delivery',
                 identifier: 'EXPDEL',
                 price: new Price(1000, $cart->currency, 1),
