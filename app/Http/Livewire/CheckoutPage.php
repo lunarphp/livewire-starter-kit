@@ -82,7 +82,6 @@ class CheckoutPage extends Component
     protected $listeners = [
         'cartUpdated' => 'refreshCart',
         'selectedShippingOption' => 'refreshCart',
-        'selectedShippingOption' => 'refreshCart',
     ];
 
     public $payment_intent = null;
