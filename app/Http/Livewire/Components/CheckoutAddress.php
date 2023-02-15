@@ -95,21 +95,21 @@ class CheckoutAddress extends Component
         $validatedData = $this->validate();
 
         if ($this->type == 'billing') {
-            $this->cart->getManager()->setBillingAddress($this->address);
+            $this->cart->setBillingAddress($this->address);
         }
 
         if ($this->type == 'shipping') {
-            $this->cart->getManager()->setShippingAddress($this->address);
+            $this->cart->setShippingAddress($this->address);
             if ($this->shippingIsBilling) {
                 // Do we already have a billing address?
                 if ($billing = $this->cart->billingAddress) {
                     $billing->fill($validatedData['address']);
-                    $this->cart->getManager()->setBillingAddress($billing);
+                    $this->cart->setBillingAddress($billing);
                 } else {
                     $address = $this->address->only(
                         $this->address->getFillable()
                     );
-                    $this->cart->getManager()->setBillingAddress($address);
+                    $this->cart->setBillingAddress($address);
                 }
             }
         }

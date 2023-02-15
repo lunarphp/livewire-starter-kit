@@ -148,7 +148,7 @@ class CheckoutPage extends Component
      */
     public function hydrate()
     {
-        $this->cart = CartSession::getCart();
+        $this->cart = $this->cart->refresh();
     }
 
     /**
@@ -240,21 +240,21 @@ class CheckoutPage extends Component
         $address = $this->{$type};
 
         if ($type == 'billing') {
-            $this->cart->getManager()->setBillingAddress($address);
+            $this->cart->setBillingAddress($address);
         }
 
         if ($type == 'shipping') {
-            $this->cart->getManager()->setShippingAddress($address);
+            $this->cart->setShippingAddress($address);
             if ($this->shippingIsBilling) {
                 // Do we already have a billing address?
                 if ($billing = $this->cart->billingAddress) {
                     $billing->fill($validatedData['shipping']);
-                    $this->cart->getManager()->setBillingAddress($billing);
+                    $this->cart->setBillingAddress($billing);
                 } else {
                     $address = $address->only(
                         $address->getFillable()
                     );
-                    $this->cart->getManager()->setBillingAddress($address);
+                    $this->cart->setBillingAddress($address);
                 }
 
                 $this->billing = $this->cart->billingAddress;
@@ -273,7 +273,7 @@ class CheckoutPage extends Component
     {
         $option = $this->shippingOptions->first(fn ($option) => $option->getIdentifier() == $this->chosenShipping);
 
-        CartSession::current()->getManager()->setShippingOption($option);
+        CartSession::current()->setShippingOption($option);
 
         $this->refreshCart();
 
