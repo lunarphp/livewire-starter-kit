@@ -1,6 +1,18 @@
 <?php
 
+use Lunar\Base\OrderReferenceGenerator;
+
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Order Reference Generator
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify how you want your order references to be generated
+    | when you create an order from a cart.
+    |
+    */
+    'reference_generator' => OrderReferenceGenerator::class,
     /*
     |--------------------------------------------------------------------------
     | Draft Status
@@ -12,21 +24,29 @@ return [
     |
     */
     'draft_status' => 'awaiting-payment',
-    'statuses'     => [
+    'statuses' => [
         'awaiting-payment' => [
             'label' => 'Awaiting Payment',
-        ],
-        'payment-received' => [
-            'label' => 'Payment Received',
-            'color' => '#179669',
-        ],
-        'dispatched' => [
-            'label' => 'Dispatched',
-            'color' => '#0A81D7',
+            'color' => '#848a8c',
+            'mailers' => [],
+            'notifications' => [],
         ],
         'payment-offline' => [
             'label' => 'Payment Offline',
             'color' => '#0A81D7',
+            'mailers' => [],
+            'notifications' => [],
+        ],
+        'payment-received' => [
+            'label' => 'Payment Received',
+            'color' => '#6a67ce',
+            'mailers' => [],
+            'notifications' => [],
+        ],
+        'dispatched' => [
+            'label' => 'Dispatched',
+            'mailers' => [],
+            'notifications' => [],
         ],
     ],
 ];

@@ -74,7 +74,7 @@ class CheckoutPage extends Component
      *
      * @var string
      */
-    public $paymentType = 'card';
+    public $paymentType = 'cash-in-hand';
 
     /**
      * {@inheritDoc}
