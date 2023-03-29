@@ -28,7 +28,7 @@ class CheckoutPageTest extends TestCase
     public function test_component_can_mount()
     {
         CartSession::shouldReceive('current')->andReturn(
-            Cart::factory()->create()->getManager()->getCart()
+            Cart::factory()->create()->calculate()
         );
 
         Livewire::test(CheckoutPage::class)
@@ -45,7 +45,7 @@ class CheckoutPageTest extends TestCase
     public function test_checkout_step_is_correct_on_load()
     {
         CartSession::shouldReceive('current')->andReturn(
-            Cart::factory()->create()->getManager()->getCart()
+            Cart::factory()->create()->calculate()
         );
 
         Livewire::test(CheckoutPage::class)
@@ -73,7 +73,7 @@ class CheckoutPageTest extends TestCase
         );
 
         CartSession::shouldReceive('current')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         Livewire::test(CheckoutPage::class)
@@ -106,7 +106,7 @@ class CheckoutPageTest extends TestCase
         );
 
         CartSession::shouldReceive('current')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         Livewire::test(CheckoutPage::class)
@@ -145,7 +145,7 @@ class CheckoutPageTest extends TestCase
         );
 
         CartSession::shouldReceive('current')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         Livewire::test(CheckoutPage::class)
@@ -172,11 +172,11 @@ class CheckoutPageTest extends TestCase
         $cart = Cart::factory()->create();
 
         CartSession::shouldReceive('getCart')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         CartSession::shouldReceive('current')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         $country = Country::factory()->create();
@@ -244,11 +244,11 @@ class CheckoutPageTest extends TestCase
         $cart = Cart::factory()->create();
 
         CartSession::shouldReceive('getCart')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         CartSession::shouldReceive('current')->andReturn(
-            $cart->getManager()->getCart()
+            $cart->calculate()
         );
 
         $country = Country::factory()->create();

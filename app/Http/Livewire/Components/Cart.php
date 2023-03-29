@@ -67,7 +67,7 @@ class Cart extends Component
     {
         $this->validate();
 
-        CartSession::manager()->updateLines(
+        CartSession::updateLines(
             collect($this->lines)
         );
         $this->mapLines();
@@ -76,7 +76,7 @@ class Cart extends Component
 
     public function removeLine($id)
     {
-        CartSession::manager()->removeLine($id);
+        CartSession::remove($id);
         $this->mapLines();
     }
 

@@ -10,13 +10,13 @@
     "require": {
         "php": "^7.4|^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "lunarphp/admin": "^0.1",
+        "lunarphp/lunar": "^0.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "lunarphp/stripe": "^0.1"
+        "lunarphp/stripe": "^0.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -61,7 +61,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
