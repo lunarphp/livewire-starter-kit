@@ -147,7 +147,7 @@ class CheckoutPage extends Component
      */
     public function hydrate()
     {
-        $this->cart = CartSession::current()->calculate();
+        $this->cart = CartSession::current();
     }
 
     /**
@@ -199,7 +199,7 @@ class CheckoutPage extends Component
      */
     public function refreshCart()
     {
-        $this->cart = CartSession::current()->calculate();
+        $this->cart = CartSession::current();
     }
 
     /**
