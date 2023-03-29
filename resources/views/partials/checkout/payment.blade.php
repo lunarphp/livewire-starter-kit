@@ -20,11 +20,11 @@
 
                 <button @class([
                     'px-5 py-2 text-sm border font-medium rounded-lg',
-                    'text-green-700 border-green-600 bg-green-50' => $paymentType === 'cash',
-                    'text-gray-500 hover:text-gray-700' => $paymentType !== 'cash',
+                    'text-green-700 border-green-600 bg-green-50' => $paymentType === 'cash-in-hand',
+                    'text-gray-500 hover:text-gray-700' => $paymentType !== 'cash-in-hand',
                 ])
                         type="button"
-                        wire:click.prevent="$set('paymentType', 'cash')">
+                        wire:click.prevent="$set('paymentType', 'cash-in-hand')">
                     Pay with cash
                 </button>
             </div>
@@ -34,7 +34,7 @@
                                          :returnUrl="route('checkout.view')" />
             @endif
 
-            @if ($paymentType == 'cash')
+            @if ($paymentType == 'cash-in-hand')
                 <form wire:submit.prevent="checkout">
                     <div class="p-4 text-sm text-center text-blue-700 rounded-lg bg-blue-50">
                         Payment is offline, no card details needed.
