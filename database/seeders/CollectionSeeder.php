@@ -6,9 +6,7 @@ use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
 use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
-use Lunar\Models\Language;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CollectionSeeder extends AbstractSeeder
 {
@@ -21,13 +19,11 @@ class CollectionSeeder extends AbstractSeeder
     {
         $collections = $this->getSeedData('collections');
 
-        $collectionGroup = CollectionGroup::factory()->create();
+        $collectionGroup = CollectionGroup::first();
 
-        $defaultLanguage = Language::factory()->create();
-
-        DB::transaction(function () use ($collections, $collectionGroup, $defaultLanguage) {
+        DB::transaction(function () use ($collections, $collectionGroup) {
             foreach ($collections as $collection) {
-                $model = Collection::create([
+                Collection::create([
                     'collection_group_id' => $collectionGroup->id,
                     'attribute_data' =>  [
                         'name' => new TranslatedText([
@@ -37,12 +33,6 @@ class CollectionSeeder extends AbstractSeeder
                             'en' => new Text($collection->description),
                         ]),
                     ],
-                ]);
-
-                $model->urls()->create([
-                    'slug' => Str::slug($collection->name),
-                    'default' => true,
-                    'language_id' => $defaultLanguage->id,
                 ]);
             }
         });
