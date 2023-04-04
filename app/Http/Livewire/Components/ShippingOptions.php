@@ -20,11 +20,11 @@ class ShippingOptions extends Component
      */
     public function mount()
     {
-        if ($shippingOption = optional($this->shippingAddress)->shipping_option) {
+        if ($shippingOption = $this->shippingAddress?->shipping_option) {
             $option = $this->shippingOptions->first(function ($opt) use ($shippingOption) {
                 return $opt->getIdentifier() == $shippingOption;
             });
-            $this->chosenOption = optional($option)->getIdentifier();
+            $this->chosenOption = $option?->getIdentifier();
         }
     }
 
