@@ -2,14 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\Component;
+use Livewire\ComponentConcerns\PerformsRedirects;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\Payments;
 use Lunar\Facades\ShippingManifest;
 use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
 use Lunar\Models\Country;
-use Livewire\Component;
-use Livewire\ComponentConcerns\PerformsRedirects;
 
 class CheckoutPage extends Component
 {
@@ -17,36 +17,26 @@ class CheckoutPage extends Component
 
     /**
      * The Cart instance.
-     *
-     * @var Cart|null
      */
     public ?Cart $cart;
 
     /**
      * The shipping address instance.
-     *
-     * @var CartAddress|null
      */
     public ?CartAddress $shipping = null;
 
     /**
      * The billing address instance.
-     *
-     * @var CartAddress|null
      */
     public ?CartAddress $billing = null;
 
     /**
      * The current checkout step.
-     *
-     * @var int
      */
     public int $currentStep = 1;
 
     /**
      * Whether the shipping address is the billing address too.
-     *
-     * @var bool
      */
     public bool $shippingIsBilling = true;
 
@@ -59,8 +49,6 @@ class CheckoutPage extends Component
 
     /**
      * The checkout steps.
-     *
-     * @var array
      */
     public array $steps = [
         'shipping_address' => 1,

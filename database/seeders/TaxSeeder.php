@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Lunar\Models\Country;
 use Lunar\Models\TaxClass;
 use Lunar\Models\TaxRate;
 use Lunar\Models\TaxZone;
 use Lunar\Models\TaxZoneCountry;
-use Illuminate\Database\Seeder;
 
 class TaxSeeder extends Seeder
 {

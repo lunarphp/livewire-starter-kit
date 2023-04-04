@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Modifiers\ShippingModifier;
-use Lunar\Base\ShippingModifiers;
 use Illuminate\Support\ServiceProvider;
+use Lunar\Base\ShippingModifiers;
 
 class AppServiceProvider extends ServiceProvider
 {

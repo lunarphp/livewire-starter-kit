@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Components;
 
+use Livewire\Component;
 use Lunar\Base\Purchasable;
 use Lunar\Facades\CartSession;
-use Livewire\Component;
 
 class AddToCart extends Component
 {

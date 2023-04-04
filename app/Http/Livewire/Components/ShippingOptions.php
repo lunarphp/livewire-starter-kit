@@ -2,16 +2,14 @@
 
 namespace App\Http\Livewire\Components;
 
+use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\ShippingManifest;
-use Livewire\Component;
 
 class ShippingOptions extends Component
 {
     /**
      * The chosen shipping option.
-     *
-     * @var string|null
      */
     public ?string $chosenOption = null;
 

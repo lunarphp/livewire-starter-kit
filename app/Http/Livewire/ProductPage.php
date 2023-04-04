@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Traits\FetchesUrls;
-use Lunar\Models\Product;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
+use Lunar\Models\Product;
 
 class ProductPage extends Component
 {

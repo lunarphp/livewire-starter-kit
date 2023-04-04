@@ -2,11 +2,10 @@
 
 namespace App\View\Components;
 
+use Illuminate\View\Component;
 use Lunar\Facades\Pricing;
 use Lunar\Models\Price;
-use Lunar\Models\Product;
 use Lunar\Models\ProductVariant;
-use Illuminate\View\Component;
 
 class ProductPrice extends Component
 {

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
 use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
-use Illuminate\Support\Facades\DB;
 
 class CollectionSeeder extends AbstractSeeder
 {
@@ -25,7 +25,7 @@ class CollectionSeeder extends AbstractSeeder
             foreach ($collections as $collection) {
                 Collection::create([
                     'collection_group_id' => $collectionGroup->id,
-                    'attribute_data' =>  [
+                    'attribute_data' => [
                         'name' => new TranslatedText([
                             'en' => new Text($collection->name),
                         ]),
