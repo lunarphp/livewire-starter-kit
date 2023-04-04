@@ -15,7 +15,8 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "lunarphp/stripe": "^0.2"
+        "lunarphp/stripe": "^0.2",
+        "league/flysystem-aws-s3-v3": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
