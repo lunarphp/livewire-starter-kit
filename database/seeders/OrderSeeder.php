@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Faker\Factory;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Lunar\Base\OrderReferenceGenerator;
 use Lunar\Facades\Pricing;
 use Lunar\Models\Channel;
@@ -11,8 +13,6 @@ use Lunar\Models\Currency;
 use Lunar\Models\Order;
 use Lunar\Models\OrderAddress;
 use Lunar\Models\ProductVariant;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class OrderSeeder extends Seeder
 {

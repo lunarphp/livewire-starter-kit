@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire\Components;
 
-use Lunar\Facades\CartSession;
 use Livewire\Component;
+use Lunar\Facades\CartSession;
 
 class Cart extends Component
 {
     /**
      * The editable cart lines.
-     *
-     * @var array
      */
     public array $lines;
 

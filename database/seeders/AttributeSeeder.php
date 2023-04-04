@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Lunar\Models\Attribute;
 use Lunar\Models\AttributeGroup;
-use Illuminate\Support\Facades\DB;
 
 class AttributeSeeder extends AbstractSeeder
 {

@@ -2,16 +2,14 @@
 
 namespace App\Http\Livewire\Components;
 
+use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\ShippingManifest;
-use Livewire\Component;
 
 class ShippingOptions extends Component
 {
     /**
      * The chosen shipping option.
-     *
-     * @var string|null
      */
     public ?string $chosenOption = null;
 
@@ -22,11 +20,11 @@ class ShippingOptions extends Component
      */
     public function mount()
     {
-        if ($shippingOption = optional($this->shippingAddress)->shipping_option) {
+        if ($shippingOption = $this->shippingAddress?->shipping_option) {
             $option = $this->shippingOptions->first(function ($opt) use ($shippingOption) {
                 return $opt->getIdentifier() == $shippingOption;
             });
-            $this->chosenOption = optional($option)->getIdentifier();
+            $this->chosenOption = $option?->getIdentifier();
         }
     }
 

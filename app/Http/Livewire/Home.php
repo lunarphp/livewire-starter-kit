@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\Component;
 use Lunar\Models\Collection;
 use Lunar\Models\Url;
-use Livewire\Component;
 
 class Home extends Component
 {

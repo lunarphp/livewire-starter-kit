@@ -3,13 +3,13 @@
 namespace Tests\Unit\Http\Livewire;
 
 use App\Http\Livewire\ProductPage;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Lunar\Models\Currency;
 use Lunar\Models\Language;
 use Lunar\Models\Price;
 use Lunar\Models\Product;
 use Lunar\Models\ProductVariant;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
 use Tests\TestCase;
 
 class ProductPageTest extends TestCase

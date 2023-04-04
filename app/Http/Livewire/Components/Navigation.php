@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Components;
 
-use Lunar\Models\Collection;
 use Livewire\Component;
+use Lunar\Models\Collection;
 
 class Navigation extends Component
 {

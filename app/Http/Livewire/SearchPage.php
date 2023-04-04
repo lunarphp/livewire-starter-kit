@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use Lunar\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Lunar\Models\Product;
 
 class SearchPage extends Component
 {

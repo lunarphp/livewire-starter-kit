@@ -2,12 +2,11 @@
 
 namespace App\Http\Livewire\Components;
 
+use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
 use Lunar\Models\Country;
-use Illuminate\Validation\ValidationException;
-use Livewire\Component;
 
 class CheckoutAddress extends Component
 {
@@ -27,22 +26,16 @@ class CheckoutAddress extends Component
 
     /**
      * Whether we are currently editing the address.
-     *
-     * @var bool
      */
     public bool $editing = false;
 
     /**
      * The checkout address model.
-     *
-     * @var \Lunar\Models\CartAddress
      */
     public CartAddress $address;
 
     /**
      * Whether billing is the same as shipping.
-     *
-     * @var bool
      */
     public bool $shippingIsBilling = false;
 

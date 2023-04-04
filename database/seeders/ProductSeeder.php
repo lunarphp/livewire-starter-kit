@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
@@ -55,6 +54,7 @@ class ProductSeeder extends AbstractSeeder
                         $attributeData[$attributeHandle] = new TranslatedText([
                             'en' => new Text($value),
                         ]);
+
                         continue;
                     }
 

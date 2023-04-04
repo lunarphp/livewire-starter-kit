@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Faker\Factory;
+use Illuminate\Support\Facades\DB;
 use Lunar\Models\Address;
 use Lunar\Models\Customer;
-use Illuminate\Support\Facades\DB;
 
 class CustomerSeeder extends AbstractSeeder
 {
