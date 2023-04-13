@@ -228,10 +228,13 @@ class CheckoutPage extends Component
 
         if ($type == 'billing') {
             $this->cart->setBillingAddress($address);
+            $this->billing = $this->cart->billingAddress;
         }
 
         if ($type == 'shipping') {
             $this->cart->setShippingAddress($address);
+            $this->shipping = $this->cart->shippingAddress;
+
             if ($this->shippingIsBilling) {
                 // Do we already have a billing address?
                 if ($billing = $this->cart->billingAddress) {
