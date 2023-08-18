@@ -8,14 +8,14 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "lunarphp/lunar": "^0.4",
+        "php": "^8.1",
+        "lunarphp/lunar": "^0.5",
+        "lunarphp/stripe": "^0.5",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^9.52",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "lunarphp/stripe": "^0.4",
         "league/flysystem-aws-s3-v3": "^3.0"
     },
     "require-dev": {
