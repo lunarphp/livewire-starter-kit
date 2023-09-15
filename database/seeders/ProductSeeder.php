@@ -78,7 +78,6 @@ class ProductSeeder extends AbstractSeeder
                     'product_id' => $productModel->id,
                     'purchasable' => 'always',
                     'shippable' => true,
-                    'stock' => 0,
                     'backorder' => 0,
                     'sku' => $product->sku,
                     'tax_class_id' => $taxClass->id,
