@@ -34,12 +34,15 @@ class AddToCart extends Component
 
     public function addToCart()
     {
-        if($this->purchasable->stock < $this->quantity){
+        $this->validate();
+
+        if ($this->purchasable->stock < $this->quantity) {
             $this->addError('quantity', 'The quantity exceeds the available stock.');
-        }else{
-            CartSession::manager()->add($this->purchasable, $this->quantity);
-            $this->emit('add-to-cart');
+            return;
         }
+
+        CartSession::manager()->add($this->purchasable, $this->quantity);
+        $this->emit('add-to-cart');
     }
 
     public function render()
