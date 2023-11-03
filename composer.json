@@ -9,8 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "lunarphp/lunar": "^0.6",
-        "lunarphp/stripe": "^0.6",
+        "lunarphp/lunar": "^0.7",
+        "lunarphp/stripe": "^0.7",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^9.52",

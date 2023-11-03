@@ -7,6 +7,9 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Lunar\Base\OrderReferenceGenerator;
+use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
+use Lunar\Base\ValueObjects\Cart\TaxBreakdownAmount;
+use Lunar\DataTypes\Price;
 use Lunar\Facades\Pricing;
 use Lunar\Models\Channel;
 use Lunar\Models\Currency;
@@ -62,13 +65,14 @@ class OrderSeeder extends Seeder
                         'discount_total' => 0,
                         'tax_total' => $tax,
                         'total' => $subTotal + $tax,
-                        'tax_breakdown' => [
-                            [
-                                'description' => 'VAT',
-                                'total' => $tax,
-                                'percentage' => 20,
-                            ],
-                        ],
+                        'tax_breakdown' => new TaxBreakdown(collect([
+                            new TaxBreakdownAmount(
+                                price: new Price($tax, $currency, 1),
+                                identifier: 'VAT',
+                                description: 'VAT',
+                                percentage: 20,
+                            )
+                        ]))
                     ]);
                 }
 
@@ -86,13 +90,14 @@ class OrderSeeder extends Seeder
                     'placed_at' => $faker->dateTimeBetween('-1 year'),
                     'compare_currency_code' => $currency->code,
                     'meta' => [],
-                    'tax_breakdown' => [
-                        [
-                            'description' => 'VAT',
-                            'total' => $lines->sum('tax_total'),
-                            'percentage' => 20,
-                        ],
-                    ],
+                    'tax_breakdown' => new TaxBreakdown(collect([
+                        new TaxBreakdownAmount(
+                            price: new Price($lines->sum('tax_total'), $currency, 1),
+                            identifier: 'VAT',
+                            description: 'VAT',
+                            percentage: 20,
+                        )
+                    ]))
                 ];
 
                 if ($hasUser) {

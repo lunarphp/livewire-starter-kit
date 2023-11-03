@@ -52,14 +52,14 @@
                             </div>
                         @endif
 
-                        @foreach ($cart->taxBreakdown as $tax)
+                        @foreach ($cart->taxBreakdown->amounts as $tax)
                             <div class="flex flex-wrap py-4">
                                 <dt class="w-1/2 font-medium">
-                                    {{ $tax['description'] }}
+                                    {{ $tax->description }}
                                 </dt>
 
                                 <dd class="w-1/2 text-right">
-                                    {{ $tax['total']->formatted() }}
+                                    {{ $tax->price->formatted() }}
                                 </dd>
                             </div>
                         @endforeach
