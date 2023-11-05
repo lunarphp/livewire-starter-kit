@@ -1,6 +1,6 @@
 <?php
 
-use Lunar\Base\OrderReferenceGenerator;
+use App\SamoBot\OrderReferenceGenerator;
 
 return [
     /*
