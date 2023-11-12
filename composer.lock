@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a3a5c5f474daba3acb10e97a395f6c2",
+    "content-hash": "a623d2251939fc942e51557df4ab9e8a",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4935,6 +4935,33 @@
                 "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
+        },
+        {
+            "name": "samobot/pos",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:samobot-com/samodule-pos.git",
+                "reference": "9a596148d534a9db3e3a2fac13053c56c9f9282d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samobot-com/samodule-pos/zipball/9a596148d534a9db3e3a2fac13053c56c9f9282d",
+                "reference": "9a596148d534a9db3e3a2fac13053c56c9f9282d",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Samobot\\Pos\\": "src/"
+                }
+            },
+            "support": {
+                "source": "https://github.com/samobot-com/samodule-pos/tree/0.0.1",
+                "issues": "https://github.com/samobot-com/samodule-pos/issues"
+            },
+            "time": "2023-11-12T16:01:06+00:00"
         },
         {
             "name": "spatie/blink",
@@ -10666,7 +10693,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "samobot/pos": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

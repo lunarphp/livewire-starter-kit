@@ -9,14 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "lunarphp/lunar": "^0.7",
-        "lunarphp/stripe": "^0.7",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^9.52",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "league/flysystem-aws-s3-v3": "^3.0"
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "lunarphp/lunar": "^0.7",
+        "lunarphp/stripe": "^0.7",
+        "samobot/pos": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -67,5 +68,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:samobot-com/samodule-pos.git"
+        }
+    ]    
 }
