@@ -18,15 +18,15 @@
         "lunarphp/lunar": "^0.7",
         "lunarphp/stripe": "^0.7",
         "samobot/pos": "dev-main",
-        "samobot/upgates-sync": "dev-main"
+        "samobot/upgates-sync": "dev-main",
+        "spatie/laravel-ignition": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.15",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.3",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.4"
+        "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
         "psr-4": {
