@@ -17,7 +17,8 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "lunarphp/lunar": "^0.7",
         "lunarphp/stripe": "^0.7",
-        "samobot/pos": "dev-main"
+        "samobot/pos": "dev-main",
+        "samobot/upgates-sync": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -73,6 +74,10 @@
         {
             "type": "vcs",
             "url":  "git@github.com:samobot-com/samodule-pos.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:samobot-com/samodule-upgates-sync.git"
         }
     ]    
 }
