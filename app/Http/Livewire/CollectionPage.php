@@ -6,12 +6,16 @@ use App\Traits\FetchesUrls;
 use Livewire\Component;
 use Livewire\ComponentConcerns\PerformsRedirects;
 use Lunar\Models\Collection;
+use Livewire\WithPagination;
+use Lunar\Models\Url;
 
 class CollectionPage extends Component
 {
     use PerformsRedirects,
         FetchesUrls;
+    use WithPagination;
 
+        protected $paginationTheme = 'tailwind';
     /**
      * {@inheritDoc}
      *
@@ -25,11 +29,6 @@ class CollectionPage extends Component
         $this->url = $this->fetchUrl(
             $slug,
             Collection::class,
-            [
-                'element.thumbnail',
-                'element.products.variants.basePrices',
-                'element.products.defaultUrl',
-            ]
         );
 
         if (! $this->url) {
@@ -44,7 +43,8 @@ class CollectionPage extends Component
      */
     public function getCollectionProperty()
     {
-        return $this->url->element;
+        $collections = Url::whereElementType(Collection::class)->where('element_id', '=', $this->url->id);
+        return $collections->inRandomOrder()->first()?->element;
     }
 
     /**
@@ -52,6 +52,7 @@ class CollectionPage extends Component
      */
     public function render()
     {
-        return view('livewire.collection-page');
+
+        return view('livewire.collection-page', ['products' => $this->collection->products()->paginate(9)]);
     }
 }
