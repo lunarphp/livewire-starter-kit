@@ -1,5 +1,10 @@
 /node_modules
 /public/hot
+/public/css/filament
+/public/css/awcodes
+/public/css/lunarphp
+/public/js/filament
+/public/js/app/components
 /public/storage
 /storage/*.key
 /vendor

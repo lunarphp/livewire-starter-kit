@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Modifiers\ShippingModifier;
 use Illuminate\Support\ServiceProvider;
 use Lunar\Base\ShippingModifiers;
+use Lunar\Admin\Support\Facades\LunarPanel;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        LunarPanel::register();
     }
 
     /**

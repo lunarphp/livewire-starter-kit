@@ -4,13 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Traits\FetchesUrls;
 use Livewire\Component;
-use Livewire\ComponentConcerns\PerformsRedirects;
 use Lunar\Models\Collection;
 
 class CollectionPage extends Component
 {
-    use PerformsRedirects,
-        FetchesUrls;
+    use FetchesUrls;
 
     /**
      * {@inheritDoc}

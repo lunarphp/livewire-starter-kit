@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 'lunar'
+      MYSQL_USER: lunar
+      MYSQL_PASSWORD: lunar
+      MYSQL_DATABASE: lunar
+    volumes:
+      - storage:/var/lib/mysql
+
+  nginx:
+    build:
+      target: nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./:/var/www/:rw,cached
+    links:
+      - php-fpm
+
+  php-fpm:
+    build:
+      target: php-fpm
+    environment:
+      - APP_ENV=dev
+      - APP_DEBUG=1
+      - BUILD_ASSETS=0
+      - INIT_INSTALL=10
+    volumes:
+      - ./:/var/www/:rw,cached
+    depends_on:
+      - mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+     PMA_ARBITRARY: 1
+     PMA_HOST: mysql
+     PMA_USER: lunar
+     PMA_PASSWORD: lunar
+     UPLOAD_LIMIT: 20M
+    ports:
+     - 9000:80
+
+  # melisearch:
+  #   image: getmeili/meilisearch:v1.5
+  #   volumes:
+  #     - ./meili_data:/meili_data
+  #   ports:
+  #     - 7700:7700
+
+  #mailer:
+  #  image: schickling/mailcatcher
+  #  ports: ["1025", "1080"]
+
+volumes:
+  storage:
