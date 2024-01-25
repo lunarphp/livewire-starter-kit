@@ -12,8 +12,8 @@ use Lunar\Models\Url;
 class CollectionPage extends Component
 {
     use PerformsRedirects,
-        FetchesUrls;
-    use WithPagination;
+        FetchesUrls,
+        WithPagination;
 
         protected $paginationTheme = 'tailwind';
     /**
