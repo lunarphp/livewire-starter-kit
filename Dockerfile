@@ -29,7 +29,22 @@ RUN apk add --no-cache \
 
 RUN apk add --no-cache --allow-untrusted /gnu-libiconv-1.15-r3.apk
 RUN rm /gnu-libiconv-1.15-r3.apk
-RUN install-php-extensions bcmath gd intl mysqli pdo_mysql sockets bz2 gmp soap zip ffi redis opcache apcu amqp exif
+RUN install-php-extensions  \
+    bcmath \
+    gd \
+    intl \
+    mysqli \
+    pdo_mysql \
+    sockets \
+    bz2 \
+    gmp \
+    zip \
+    ffi \
+    redis \
+    opcache \
+    apcu \
+    amqp \
+    exif
 
 RUN export COMPOSER_PROCESS_TIMEOUT=9000
 
@@ -42,16 +57,7 @@ RUN echo 'pm.max_children = 15' >> /usr/local/etc/php-fpm.d/zz-docker.conf && \
 COPY ./docker/php-fpm/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
-RUN chown -R www-data:www-data /var/www
+#RUN chown -R www-data:www-data /var/www
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
-
-### NGINX ###
-FROM nginx:latest AS nginx
-
-COPY ./docker/nginx/default.conf /etc/nginx/conf.d/
-
-RUN usermod -u 1000 www-data
-
-WORKDIR /var/www

@@ -3,58 +3,53 @@ version: "3.8"
 services:
   mysql:
     image: mysql:8.0
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: 'lunar'
-      MYSQL_USER: lunar
-      MYSQL_PASSWORD: lunar
-      MYSQL_DATABASE: lunar
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
     volumes:
       - storage:/var/lib/mysql
 
-  nginx:
-    build:
-      target: nginx
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
     ports:
-      - '80:80'
+        - "80:80"
+        - "443:443"
+        - "443:443/udp"
     volumes:
-      - ./:/var/www/:rw,cached
-    links:
-      - php-fpm
+        - $PWD/docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+        - ./:/var/www/
+    depends_on:
+        - mysql
+        - meilisearch
 
   php-fpm:
     build:
       target: php-fpm
+    restart: unless-stopped
     environment:
-      - APP_ENV=dev
-      - APP_DEBUG=1
-      - BUILD_ASSETS=0
-      - INIT_INSTALL=10
+      - INIT_INSTALL=1
     volumes:
       - ./:/var/www/:rw,cached
     depends_on:
       - mysql
+      - meilisearch
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    restart: unless-stopped
     environment:
-     PMA_ARBITRARY: 1
-     PMA_HOST: mysql
-     PMA_USER: lunar
-     PMA_PASSWORD: lunar
-     UPLOAD_LIMIT: 20M
+        - MEILI_MASTER_KEY=${MEILISEARCH_KEY}
+    volumes:
+        - meilisearch:/meili_data
     ports:
-     - 9000:80
-
-  # melisearch:
-  #   image: getmeili/meilisearch:v1.5
-  #   volumes:
-  #     - ./meili_data:/meili_data
-  #   ports:
-  #     - 7700:7700
-
-  #mailer:
-  #  image: schickling/mailcatcher
-  #  ports: ["1025", "1080"]
+        - 7700:7700
+    depends_on:
+        - mysql
 
 volumes:
   storage:
+  meilisearch:
