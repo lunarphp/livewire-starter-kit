@@ -22,7 +22,7 @@
                         <div>
                             <input class="hidden peer"
                                    type="radio"
-                                   wire:model="chosenShipping"
+                                   wire:model.live="chosenShipping"
                                    name="shippingOption"
                                    value="{{ $option->getIdentifier() }}"
                                    id="{{ $option->getIdentifier() }}" />

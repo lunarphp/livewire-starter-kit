@@ -20,8 +20,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 	if [ "$INIT_INSTALL" == '1' ]; then
         composer install
         php artisan migrate
-        #php artisan lunar:install
-        # TODO : clean seeder
+        php artisan lunar:create-admin --firstname=${ADMIN_FIRSTNAME} --lastname=${ADMIN_LASTNAME} --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD}
+        php artisan lunar:install -n
+        # TODO
         #php artisan db:seed
         php artisan storage:link
         php artisan filament:assets

@@ -32,6 +32,10 @@ services:
     restart: unless-stopped
     environment:
       - INIT_INSTALL=1
+      - ADMIN_FIRSTNAME=${ADMIN_FIRSTNAME}
+      - ADMIN_LASTNAME=${ADMIN_LASTNAME}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       - ./:/var/www/:rw,cached
     depends_on:
