@@ -31,7 +31,6 @@ services:
       target: php-fpm
     restart: unless-stopped
     environment:
-      - INIT_INSTALL=1
       - ADMIN_FIRSTNAME=${ADMIN_FIRSTNAME}
       - ADMIN_LASTNAME=${ADMIN_LASTNAME}
       - ADMIN_EMAIL=${ADMIN_EMAIL}
@@ -50,9 +49,15 @@ services:
     volumes:
         - meilisearch:/meili_data
     ports:
-        - 7700:7700
+        - "${MEILISEARCH_PORT}:${MEILISEARCH_PORT}"
     depends_on:
         - mysql
+
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+        - "${REDIS_PORT}:${REDIS_PORT}"
 
 volumes:
   storage:

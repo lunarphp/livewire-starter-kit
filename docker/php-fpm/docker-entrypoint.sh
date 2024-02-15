@@ -17,7 +17,12 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 	  sleep 5
 	done
 
-	if [ "$INIT_INSTALL" == '1' ]; then
+    if [ -d "config/lunar" ]; then
+         echo "Lunar already install..."
+         composer update
+         php artisan filament:assets
+    else
+        echo "Starting installation..."
         composer install
         php artisan migrate
         php artisan lunar:create-admin --firstname=${ADMIN_FIRSTNAME} --lastname=${ADMIN_LASTNAME} --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD}
@@ -27,6 +32,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
         php artisan storage:link
         php artisan filament:assets
         php artisan storage:link
+        php artisan lunar:search:index
 	fi
 fi
 
