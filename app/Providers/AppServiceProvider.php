@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         LunarPanel::register();
     }
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(ShippingModifiers $shippingModifiers)
+    public function boot(ShippingModifiers $shippingModifiers): void
     {
         $shippingModifiers->add(
             ShippingModifier::class
