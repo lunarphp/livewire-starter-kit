@@ -18,14 +18,14 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 	done
 
 	if [ "$INIT_INSTALL" == '1' ]; then
-		composer install
-		php artisan migrate
+        composer install
+        php artisan migrate
         php artisan lunar:install
         # TODO : clean seeder
         #php artisan db:seed
         php artisan storage:link
-		php artisan filament:assets
-		php artisan storage:link
+        php artisan filament:assets
+        php artisan storage:link
 	fi
 fi
 

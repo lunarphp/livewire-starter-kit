@@ -8,8 +8,6 @@ trait FetchesUrls
 {
     /**
      * The URL model from the slug.
-     *
-     * @var \Lunar\Models\Url
      */
     public ?Url $url = null;
 

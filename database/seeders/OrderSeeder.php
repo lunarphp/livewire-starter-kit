@@ -71,8 +71,8 @@ class OrderSeeder extends Seeder
                                 identifier: 'VAT',
                                 description: 'VAT',
                                 percentage: 20,
-                            )
-                        ]))
+                            ),
+                        ])),
                     ]);
                 }
 
@@ -96,8 +96,8 @@ class OrderSeeder extends Seeder
                             identifier: 'VAT',
                             description: 'VAT',
                             percentage: 20,
-                        )
-                    ]))
+                        ),
+                    ])),
                 ];
 
                 if ($hasUser) {

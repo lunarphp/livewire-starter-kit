@@ -19,8 +19,6 @@ class SearchPage extends Component
 
     /**
      * The search term.
-     *
-     * @var string
      */
     public ?string $term = null;
 

@@ -10,8 +10,6 @@ class AddToCart extends Component
 {
     /**
      * The purchasable model we want to add to the cart.
-     *
-     * @var Purchasable
      */
     public ?Purchasable $purchasable = null;
 
@@ -38,6 +36,7 @@ class AddToCart extends Component
 
         if ($this->purchasable->stock < $this->quantity) {
             $this->addError('quantity', 'The quantity exceeds the available stock.');
+
             return;
         }
 
