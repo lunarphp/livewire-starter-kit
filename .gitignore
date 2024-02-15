@@ -20,5 +20,5 @@ yarn-error.log
 /.vscode
 .DS_Store
 .lando.local.yml
-.composer.lock
+composer.lock
 config/lunar

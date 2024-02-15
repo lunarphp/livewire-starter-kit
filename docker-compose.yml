@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   mysql:
+    container_name: demostore-mysql
     image: mysql:8.0
     restart: unless-stopped
     environment:
@@ -13,6 +14,7 @@ services:
       - storage:/var/lib/mysql
 
   caddy:
+    container_name: demostore-caddy
     image: caddy:latest
     restart: unless-stopped
     ports:
@@ -27,6 +29,7 @@ services:
         - meilisearch
 
   php-fpm:
+    container_name: demostore-php-fpm
     build:
       target: php-fpm
     restart: unless-stopped
@@ -42,6 +45,7 @@ services:
       - meilisearch
 
   meilisearch:
+    container_name: demostore-meilisearch
     image: getmeili/meilisearch:latest
     restart: unless-stopped
     environment:
@@ -53,7 +57,17 @@ services:
     depends_on:
         - mysql
 
+  meilisearch-ui:
+      container_name: demostore-meilisearch-ui
+      image: riccoxie/meilisearch-ui:latest
+      restart: unless-stopped
+      ports:
+          - ${MEILISEARCH_UI_PORT}:24900
+      depends_on:
+          - meilisearch
+
   redis:
+    container_name: demostore-redis
     image: redis:latest
     restart: unless-stopped
     ports:
