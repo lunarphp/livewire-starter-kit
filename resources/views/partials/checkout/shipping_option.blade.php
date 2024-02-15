@@ -1,4 +1,4 @@
-<form wire:submit.prevent="saveShippingOption"
+<form wire:submit="saveShippingOption"
       class="bg-white border border-gray-100 rounded-xl">
     <div class="flex items-center justify-between h-16 px-6 border-b border-gray-100">
         <h3 class="font-medium">
@@ -22,7 +22,7 @@
                         <div>
                             <input class="hidden peer"
                                    type="radio"
-                                   wire:model.defer="chosenShipping"
+                                   wire:model="chosenShipping"
                                    name="shippingOption"
                                    value="{{ $option->getIdentifier() }}"
                                    id="{{ $option->getIdentifier() }}" />

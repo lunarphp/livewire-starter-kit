@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Lunar\Facades\CartSession;
@@ -142,7 +142,7 @@ class CheckoutPage extends Component
      */
     public function triggerAddressRefresh()
     {
-        $this->emit('refreshAddress');
+        $this->dispatch('refreshAddress');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Livewire\Components;
 
 use Livewire\Component;
 use Lunar\Facades\CartSession;
@@ -69,7 +69,7 @@ class Cart extends Component
             collect($this->lines)
         );
         $this->mapLines();
-        $this->emit('cartUpdated');
+        $this->dispatch('cartUpdated');
     }
 
     public function removeLine($id)

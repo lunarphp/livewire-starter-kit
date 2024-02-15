@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Livewire\Components;
 
 use Livewire\Component;
 use Lunar\Base\Purchasable;
@@ -41,7 +41,7 @@ class AddToCart extends Component
         }
 
         CartSession::manager()->add($this->purchasable, $this->quantity);
-        $this->emit('add-to-cart');
+        $this->dispatch('add-to-cart');
     }
 
     public function render()

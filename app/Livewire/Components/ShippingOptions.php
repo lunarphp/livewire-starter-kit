@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Livewire\Components;
 
 use Livewire\Component;
 use Lunar\Facades\CartSession;
@@ -63,7 +63,7 @@ class ShippingOptions extends Component
 
         CartSession::setShippingOption($option);
 
-        $this->emit('selectedShippingOption');
+        $this->dispatch('selectedShippingOption');
     }
 
     /**

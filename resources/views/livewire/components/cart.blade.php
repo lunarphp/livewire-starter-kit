@@ -1,6 +1,6 @@
 <div class="sm:relative"
      x-data="{
-         linesVisible: @entangle('linesVisible')
+         linesVisible: @entangle('linesVisible').live
      }">
     <button class="grid w-16 h-16 transition border-l border-gray-100 lg:border-l-transparent hover:opacity-75"
             x-on:click="linesVisible = !linesVisible">
@@ -65,7 +65,7 @@
                                             <div class="flex items-center mt-2">
                                                 <input class="w-16 p-2 text-xs transition-colors border border-gray-100 rounded-lg hover:border-gray-200"
                                                        type="number"
-                                                       wire:model="lines.{{ $index }}.quantity" />
+                                                       wire:model.live="lines.{{ $index }}.quantity" />
 
                                                 <p class="ml-2 text-xs">
                                                     @ {{ $line['unit_price'] }}

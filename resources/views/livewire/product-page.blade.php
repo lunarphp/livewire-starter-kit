@@ -51,7 +51,7 @@
 
                                 <div class="flex flex-wrap gap-2 mt-2 text-xs tracking-wide uppercase"
                                      x-data="{
-                                         selectedOption: @entangle('selectedOptionValues'),
+                                         selectedOption: @entangle('selectedOptionValues').live,
                                          selectedValues: [],
                                      }"
                                      x-init="selectedValues = Object.values(selectedOption);

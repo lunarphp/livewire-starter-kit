@@ -1,4 +1,4 @@
-<form wire:submit.prevent="save"
+<form wire:submit="save"
       class="border rounded shadow-lg">
     <div class="flex justify-between p-4 font-medium">
         <span class="text-xl">Shipping Option</span>
@@ -9,7 +9,7 @@
                 <label class="flex items-center w-full cursor-pointer"
                        wire:key="shipping_option_{{ $option->getIdentifier() }}">
                     <input type="radio"
-                           wire:model="chosenOption"
+                           wire:model.live="chosenOption"
                            value="{{ $option->getIdentifier() }}" />
                     <div class="flex items-center ml-2">
                         <span class="block mr-2 text-2xl">{{ $option->getPrice()->formatted() }}</span>
