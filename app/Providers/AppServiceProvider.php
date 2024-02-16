@@ -6,6 +6,7 @@ use App\Modifiers\ShippingModifier;
 use Illuminate\Support\ServiceProvider;
 use Lunar\Admin\Support\Facades\LunarPanel;
 use Lunar\Base\ShippingModifiers;
+use Lunar\Shipping\ShippingPlugin;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        LunarPanel::register();
+        LunarPanel::panel(
+            fn ($panel) => $panel->plugins([
+                new ShippingPlugin,
+            ])
+        )
+            ->register();
     }
 
     /**
