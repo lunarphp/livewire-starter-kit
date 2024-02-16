@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Components;
 
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 
@@ -18,28 +20,20 @@ class Cart extends Component
         'add-to-cart' => 'handleAddToCart',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'lines.*.quantity' => 'required|numeric|min:1|max:10000',
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function mount()
+    public function mount(): void
     {
         $this->mapLines();
     }
 
     /**
      * Get the current cart instance.
-     *
-     * @return \Lunar\Managers\CartManager
      */
     public function getCartProperty()
     {
@@ -48,20 +42,16 @@ class Cart extends Component
 
     /**
      * Return the cart lines from the cart.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getCartLinesProperty()
+    public function getCartLinesProperty(): Collection
     {
         return $this->cart->lines ?? collect();
     }
 
     /**
      * Update the cart lines.
-     *
-     * @return void
      */
-    public function updateLines()
+    public function updateLines(): void
     {
         $this->validate();
 
@@ -72,7 +62,7 @@ class Cart extends Component
         $this->dispatch('cartUpdated');
     }
 
-    public function removeLine($id)
+    public function removeLine($id): void
     {
         CartSession::remove($id);
         $this->mapLines();
@@ -83,10 +73,8 @@ class Cart extends Component
      *
      * We want to map out our cart lines like this so we can
      * add some validation rules and make them editable.
-     *
-     * @return void
      */
-    public function mapLines()
+    public function mapLines(): void
     {
         $this->lines = $this->cartLines->map(function ($line) {
             return [
@@ -103,13 +91,13 @@ class Cart extends Component
         })->toArray();
     }
 
-    public function handleAddToCart()
+    public function handleAddToCart(): void
     {
         $this->mapLines();
         $this->linesVisible = true;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.cart');
     }

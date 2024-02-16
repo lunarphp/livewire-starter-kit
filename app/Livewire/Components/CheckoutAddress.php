@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Components;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Models\Cart;
@@ -12,15 +13,11 @@ class CheckoutAddress extends Component
 {
     /**
      * The type of address.
-     *
-     * @var string
      */
-    public $type = 'billing';
+    public string $type = 'billing';
 
     /**
      * The ID of the cart.
-     *
-     * @var string|int
      */
     public Cart $cart;
 
@@ -43,10 +40,7 @@ class CheckoutAddress extends Component
         'refreshAddress',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function mount()
+    public function mount(): void
     {
         $this->cart = CartSession::current();
 
@@ -56,10 +50,7 @@ class CheckoutAddress extends Component
         $this->editing = (bool) ! $this->address->id;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'address.first_name' => 'required',
@@ -80,10 +71,8 @@ class CheckoutAddress extends Component
 
     /**
      * Save the cart address.
-     *
-     * @return void
      */
-    public function save()
+    public function save(): void
     {
         $validatedData = $this->validate();
 
@@ -112,7 +101,7 @@ class CheckoutAddress extends Component
         $this->emitUp('addressUpdated');
     }
 
-    public function refreshAddress()
+    public function refreshAddress(): void
     {
         if ($address = $this->cart->addresses()->whereType($this->type)->first()) {
             $this->address = $address;
@@ -125,7 +114,7 @@ class CheckoutAddress extends Component
         return Country::whereIn('iso3', ['GBR', 'USA'])->get();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.checkout-address');
     }

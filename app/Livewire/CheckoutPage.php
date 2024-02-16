@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\Payments;
@@ -39,8 +41,6 @@ class CheckoutPage extends Component
 
     /**
      * The chosen shipping option.
-     *
-     * @var string|int
      */
     public $chosenShipping = null;
 
@@ -56,10 +56,8 @@ class CheckoutPage extends Component
 
     /**
      * The payment type we want to use.
-     *
-     * @var string
      */
-    public $paymentType = 'cash-in-hand';
+    public string $paymentType = 'cash-in-hand';
 
     /**
      * {@inheritDoc}
@@ -81,7 +79,7 @@ class CheckoutPage extends Component
     /**
      * {@inheritDoc}
      */
-    public function rules()
+    public function rules(): array
     {
         return array_merge(
             $this->getAddressValidation('shipping'),
@@ -93,12 +91,7 @@ class CheckoutPage extends Component
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return void
-     */
-    public function mount()
+    public function mount(): void
     {
         if (! $this->cart = CartSession::current()) {
             $this->redirect('/');
@@ -127,30 +120,23 @@ class CheckoutPage extends Component
         $this->determineCheckoutStep();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function hydrate()
+    public function hydrate(): void
     {
         $this->cart = CartSession::current();
     }
 
     /**
      * Trigger an event to refresh addresses.
-     *
-     * @return void
      */
-    public function triggerAddressRefresh()
+    public function triggerAddressRefresh(): void
     {
         $this->dispatch('refreshAddress');
     }
 
     /**
      * Determines what checkout step we should be at.
-     *
-     * @return void
      */
-    public function determineCheckoutStep()
+    public function determineCheckoutStep(): void
     {
         $shippingAddress = $this->cart->shippingAddress;
         $billingAddress = $this->cart->billingAddress;
@@ -179,18 +165,14 @@ class CheckoutPage extends Component
 
     /**
      * Refresh the cart instance.
-     *
-     * @return void
      */
-    public function refreshCart()
+    public function refreshCart(): void
     {
         $this->cart = CartSession::current();
     }
 
     /**
      * Return the shipping option.
-     *
-     * @return void
      */
     public function getShippingOptionProperty()
     {
@@ -211,11 +193,8 @@ class CheckoutPage extends Component
 
     /**
      * Save the address for a given type.
-     *
-     * @param  string  $type
-     * @return void
      */
-    public function saveAddress($type)
+    public function saveAddress(string $type): void
     {
         $validatedData = $this->validate(
             $this->getAddressValidation($type)
@@ -253,10 +232,8 @@ class CheckoutPage extends Component
 
     /**
      * Save the selected shipping option.
-     *
-     * @return void
      */
-    public function saveShippingOption()
+    public function saveShippingOption(): void
     {
         $option = $this->shippingOptions->first(fn ($option) => $option->getIdentifier() == $this->chosenShipping);
 
@@ -285,20 +262,16 @@ class CheckoutPage extends Component
 
     /**
      * Return the available countries.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getCountriesProperty()
+    public function getCountriesProperty(): Collection
     {
         return Country::whereIn('iso3', ['GBR', 'USA'])->get();
     }
 
     /**
      * Return available shipping options.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getShippingOptionsProperty()
+    public function getShippingOptionsProperty(): Collection
     {
         return ShippingManifest::getOptions(
             $this->cart
@@ -307,11 +280,8 @@ class CheckoutPage extends Component
 
     /**
      * Return the address validation rules for a given type.
-     *
-     * @param  string  $type
-     * @return array
      */
-    protected function getAddressValidation($type)
+    protected function getAddressValidation(string $type): array
     {
         return [
             "{$type}.first_name" => 'required',
@@ -330,7 +300,7 @@ class CheckoutPage extends Component
         ];
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.checkout-page')
             ->layout('layouts.checkout');

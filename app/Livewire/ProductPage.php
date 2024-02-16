@@ -3,8 +3,12 @@
 namespace App\Livewire;
 
 use App\Traits\FetchesUrls;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Product;
+use Lunar\Models\ProductVariant;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductPage extends Component
 {
@@ -12,18 +16,10 @@ class ProductPage extends Component
 
     /**
      * The selected option values.
-     *
-     * @var array
      */
-    public $selectedOptionValues = [];
+    public array $selectedOptionValues = [];
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param  string  $slug
-     * @return void
-     */
-    public function mount($slug)
+    public function mount($slug): void
     {
         $this->url = $this->fetchUrl(
             $slug,
@@ -47,10 +43,8 @@ class ProductPage extends Component
 
     /**
      * Computed property to get variant.
-     *
-     * @return \Lunar\Models\ProductVariant
      */
-    public function getVariantProperty()
+    public function getVariantProperty(): ProductVariant
     {
         return $this->product->variants->first(function ($variant) {
             return ! $variant->values->pluck('id')
@@ -62,20 +56,16 @@ class ProductPage extends Component
 
     /**
      * Computed property to return all available option values.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getProductOptionValuesProperty()
+    public function getProductOptionValuesProperty(): Collection
     {
         return $this->product->variants->pluck('values')->flatten();
     }
 
     /**
      * Computed propert to get available product options with values.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getProductOptionsProperty()
+    public function getProductOptionsProperty(): Collection
     {
         return $this->productOptionValues->unique('id')->groupBy('product_option_id')
             ->map(function ($values) {
@@ -88,30 +78,24 @@ class ProductPage extends Component
 
     /**
      * Computed property to return product.
-     *
-     * @return \Lunar\Models\Product
      */
-    public function getProductProperty()
+    public function getProductProperty(): Product
     {
         return $this->url->element;
     }
 
     /**
      * Return all images for the product.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getImagesProperty()
+    public function getImagesProperty(): Collection
     {
         return $this->product->media;
     }
 
     /**
      * Computed property to return current image.
-     *
-     * @return string
      */
-    public function getImageProperty()
+    public function getImageProperty(): Media
     {
         if (count($this->variant->images)) {
             return $this->variant->images->first();
@@ -124,10 +108,7 @@ class ProductPage extends Component
         return $this->images->first();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function render()
+    public function render(): View
     {
         return view('livewire.product-page');
     }

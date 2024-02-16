@@ -10,7 +10,7 @@ use Lunar\Models\TaxClass;
 
 class ShippingModifier
 {
-    public function handle(Cart $cart)
+    public function handle(Cart $cart): void
     {
         // Get the tax class
         $taxClass = TaxClass::getDefault();

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Models\Cart;
@@ -13,12 +14,7 @@ class CheckoutSuccessPage extends Component
 
     public Order $order;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return void
-     */
-    public function mount()
+    public function mount(): void
     {
         $this->cart = CartSession::current();
         if (! $this->cart || ! $this->cart->completedOrder) {
@@ -31,7 +27,7 @@ class CheckoutSuccessPage extends Component
         CartSession::forget();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.checkout-success-page');
     }
