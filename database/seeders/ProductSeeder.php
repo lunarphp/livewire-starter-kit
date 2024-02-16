@@ -90,7 +90,7 @@ class ProductSeeder extends AbstractSeeder
                     'priceable_type' => ProductVariant::class,
                     'priceable_id' => $variant->id,
                     'price' => $product->price,
-                    'tier' => 1,
+                    'min_quantity' => 1,
                 ]);
 
                 $media = $productModel->addMedia(
@@ -142,7 +142,8 @@ class ProductSeeder extends AbstractSeeder
                         $optionValueIds[] = $valueModel->id;
                     }
                 }
-                GenerateVariants::dispatch($productModel, $optionValueIds);
+                // TODO : Add on core 1.x ?
+                //GenerateVariants::dispatch($productModel, $optionValueIds);
             });
         });
     }

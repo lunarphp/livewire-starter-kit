@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+CYAN='\x1b[36m'
+MAGENTA='\x1b[35m'
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
@@ -18,19 +21,22 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 	done
 
     if [ -d "config/lunar" ]; then
-         echo "Lunar already install..."
-         composer update
-         php artisan filament:assets
+        echo -e "$CYAN Lunar already install 🚀"
+        echo -e "$MAGENTA Update dependencies..."
+
+        composer update -n --quiet
+        php artisan filament:assets --quiet > /dev/null
+
+        echo -e "$CYAN Would you like to show some love by giving us a star ⭐ on GitHub?"
+        echo -e "$CYAN Visit : https://github.com/lunarphp/lunar"
+        echo -e "Your project is live ! Storefront available here: http://localhost"
     else
-        echo "Starting installation..."
+        echo "$BLUE Starting installation..."
         composer install
         php artisan migrate
         php artisan lunar:create-admin --firstname=${ADMIN_FIRSTNAME} --lastname=${ADMIN_LASTNAME} --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD}
         php artisan lunar:install -n
-        # TODO
-        #php artisan db:seed
-        php artisan storage:link
-        php artisan filament:assets
+        php artisan db:seed
         php artisan storage:link
         php artisan lunar:search:index
 	fi

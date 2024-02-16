@@ -50,6 +50,7 @@ services:
     restart: unless-stopped
     environment:
         - MEILI_MASTER_KEY=${MEILISEARCH_KEY}
+        - MEILI_LOG_LEVEL=ERROR
     volumes:
         - meilisearch:/meili_data
     ports:
