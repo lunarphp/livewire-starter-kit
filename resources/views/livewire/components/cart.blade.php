@@ -132,7 +132,9 @@
                 </button>
 
                 <a class="block w-full p-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-500"
-                   href="{{ route('checkout.view') }}">
+                   href="{{ route('checkout.view') }}"
+                   wire:navigate
+                >
                     Checkout
                 </a>
 

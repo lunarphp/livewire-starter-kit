@@ -2,7 +2,9 @@
     <div class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-2xl sm:px-6 lg:px-8">
         <div class="flex items-center">
             <a class="flex items-center flex-shrink-0"
-               href="{{ url('/') }}">
+               href="{{ url('/') }}"
+               wire:navigate
+            >
                 <span class="sr-only">Home</span>
 
                 <x-brand.logo class="w-auto h-6 text-indigo-600" />
@@ -11,7 +13,9 @@
             <nav class="hidden lg:gap-4 lg:flex lg:ml-8">
                 @foreach ($this->collections as $collection)
                     <a class="text-sm font-medium transition hover:opacity-75"
-                       href="{{ route('collection.view', $collection->defaultUrl->slug) }}">
+                       href="{{ route('collection.view', $collection->defaultUrl->slug) }}"
+                       wire:navigate
+                    >
                         {{ $collection->translateAttribute('name') }}
                     </a>
                 @endforeach
@@ -52,7 +56,9 @@
                             @foreach ($this->collections as $collection)
                                 <li>
                                     <a class="text-sm font-medium"
-                                       href="{{ route('collection.view', $collection->defaultUrl->slug) }}">
+                                       href="{{ route('collection.view', $collection->defaultUrl->slug) }}"
+                                       wire:navigate
+                                    >
                                         {{ $collection->translateAttribute('name') }}
                                     </a>
                                 </li>
