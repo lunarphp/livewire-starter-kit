@@ -74,9 +74,9 @@ services:
     ports:
         - "${REDIS_PORT}:${REDIS_PORT}"
 
-  mailpit:
-    container_name: demostore-mailpit
-    image: 'axllent/mailpit:latest'
+  mailhog:
+    container_name: demostore-mailhog
+    image: 'mailhog/mailhog:latest'
     ports:
         - '1025:1025'
         - '8025:8025'

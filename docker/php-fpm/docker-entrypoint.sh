@@ -21,12 +21,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 	done
 
     if [ -d "config/lunar" ]; then
-        echo -e "$CYAN Lunar already install 🚀"
-        echo -e "$MAGENTA Update dependencies..."
-
-        composer update -n --quiet
-        php artisan filament:assets --quiet > /dev/null
-
+        echo -e "$MAGENTA Lunar already install 🚀"
         echo -e "$CYAN Would you like to show some love by giving us a star ⭐ on GitHub?"
         echo -e "$CYAN Visit : https://github.com/lunarphp/lunar"
         echo -e "Your project is live ! Storefront available here: http://localhost"

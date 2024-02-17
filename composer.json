@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
         "lunarphp/lunar": "^1.x-dev",
-        "meilisearch/meilisearch-php": "^1.6"
+        "meilisearch/meilisearch-php": "^1.6",
+        "predis/predis": "^2.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

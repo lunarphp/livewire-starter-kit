@@ -12,7 +12,7 @@ class Home extends Component
     /**
      * Return the sale collection.
      */
-    public function getSaleCollectionProperty(): Collection
+    public function getSaleCollectionProperty(): Collection | null
     {
         return Url::whereElementType(Collection::class)->whereSlug('sale')->first()?->element ?? null;
     }

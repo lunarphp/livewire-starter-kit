@@ -25,3 +25,4 @@ package-lock.json
 yarn.lock
 config/lunar
 public/build
+meilisearch/

@@ -1,19 +1,57 @@
 name: demostore
 recipe: laravel
+
 config:
   webroot: public
-  php: '8.0'
+  php: '8.2'
   via: nginx
   cache: redis
+  xdebug: false
+
 services:
+  appserver:
+    config:
+      php: .lando/php.ini
+      ssl: false
+    run:
+      - php artisan config:cache
+      - php artisan cache:clear
+      - php artisan migrate
+      - php artisan lunar:create-admin --firstname=${ADMIN_FIRSTNAME} --lastname=${ADMIN_LASTNAME} --email=${ADMIN_EMAIL} --password=${ADMIN_PASSWORD}
+      - php artisan lunar:install -n
+      - php artisan db:seed
+      - php artisan storage:link
+      - php artisan lunar:search:index
+
+  appserver_nginx:
+    config:
+      ssl: false
+
   database:
     portforward: 3306
+
+  meilisearch:
+    type: compose
+    app_mount: false
+    services:
+      image: getmeili/meilisearch:latest
+      command: tini -- /bin/sh -c /bin/meilisearch
+      ports:
+        - '7700'
+      volumes:
+        - meilisearch:/meili_data
+    volumes:
+      meilsearch:
+
   mailhog:
     type: mailhog
+    portforward: true
     hogfrom:
       - appserver
+
   node:
-    type: node:16
+    type: node:20
+
 tooling:
   npm:
     service: node
