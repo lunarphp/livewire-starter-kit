@@ -22,9 +22,8 @@ class OrderSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::transaction(function () {
             $variants = ProductVariant::get();

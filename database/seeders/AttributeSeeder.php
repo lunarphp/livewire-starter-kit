@@ -11,9 +11,8 @@ class AttributeSeeder extends AbstractSeeder
     /**
      * Run the database seeds.
      *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $attributes = $this->getSeedData('attributes');
 

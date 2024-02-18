@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
-use Lunar\Hub\Jobs\Products\GenerateVariants;
 use Lunar\Models\Attribute;
 use Lunar\Models\Brand;
 use Lunar\Models\Collection;
@@ -19,6 +18,7 @@ use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
+use App\Jobs\GenerateVariants;
 
 class ProductSeeder extends AbstractSeeder
 {
@@ -27,7 +27,7 @@ class ProductSeeder extends AbstractSeeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $products = $this->getSeedData('products');
 
@@ -143,7 +143,7 @@ class ProductSeeder extends AbstractSeeder
                     }
                 }
                 // TODO : Add on core 1.x ?
-                //GenerateVariants::dispatch($productModel, $optionValueIds);
+                // GenerateVariants::dispatch($productModel, $optionValueIds);
             });
         });
     }

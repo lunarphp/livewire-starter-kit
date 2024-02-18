@@ -14,18 +14,14 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 COPY --from=ghcr.io/shyim/gnu-libiconv:v3.14 /gnu-libiconv-1.15-r3.apk /gnu-libiconv-1.15-r3.apk
 
 RUN apk add --no-cache \
-      acl \
-      shadow \
       unzip \
       wget \
       sudo \
       bash \
-      patch \
-      jq \
       sudo \
-      rsync \
       supervisor \
-      npm
+      npm \
+      aws-cli
 
 RUN apk add --no-cache --allow-untrusted /gnu-libiconv-1.15-r3.apk
 RUN rm /gnu-libiconv-1.15-r3.apk
@@ -35,15 +31,19 @@ RUN install-php-extensions  \
     intl \
     mysqli \
     pdo_mysql \
-    sockets \
-    bz2 \
-    gmp \
-    zip \
-    ffi \
+    curl \
+    dom \
+    fileinfo \
+    filter \
+    hash \
+    mbstring \
+    openssl \
+    pcre \
+    session \
+    xml \
     redis \
     opcache \
-    apcu \
-    amqp \
+    zip \
     exif
 
 RUN export COMPOSER_PROCESS_TIMEOUT=9000
@@ -56,8 +56,6 @@ RUN echo 'pm.max_children = 15' >> /usr/local/etc/php-fpm.d/zz-docker.conf && \
 
 COPY ./docker/php-fpm/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
-
-#RUN chown -R www-data:www-data /var/www
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
