@@ -22,9 +22,6 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
 
     if [ -d "config/lunar" ]; then
         echo -e "$MAGENTA Lunar already install 🚀"
-        echo -e "$CYAN Would you like to show some love by giving us a star ⭐ on GitHub?"
-        echo -e "$CYAN Visit : https://github.com/lunarphp/lunar"
-        echo -e "Your project is live ! Storefront available here: http://localhost"
     else
         echo "$BLUE Starting installation..."
         composer install
@@ -35,6 +32,10 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'artisan' ]; then
         php artisan storage:link
         php artisan lunar:search:index
 	fi
+
+    echo -e "$CYAN Would you like to show some love by giving us a star ⭐ on GitHub?"
+    echo -e "$CYAN Visit : https://github.com/lunarphp/lunar"
+    echo -e "Your project is live ! Storefront available here: http://localhost"
 fi
 
 exec docker-php-entrypoint "$@"
