@@ -30,7 +30,7 @@
                             <label class="flex items-center justify-between p-4 text-sm font-medium border border-gray-100 rounded-lg shadow-sm cursor-pointer peer-checked:border-blue-500 hover:bg-gray-50 peer-checked:ring-1 peer-checked:ring-blue-500"
                                    for="{{ $option->getIdentifier() }}">
                                 <p>
-                                    {{ $option->getDescription() }}
+                                    {{ $option->getName() }}
                                 </p>
 
                                 <p>

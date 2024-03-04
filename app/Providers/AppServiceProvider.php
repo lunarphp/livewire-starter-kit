@@ -22,14 +22,4 @@ class AppServiceProvider extends ServiceProvider
         )
             ->register();
     }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(ShippingModifiers $shippingModifiers): void
-    {
-        $shippingModifiers->add(
-            ShippingModifier::class
-        );
-    }
 }

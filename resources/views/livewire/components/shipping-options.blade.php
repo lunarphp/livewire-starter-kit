@@ -13,7 +13,7 @@
                            value="{{ $option->getIdentifier() }}" />
                     <div class="flex items-center ml-2">
                         <span class="block mr-2 text-2xl">{{ $option->getPrice()->formatted() }}</span>
-                        {{ $option->getDescription() }}
+                        {{ $option->name }}
                     </div>
                 </label>
             @endforeach
