@@ -1,30 +1,22 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Traits\FetchesUrls;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
-use Livewire\ComponentConcerns\PerformsRedirects;
-use Lunar\Models\Collection;
+use Lunar\Models\Collection as CollectionModel;
 
 class CollectionPage extends Component
 {
-    use PerformsRedirects,
-        FetchesUrls;
+    use FetchesUrls;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param  string  $slug
-     * @return void
-     *
-     * @throws \Http\Client\Exception\HttpException
-     */
-    public function mount($slug)
+    public function mount(string $slug): void
     {
         $this->url = $this->fetchUrl(
             $slug,
-            Collection::class,
+            CollectionModel::class,
             [
                 'element.thumbnail',
                 'element.products.variants.basePrices',
@@ -39,18 +31,13 @@ class CollectionPage extends Component
 
     /**
      * Computed property to return the collection.
-     *
-     * @return \Lunar\Models\Collection
      */
-    public function getCollectionProperty()
+    public function getCollectionProperty(): mixed
     {
         return $this->url->element;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function render()
+    public function render(): View
     {
         return view('livewire.collection-page');
     }

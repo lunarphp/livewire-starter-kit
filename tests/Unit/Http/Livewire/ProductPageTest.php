@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Livewire;
 
-use App\Http\Livewire\ProductPage;
+use App\Livewire\ProductPage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Lunar\Models\Currency;

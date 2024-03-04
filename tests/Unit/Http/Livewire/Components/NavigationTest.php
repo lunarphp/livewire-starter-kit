@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Livewire\Components;
 
-use App\Http\Livewire\Components\Navigation;
+use App\Livewire\Components\Navigation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Lunar\Models\Collection;

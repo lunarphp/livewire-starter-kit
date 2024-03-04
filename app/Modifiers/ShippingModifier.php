@@ -2,37 +2,31 @@
 
 namespace App\Modifiers;
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Facades\ShippingManifest;
 use Lunar\Models\Cart;
-use Lunar\Models\TaxClass;
 
 class ShippingModifier
 {
-    public function handle(Cart $cart)
+    public function handle(Cart $cart, \Closure $next)
     {
-        // Get the tax class
-        $taxClass = TaxClass::getDefault();
+        /**
+         * Custom shipping option.
+         * --------------------------------------------
+         * If you do not wish to use the shipping add-on you can add
+         * your own shipping options that will appear at checkout
+         */
 
-        ShippingManifest::addOption(
-            new ShippingOption(
-                name: 'Basic Delivery',
-                description: 'Basic Delivery',
-                identifier: 'BASDEL',
-                price: new Price(500, $cart->currency, 1),
-                taxClass: $taxClass
-            )
-        );
+         /**
+            \Lunar\Facades\ShippingManifest::addOption(
+               new \Lunar\DataTypes\ShippingOption(
+                   name: 'Basic Delivery',
+                   description: 'Basic Delivery',
+                   identifier: 'BASDEL',
+                   price: new \Lunar\DataTypes\Price(500, $cart->currency, 1),
+                   taxClass: \Lunar\Models\TaxClass::getDefault()
+               )
+            );
+         */
 
-        ShippingManifest::addOption(
-            new ShippingOption(
-                name: 'Express Delivery',
-                description: 'Express Delivery',
-                identifier: 'EXPDEL',
-                price: new Price(1000, $cart->currency, 1),
-                taxClass: $taxClass
-            )
-        );
+        return $next($cart);
     }
 }

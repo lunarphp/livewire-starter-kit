@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Livewire;
 
-use App\Http\Livewire\Home;
+use App\Livewire\Home;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;

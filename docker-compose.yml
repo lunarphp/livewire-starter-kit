@@ -1,0 +1,86 @@
+version: "3.8"
+
+services:
+  mysql:
+    container_name: demostore-mysql
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    volumes:
+      - storage:/var/lib/mysql
+
+  caddy:
+    container_name: demostore-caddy
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+        - "80:80"
+        - "443:443"
+        - "443:443/udp"
+    volumes:
+        - $PWD/docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+        - ./:/var/www/
+    depends_on:
+        - mysql
+        - meilisearch
+
+  php-fpm:
+    container_name: demostore-php-fpm
+    build:
+      target: php-fpm
+    restart: unless-stopped
+    environment:
+      - ADMIN_FIRSTNAME=${ADMIN_FIRSTNAME}
+      - ADMIN_LASTNAME=${ADMIN_LASTNAME}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    volumes:
+      - ./:/var/www/:rw,cached
+    depends_on:
+      - mysql
+      - meilisearch
+
+  meilisearch:
+    container_name: demostore-meilisearch
+    image: getmeili/meilisearch:latest
+    restart: unless-stopped
+    environment:
+        - MEILI_MASTER_KEY=${MEILISEARCH_KEY}
+        - MEILI_LOG_LEVEL=ERROR
+    volumes:
+        - meilisearch:/meili_data
+    ports:
+        - "${MEILISEARCH_PORT}:${MEILISEARCH_PORT}"
+    depends_on:
+        - mysql
+
+  meilisearch-ui:
+      container_name: demostore-meilisearch-ui
+      image: riccoxie/meilisearch-ui:latest
+      restart: unless-stopped
+      ports:
+          - ${MEILISEARCH_UI_PORT}:24900
+      depends_on:
+          - meilisearch
+
+  redis:
+    container_name: demostore-redis
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+        - "${REDIS_PORT}:${REDIS_PORT}"
+
+  mailhog:
+    container_name: demostore-mailhog
+    image: 'mailhog/mailhog:latest'
+    ports:
+        - '1025:1025'
+        - '8025:8025'
+
+volumes:
+  storage:
+  meilisearch:

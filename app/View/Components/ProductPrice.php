@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 use Lunar\Facades\Pricing;
 use Lunar\Models\Price;
 use Lunar\Models\ProductVariant;
@@ -27,10 +28,8 @@ class ProductPrice extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render()
+    public function render(): View
     {
         return view('components.product-price');
     }

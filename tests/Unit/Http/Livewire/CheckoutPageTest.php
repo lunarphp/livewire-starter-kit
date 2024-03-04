@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Livewire;
 
-use App\Http\Livewire\CheckoutPage;
+use App\Livewire\CheckoutPage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Lunar\Facades\CartSession;

@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Livewire\Components;
 
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\ShippingManifest;
@@ -13,12 +15,7 @@ class ShippingOptions extends Component
      */
     public ?string $chosenOption = null;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return void
-     */
-    public function mount()
+    public function mount(): void
     {
         if ($shippingOption = $this->shippingAddress?->shipping_option) {
             $option = $this->shippingOptions->first(function ($opt) use ($shippingOption) {
@@ -30,20 +27,15 @@ class ShippingOptions extends Component
 
     /**
      * Return available shipping options.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getShippingOptionsProperty()
+    public function getShippingOptionsProperty(): Collection
     {
         return ShippingManifest::getOptions(
             CartSession::current()
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'chosenOption' => 'required',
@@ -52,10 +44,8 @@ class ShippingOptions extends Component
 
     /**
      * Save the shipping option.
-     *
-     * @return void
      */
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -63,20 +53,18 @@ class ShippingOptions extends Component
 
         CartSession::setShippingOption($option);
 
-        $this->emit('selectedShippingOption');
+        $this->dispatch('selectedShippingOption');
     }
 
     /**
      * Return whether we have a shipping address.
-     *
-     * @return void
      */
     public function getShippingAddressProperty()
     {
         return CartSession::getCart()->shippingAddress;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.shipping-options');
     }

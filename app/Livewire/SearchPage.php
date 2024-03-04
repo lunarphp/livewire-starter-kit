@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Lunar\Models\Product;
@@ -19,22 +21,18 @@ class SearchPage extends Component
 
     /**
      * The search term.
-     *
-     * @var string
      */
     public ?string $term = null;
 
     /**
      * Return the search results.
-     *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function getResultsProperty()
+    public function getResultsProperty(): LengthAwarePaginator
     {
         return Product::search($this->term)->paginate(50);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.search-page');
     }
