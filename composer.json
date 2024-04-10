@@ -15,7 +15,8 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "lunarphp/lunar": "^1.x-dev",
+        "lunarphp/lunar": "^1.0",
+        "lunarphp/table-rate-shipping": "^1.0",
         "meilisearch/meilisearch-php": "^1.6",
         "predis/predis": "^2.2"
     },
