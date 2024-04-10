@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Lunar\Admin\Actions\Products\MapVariantsToProductOptions;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
@@ -84,14 +86,16 @@ class ProductSeeder extends AbstractSeeder
                     'stock' => 500,
                 ]);
 
-                Price::create([
-                    'customer_group_id' => null,
-                    'currency_id' => $currency->id,
-                    'priceable_type' => ProductVariant::class,
-                    'priceable_id' => $variant->id,
-                    'price' => $product->price,
-                    'min_quantity' => 1,
-                ]);
+                if (!count($product->options ?? [])) {
+                    Price::create([
+                        'customer_group_id' => null,
+                        'currency_id' => $currency->id,
+                        'priceable_type' => ProductVariant::class,
+                        'priceable_id' => $variant->id,
+                        'price' => $product->price,
+                        'min_quantity' => 1,
+                    ]);
+                }
 
                 $media = $productModel->addMedia(
                     base_path("database/seeders/data/images/{$product->image}")
@@ -111,11 +115,20 @@ class ProductSeeder extends AbstractSeeder
                 }
 
                 $options = ProductOption::get();
+
                 $optionValues = ProductOptionValue::get();
 
-                $optionValueIds = [];
+                $optionValueMapping = collect($product->options)->mapWithKeys(
+                    function ($option) {
+                        return [
+                            $option->name => $option->values
+                        ];
+                    }
+                )->toArray();
 
-                foreach ($product->options ?? [] as $option) {
+                $optionIds = [];
+
+                foreach ($product->options ?? [] as $optionIndex => $option) {
                     // Do we have this option already?
                     $optionModel = $options->first(fn ($opt) => $option->name == $opt->translate('name'));
 
@@ -124,26 +137,82 @@ class ProductSeeder extends AbstractSeeder
                             'name' => [
                                 'en' => $option->name,
                             ],
+                            'label' => [
+                                'en' => $option->name,
+                            ],
+                            'shared' => $option->shared,
+                            'handle' => Str::slug($option->name),
                         ]);
                     }
+
+                    $optionIds[$optionModel->id] = [
+                        'position' => $optionIndex + 1
+                    ];
 
                     foreach ($option->values as $value) {
                         $valueModel = $optionValues->first(fn ($val) => $value == $val->translate('name'));
 
                         if (! $valueModel) {
-                            $valueModel = ProductOptionValue::create([
+                            ProductOptionValue::create([
                                 'product_option_id' => $optionModel->id,
+                                'position' => $optionIndex,
+
                                 'name' => [
                                     'en' => $value,
                                 ],
                             ]);
                         }
-
-                        $optionValueIds[] = $valueModel->id;
                     }
                 }
-                // TODO : Add on core 1.x ?
-                // GenerateVariants::dispatch($productModel, $optionValueIds);
+
+                if (! count($product->options ?? [])) {
+                    return;
+                }
+
+                $productModel->productOptions()->sync($optionIds);
+
+                $variants = collect([$variant])->map(function ($variant) use ($product) {
+                    return [
+                        'id' => $variant->id,
+                        'sku' => $variant->sku,
+                        'price' => $product->price,
+                        'values' => [],
+                    ];
+                })->toArray();
+
+                $variants = MapVariantsToProductOptions::map($optionValueMapping, $variants, true);
+
+                foreach ($variants as $variant) {
+                    if (!$variant['variant_id']) {
+                        $variantModel = ProductVariant::create([
+                            'product_id' => $productModel->id,
+                            'purchasable' => 'always',
+                            'shippable' => true,
+                            'backorder' => 0,
+                            'sku' => $variant['sku'],
+                            'tax_class_id' => $taxClass->id,
+                            'stock' => 500,
+                        ]);
+                        $variant['variant_id'] = $variantModel->id;
+                    } else {
+                        $variantModel = ProductVariant::find($variant['variant_id']);
+                    }
+
+                    Price::create([
+                        'customer_group_id' => null,
+                        'currency_id' => $currency->id,
+                        'priceable_type' => ProductVariant::class,
+                        'priceable_id' => $variant['variant_id'],
+                        'price' => $variant['price'],
+                        'min_quantity' => 1,
+                    ]);
+
+                    $valueIds = ProductOptionValue::get()->filter(function ($option) use ($variant) {
+                        return in_array($option->translate('name'), $variant['values']);
+                    })->pluck('id');
+
+                    $variantModel->values()->sync($valueIds);
+                }
             });
         });
     }
