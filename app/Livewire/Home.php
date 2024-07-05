@@ -39,7 +39,7 @@ class Home extends Component
     /**
      * Return a random collection.
      */
-    public function getRandomCollectionProperty(): Collection
+    public function getRandomCollectionProperty(): ?Collection
     {
         $collections = Url::whereElementType(Collection::class);
 
