@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Livewire\Components;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Collection;
 
@@ -23,15 +24,13 @@ class Navigation extends Component
 
     /**
      * Return the collections in a tree.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getCollectionsProperty()
     {
         return Collection::with(['defaultUrl'])->get()->toTree();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.navigation');
     }

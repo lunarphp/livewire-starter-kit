@@ -11,7 +11,7 @@
                    id="quantity"
                    min="1"
                    value="1"
-                   wire:model="quantity" />
+                   wire:model.live="quantity" />
         </div>
 
         <button type="submit"

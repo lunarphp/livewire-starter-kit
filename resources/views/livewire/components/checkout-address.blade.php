@@ -1,4 +1,4 @@
-<form wire:submit.prevent="save"
+<form wire:submit="save"
       class="border rounded shadow-lg">
     <div class="flex justify-between p-4 font-medium border-b">
         <span class="text-xl">{{ ucfirst($type) }} Details</span>
@@ -6,7 +6,7 @@
             <label class="text-sm">
                 <input type="checkbox"
                        value="1"
-                       wire:model.defer="shippingIsBilling" />
+                       wire:model.live="shippingIsBilling" />
                 Same as billing
             </label>
         @endif
@@ -17,13 +17,13 @@
                 <x-input.group label="First name"
                                :errors="$errors->get('address.first_name')"
                                required>
-                    <x-input.text wire:model.defer="address.first_name"
+                    <x-input.text wire:model.live="address.first_name"
                                   required />
                 </x-input.group>
 
                 <x-input.group label="Last name"
                                :errors="$errors->get('address.last_name')">
-                    <x-input.text wire:model.defer="address.last_name" />
+                    <x-input.text wire:model.live="address.last_name" />
                 </x-input.group>
             </div>
 
@@ -31,7 +31,7 @@
                 <x-input.group label="Company name"
                                :errors="$errors->get('address.company_name')"
                                required>
-                    <x-input.text wire:model.defer="address.company_name"
+                    <x-input.text wire:model.live="address.company_name"
                                   required />
                 </x-input.group>
             </div>
@@ -39,12 +39,12 @@
             <div class="grid grid-cols-2 gap-4">
                 <x-input.group label="Contact phone"
                                :errors="$errors->get('address.contact_phone')">
-                    <x-input.text wire:model.defer="address.contact_phone" />
+                    <x-input.text wire:model.live="address.contact_phone" />
                 </x-input.group>
 
                 <x-input.group label="Contact email"
                                :errors="$errors->get('address.contact_email')">
-                    <x-input.text wire:model.defer="address.contact_email"
+                    <x-input.text wire:model.live="address.contact_email"
                                   type="email" />
                 </x-input.group>
             </div>
@@ -55,18 +55,18 @@
                 <x-input.group label="Address line 1"
                                :errors="$errors->get('address.line_one')"
                                required>
-                    <x-input.text wire:model.defer="address.line_one"
+                    <x-input.text wire:model.live="address.line_one"
                                   required />
                 </x-input.group>
 
                 <x-input.group label="Address line 2"
                                :errors="$errors->get('address.line_two')">
-                    <x-input.text wire:model.defer="address.line_two" />
+                    <x-input.text wire:model.live="address.line_two" />
                 </x-input.group>
 
                 <x-input.group label="Address line 3"
                                :errors="$errors->get('address.line_three')">
-                    <x-input.text wire:model.defer="address.line_three" />
+                    <x-input.text wire:model.live="address.line_three" />
                 </x-input.group>
             </div>
 
@@ -74,19 +74,19 @@
                 <x-input.group label="City"
                                :errors="$errors->get('address.city')"
                                required>
-                    <x-input.text wire:model.defer="address.city"
+                    <x-input.text wire:model.live="address.city"
                                   required />
                 </x-input.group>
 
                 <x-input.group label="State / Province"
                                :errors="$errors->get('address.state')">
-                    <x-input.text wire:model.defer="address.state" />
+                    <x-input.text wire:model.live="address.state" />
                 </x-input.group>
 
                 <x-input.group label="Postcode"
                                :errors="$errors->get('address.postcode')"
                                required>
-                    <x-input.text wire:model.defer="address.postcode"
+                    <x-input.text wire:model.live="address.postcode"
                                   required />
                 </x-input.group>
             </div>
@@ -95,7 +95,7 @@
                 <x-input.group label="Country"
                                required>
                     <select class="w-full p-4 text-sm border-2 border-gray-200 rounded-lg"
-                            wire:model.defer="address.country_id">
+                            wire:model.live="address.country_id">
                         <option value>Select a country</option>
                         @foreach ($this->countries as $country)
                             <option value="{{ $country->id }}"

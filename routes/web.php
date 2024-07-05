@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Livewire\CheckoutPage;
-use App\Http\Livewire\CheckoutSuccessPage;
-use App\Http\Livewire\CollectionPage;
-use App\Http\Livewire\Home;
-use App\Http\Livewire\ProductPage;
-use App\Http\Livewire\SearchPage;
+use App\Livewire\CheckoutPage;
+use App\Livewire\CheckoutSuccessPage;
+use App\Livewire\CollectionPage;
+use App\Livewire\Home;
+use App\Livewire\ProductPage;
+use App\Livewire\SearchPage;
 use Illuminate\Support\Facades\Route;
 
 /*

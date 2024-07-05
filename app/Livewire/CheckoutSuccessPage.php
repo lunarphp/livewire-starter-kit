@@ -1,27 +1,20 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
-use Livewire\ComponentConcerns\PerformsRedirects;
 use Lunar\Facades\CartSession;
 use Lunar\Models\Cart;
 use Lunar\Models\Order;
 
 class CheckoutSuccessPage extends Component
 {
-    use PerformsRedirects;
-
     public ?Cart $cart;
 
     public Order $order;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return void
-     */
-    public function mount()
+    public function mount(): void
     {
         $this->cart = CartSession::current();
         if (! $this->cart || ! $this->cart->completedOrder) {
@@ -34,7 +27,7 @@ class CheckoutSuccessPage extends Component
         CartSession::forget();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.checkout-success-page');
     }

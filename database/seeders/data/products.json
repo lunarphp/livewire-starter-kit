@@ -12,6 +12,7 @@
         "options": [
             {
                 "name": "Size",
+                "shared": false,
                 "values": [
                     "30 S (L30)",
                     "32 S (L30)",
@@ -41,6 +42,7 @@
         "options": [
             {
                 "name": "Shoe Size",
+                "shared": true,
                 "values": ["UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10"]
             }
         ]
@@ -58,6 +60,7 @@
         "options": [
             {
                 "name": "Shoe Size",
+                "shared": true,
                 "values": ["UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10"]
             }
         ]
@@ -108,6 +111,7 @@
         "options": [
             {
                 "name": "Shoe Size",
+                "shared": true,
                 "values": ["UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10"]
             }
         ]
@@ -147,6 +151,7 @@
         "options": [
             {
                 "name": "Shoe Size",
+                "shared": true,
                 "values": ["UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10"]
             }
         ]
@@ -164,6 +169,7 @@
         "options": [
             {
                 "name": "Shoe Size",
+                "shared": true,
                 "values": ["UK 5", "UK 6", "UK 7", "UK 8", "UK 9", "UK 10"]
             }
         ]
@@ -192,10 +198,12 @@
         "options": [
             {
                 "name": "Colour",
+                "shared": true,
                 "values": ["Black", "Blue", "Red", "Green"]
             },
             {
                 "name": "Size",
+                "shared": true,
                 "values": ["Small", "Medium", "Large", "X-Large"]
             }
         ]

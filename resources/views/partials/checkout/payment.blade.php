@@ -35,7 +35,7 @@
             @endif
 
             @if ($paymentType == 'cash-in-hand')
-                <form wire:submit.prevent="checkout">
+                <form wire:submit="checkout">
                     <div class="p-4 text-sm text-center text-blue-700 rounded-lg bg-blue-50">
                         Payment is offline, no card details needed.
                     </div>

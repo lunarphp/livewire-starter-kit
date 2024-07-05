@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Collection;
 use Lunar\Models\Url;
@@ -10,23 +11,19 @@ class Home extends Component
 {
     /**
      * Return the sale collection.
-     *
-     * @return void
      */
-    public function getSaleCollectionProperty()
+    public function getSaleCollectionProperty(): Collection | null
     {
         return Url::whereElementType(Collection::class)->whereSlug('sale')->first()?->element ?? null;
     }
 
     /**
      * Return all images in sale collection.
-     *
-     * @return void
      */
     public function getSaleCollectionImagesProperty()
     {
         if (! $this->getSaleCollectionProperty()) {
-            return;
+            return null;
         }
 
         $collectionProducts = $this->getSaleCollectionProperty()
@@ -41,10 +38,8 @@ class Home extends Component
 
     /**
      * Return a random collection.
-     *
-     * @return void
      */
-    public function getRandomCollectionProperty()
+    public function getRandomCollectionProperty(): ?Collection
     {
         $collections = Url::whereElementType(Collection::class);
 
@@ -55,7 +50,7 @@ class Home extends Component
         return $collections->inRandomOrder()->first()?->element;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.home');
     }

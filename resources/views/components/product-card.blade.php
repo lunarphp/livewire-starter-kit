@@ -1,7 +1,9 @@
 @props(['product'])
 
 <a class="block group"
-   href="{{ route('product.view', $product->defaultUrl->slug) }}">
+   href="{{ route('product.view', $product->defaultUrl->slug) }}"
+   wire:navigate
+>
     <div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1">
         @if ($product->thumbnail)
             <img class="object-cover transition-transform duration-300 group-hover:scale-105"

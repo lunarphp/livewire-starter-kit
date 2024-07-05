@@ -1,5 +1,10 @@
 /node_modules
 /public/hot
+/public/css/filament
+/public/css/awcodes
+/public/css/lunarphp
+/public/js/filament
+/public/js/app/components
 /public/storage
 /storage/*.key
 /vendor
@@ -15,3 +20,9 @@ yarn-error.log
 /.vscode
 .DS_Store
 .lando.local.yml
+composer.lock
+package-lock.json
+yarn.lock
+config/lunar
+public/build
+meilisearch/

@@ -4,26 +4,29 @@ namespace App\Providers;
 
 use App\Modifiers\ShippingModifier;
 use Illuminate\Support\ServiceProvider;
+use Lunar\Admin\Support\Facades\LunarPanel;
 use Lunar\Base\ShippingModifiers;
+use Lunar\Shipping\ShippingPlugin;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        LunarPanel::panel(
+            fn ($panel) => $panel->plugins([
+                new ShippingPlugin,
+            ])
+        )
+            ->register();
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot(ShippingModifiers $shippingModifiers)
+    public function boot(ShippingModifiers $shippingModifiers): void
     {
         $shippingModifiers->add(
             ShippingModifier::class

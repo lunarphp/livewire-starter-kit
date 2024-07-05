@@ -11,9 +11,8 @@ class AttributeSeeder extends AbstractSeeder
     /**
      * Run the database seeds.
      *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $attributes = $this->getSeedData('attributes');
 
@@ -33,6 +32,9 @@ class AttributeSeeder extends AbstractSeeder
                     'system' => false,
                     'position' => $attributeGroup->attributes()->count() + 1,
                     'name' => [
+                        'en' => $attribute->name,
+                    ],
+                    'description' => [
                         'en' => $attribute->name,
                     ],
                     'configuration' => (array) $attribute->configuration,
