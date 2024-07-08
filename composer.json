@@ -1,9 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "lunarphp/livewire-starter-kit",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Livewire starter kit for Lunar e-commerce.",
     "keywords": [
-        "framework",
+        "lunar",
+        "ecommerce",
+        "e-commerce",
+        "livewire",
         "laravel"
     ],
     "license": "MIT",
