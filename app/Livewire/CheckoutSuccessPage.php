@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
@@ -14,9 +15,10 @@ class CheckoutSuccessPage extends Component
 
     public Order $order;
 
-    public function mount(): void
+    public function mount(Request $request): void
     {
-        $this->cart = CartSession::current();
+        $this->cart = Cart::find($request->get('cartId'));
+
         if (! $this->cart || ! $this->cart->completedOrder) {
             $this->redirect('/');
 
