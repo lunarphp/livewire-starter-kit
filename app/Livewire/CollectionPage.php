@@ -16,7 +16,7 @@ class CollectionPage extends Component
     {
         $this->url = $this->fetchUrl(
             $slug,
-            CollectionModel::class,
+            (new CollectionModel)->getMorphClass(),
             [
                 'element.thumbnail',
                 'element.products.variants.basePrices',

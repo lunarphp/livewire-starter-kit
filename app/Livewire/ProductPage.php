@@ -23,7 +23,7 @@ class ProductPage extends Component
     {
         $this->url = $this->fetchUrl(
             $slug,
-            Product::class,
+            (new Product)->getMorphClass(),
             [
                 'element.media',
                 'element.variants.basePrices.currency',
