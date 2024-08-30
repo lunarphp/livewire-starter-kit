@@ -31,5 +31,11 @@ class AppServiceProvider extends ServiceProvider
         $shippingModifiers->add(
             ShippingModifier::class
         );
+
+        \Lunar\Facades\ModelManifest::replace(
+            \Lunar\Models\Contracts\Product::class,
+            \App\Models\Product::class,
+            // \App\Models\CustomProduct::class,
+        );
     }
 }
