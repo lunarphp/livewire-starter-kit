@@ -14,7 +14,7 @@ class Home extends Component
      */
     public function getSaleCollectionProperty(): Collection | null
     {
-        return Url::whereElementType(Collection::class)->whereSlug('sale')->first()?->element ?? null;
+        return Url::whereElementType((new Collection)->getMorphClass())->whereSlug('sale')->first()?->element ?? null;
     }
 
     /**
@@ -41,7 +41,7 @@ class Home extends Component
      */
     public function getRandomCollectionProperty(): ?Collection
     {
-        $collections = Url::whereElementType(Collection::class);
+        $collections = Url::whereElementType((new Collection)->getMorphClass());
 
         if ($this->getSaleCollectionProperty()) {
             $collections = $collections->where('element_id', '!=', $this->getSaleCollectionProperty()?->id);

@@ -4,6 +4,7 @@ namespace Tests\Unit\Http\Livewire;
 
 use App\Livewire\ProductPage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 use Lunar\Models\Currency;
 use Lunar\Models\Language;
@@ -43,6 +44,8 @@ class ProductPageTest extends TestCase
             }), 'variants')
             ->create();
 
+        $product->addMedia(UploadedFile::fake()->image('product.jpg'))->toMediaCollection('images');
+
         Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page');
     }
@@ -73,6 +76,8 @@ class ProductPageTest extends TestCase
                 );
             }), 'variants')
             ->create();
+
+        $product->addMedia(UploadedFile::fake()->image('product.jpg'))->toMediaCollection('images');
 
         Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page')
@@ -105,6 +110,8 @@ class ProductPageTest extends TestCase
                 );
             }), 'variants')
             ->create();
+
+        $product->addMedia(UploadedFile::fake()->image('product.jpg'))->toMediaCollection('images');
 
         Livewire::test(ProductPage::class, ['slug' => $product->defaultUrl->slug])
             ->assertViewIs('livewire.product-page')

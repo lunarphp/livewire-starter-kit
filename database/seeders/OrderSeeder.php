@@ -52,7 +52,7 @@ class OrderSeeder extends Seeder
 
                     $lines->push([
                         'quantity' => $quantity,
-                        'purchasable_type' => ProductVariant::class,
+                        'purchasable_type' => (new ProductVariant)->getMorphClass(),
                         'purchasable_id' => $variant->id,
                         'type' => 'physical',
                         'description' => $variant->product->translateAttribute('name'),

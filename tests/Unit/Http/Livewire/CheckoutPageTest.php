@@ -4,6 +4,7 @@ namespace Tests\Unit\Http\Livewire;
 
 use App\Livewire\CheckoutPage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
 use Lunar\Facades\CartSession;
 use Lunar\Models\Cart;
@@ -88,6 +89,8 @@ class CheckoutPageTest extends TestCase
      */
     public function test_checkout_on_billing_if_we_have_shipping_option()
     {
+        Config::set('shipping-tables.enabled', false);
+
         TaxClass::factory()->create([
             'default' => true,
         ]);
@@ -121,6 +124,8 @@ class CheckoutPageTest extends TestCase
      */
     public function test_checkout_on_payment_if_we_have_billing_address()
     {
+        Config::set('shipping-tables.enabled', false);
+
         TaxClass::factory()->create([
             'default' => true,
         ]);

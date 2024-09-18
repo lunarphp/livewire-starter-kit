@@ -90,7 +90,7 @@ class ProductSeeder extends AbstractSeeder
                     Price::create([
                         'customer_group_id' => null,
                         'currency_id' => $currency->id,
-                        'priceable_type' => ProductVariant::class,
+                        'priceable_type' => (new ProductVariant)->getMorphClass(),
                         'priceable_id' => $variant->id,
                         'price' => $product->price,
                         'min_quantity' => 1,
@@ -201,7 +201,7 @@ class ProductSeeder extends AbstractSeeder
                     Price::create([
                         'customer_group_id' => null,
                         'currency_id' => $currency->id,
-                        'priceable_type' => ProductVariant::class,
+                        'priceable_type' => (new ProductVariant)->getMorphClass(),
                         'priceable_id' => $variant['variant_id'],
                         'price' => $variant['price'],
                         'min_quantity' => 1,

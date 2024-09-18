@@ -47,7 +47,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' => ShippingRate::class,
+            'priceable_type' => (new ShippingRate)->getMorphClass(),
             'priceable_id' => $ukShippingRate->id,
             'price' => 1000,
             'min_quantity' => 1,
@@ -56,7 +56,7 @@ class ShippingSeeder extends Seeder
 
         // Free shipping on £100 or over orders
         Price::create([
-            'priceable_type' => ShippingRate::class,
+            'priceable_type' => (new ShippingRate)->getMorphClass(),
             'priceable_id' => $ukShippingRate->id,
             'price' => 0,
             'min_quantity' => 10000,
@@ -91,7 +91,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' => ShippingRate::class,
+            'priceable_type' => (new ShippingRate)->getMorphClass(),
             'priceable_id' => $usShippingRate->id,
             'price' => 5000,
             'min_quantity' => 1,
@@ -149,7 +149,7 @@ class ShippingSeeder extends Seeder
         );
 
         Price::create([
-            'priceable_type' => ShippingRate::class,
+            'priceable_type' =>(new ShippingRate)->getMorphClass(),
             'priceable_id' => $euroShippingRate->id,
             'price' => 2000,
             'min_quantity' => 1,

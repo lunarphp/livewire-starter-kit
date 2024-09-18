@@ -26,3 +26,4 @@ yarn.lock
 config/lunar
 public/build
 meilisearch/
+.phpunit.cache/test-results
