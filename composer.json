@@ -21,6 +21,7 @@
         "lunarphp/lunar": "^1.0@beta",
         "lunarphp/stripe": "^1.0@beta",
         "lunarphp/table-rate-shipping": "^1.0@beta",
+        "algolia/algoliasearch-client-php": "^4.8",
         "meilisearch/meilisearch-php": "^1.6",
         "predis/predis": "^2.2"
     },

@@ -1,4 +1,4 @@
-name: demostore
+name: aurastyle
 recipe: laravel
 
 config:
@@ -7,6 +7,10 @@ config:
   via: nginx
   cache: redis
   xdebug: false
+
+proxy:
+  appserver_nginx:
+    - aura.lndo.site
 
 services:
   database:

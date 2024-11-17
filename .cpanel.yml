@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/aurastyl/public_html/
+    - cd $DEPLOYPATH && ./.scripts/deploy.sh
