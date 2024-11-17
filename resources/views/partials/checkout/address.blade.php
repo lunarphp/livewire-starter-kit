@@ -72,7 +72,7 @@
                         <hr class="h-px my-4 bg-gray-100 border-none">
                     </div>
 
-                    <x-input.group class="col-span-3 sm:col-span-2"
+                    <x-input.group class="col-span-6 sm:col-span-3"
                                    label="Address line 1"
                                    :errors="$errors->get($type . '.line_one')"
                                    required>
@@ -80,16 +80,10 @@
                                       required />
                     </x-input.group>
 
-                    <x-input.group class="col-span-3 sm:col-span-2"
+                    <x-input.group class="col-span-6 sm:col-span-3"
                                    label="Address line 2"
                                    :errors="$errors->get($type . '.line_two')">
                         <x-input.text wire:model.live="{{ $type }}.line_two" />
-                    </x-input.group>
-
-                    <x-input.group class="col-span-3 sm:col-span-2"
-                                   label="Address line 3"
-                                   :errors="$errors->get($type . '.line_three')">
-                        <x-input.text wire:model.live="{{ $type }}.line_three" />
                     </x-input.group>
 
                     <x-input.group class="col-span-3 sm:col-span-2"
@@ -120,12 +114,7 @@
                         <select class="w-full p-3 border border-gray-200 rounded-lg sm:text-sm"
                                 wire:model.live="{{ $type }}.country_id">
                             <option value>Select a country</option>
-                            @foreach ($this->countries as $country)
-                                <option value="{{ $country->id }}"
-                                        wire:key="country_{{ $country->id }}">
-                                    {{ $country->native }}
-                                </option>
-                            @endforeach
+                            <option value="168" wire:key="country_168">Pakistan</option>
                         </select>
                     </x-input.group>
                 </div>
