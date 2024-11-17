@@ -17,7 +17,7 @@
     @if ($currentStep >= $step)
         <div class="p-6">
             @if ($currentStep == $step)
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($this->shippingOptions as $option)
                         <div>
                             <input class="hidden peer"
@@ -31,6 +31,7 @@
                                    for="{{ $option->getIdentifier() }}">
                                 <p>
                                     {{ $option->getName() }}
+                                    <span class="block text-xs">{{ $option->getDescription() }}</span>
                                 </p>
 
                                 <p>
