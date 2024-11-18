@@ -36,7 +36,7 @@
         <div class="flex items-center h-16 px-4 mx-auto max-w-screen-2xl sm:px-6 lg:px-8">
             <a class="flex items-center flex-shrink-0" href="{{ url('/') }}">
                 <span class="sr-only">Home</span>
-                <x-brand.logo class="w-auto h-6 text-gray-500" />
+                <x-brand.logo class="w-auto h-8 text-gray-500" />
             </a>
         </div>
     </header>

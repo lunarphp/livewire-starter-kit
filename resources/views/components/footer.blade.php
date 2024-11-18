@@ -8,7 +8,7 @@
         </p>
 
         <p class="pt-4 mt-4 text-sm text-gray-500 border-t border-gray-100">
-            &copy; {{ now()->year }} {{ config('app.name') }}
+            &copy; {{ now()->year }} | {{ config('app.name') }} | All Rights Reserved
         </p>
     </div>
 </footer>

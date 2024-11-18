@@ -1,10 +1,10 @@
 @props(['product'])
 
-<a class="block group"
+<a class="group relative"
    href="{{ route('product.view', $product->defaultUrl->slug) }}"
    wire:navigate
 >
-    <div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1">
+    <div class="overflow-hidden rounded-lg">
         @if ($product->thumbnail)
             <img class="object-cover transition-transform duration-300 group-hover:scale-105"
                  src="{{ $product->thumbnail->getUrl('medium') }}"
@@ -12,15 +12,15 @@
         @endif
     </div>
 
-    <strong class="mt-2 text-sm font-medium">
-        {{ $product->translateAttribute('name') }}
-    </strong>
+    <div class="mt-1 flex justify-between">
+    <div>
+        <h3 class="text-sm text-gray-700">{{ $product->brand->name }}</h3>
+        <h3 class="mt-1 text-sm font-medium">{{ $product->translateAttribute('name') }}</h3>
+    </div>
 
-    <p class="mt-1 text-sm text-gray-600">
-        <span class="sr-only">
-            Price
-        </span>
-
+    <p class="text-right">
+        <span class="sr-only">Price</span>
         <x-product-price :product="$product" />
     </p>
+    </div>
 </a>
