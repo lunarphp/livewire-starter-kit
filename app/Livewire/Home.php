@@ -47,6 +47,12 @@ class Home extends Component
             $collections = $collections->where('element_id', '!=', $this->getSaleCollectionProperty()?->id);
         }
 
+        foreach ($collections->inRandomOrder() as $collection) {
+            if ($collection->has('products')) {
+                return $collection->element;
+            }
+        }
+
         return $collections->inRandomOrder()->first()?->element;
     }
 
