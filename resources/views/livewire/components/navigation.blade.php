@@ -7,7 +7,7 @@
             >
                 <span class="sr-only">Home</span>
 
-                <x-brand.logo class="w-auto h-8 text-gray-500" />
+                <x-brand.logo class="w-auto h-8 text-gray-500 hover:text-indigo-600" />
             </a>
 
             <nav class="hidden lg:gap-4 lg:flex lg:ml-8">

@@ -18,9 +18,6 @@
         <h3 class="mt-1 text-sm font-medium">{{ $product->translateAttribute('name') }}</h3>
     </div>
 
-    <p class="text-right">
-        <span class="sr-only">Price</span>
-        <x-product-price :product="$product" />
-    </p>
+    <x-product-price class="text-right" :product="$product" />
     </div>
 </a>

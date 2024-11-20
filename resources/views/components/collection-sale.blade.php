@@ -1,5 +1,5 @@
 <section>
-    <div class="p-8 overflow-hidden border-4 border-gray-900 rounded-lg">
+    <div class="p-4 overflow-hidden border-4 border-gray-900 rounded-lg">
         <div class="sm:py-32 sm:relative">
             <div>
                 <h2 class="text-3xl font-extrabold sm:text-5xl">

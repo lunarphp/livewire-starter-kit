@@ -29,8 +29,7 @@
                         {{ $this->product->translateAttribute('name') }}
                     </h1>
 
-                    <x-product-price class="ml-4 font-medium"
-                                     :variant="$this->variant" />
+                    <x-product-price class="text-right" :variant="$this->variant" />
                 </div>
 
                 <p class="mt-1 text-sm text-gray-500">

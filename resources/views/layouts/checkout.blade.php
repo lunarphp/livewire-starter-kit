@@ -13,7 +13,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">
     <!-- <link rel="manifest" href="/site.webmanifest"> -->
     <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"> -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    @vite('resources/css/app.css')
     <link rel="icon" href="{{ asset('favicon.svg') }}">
     <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
     @livewireStyles
