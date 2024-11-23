@@ -67,8 +67,8 @@
                                                        type="number"
                                                        wire:model.live="lines.{{ $index }}.quantity" />
 
-                                                <p class="ml-2 text-xs">
-                                                    @ {{ $line['unit_price'] }}
+                                                <p class="ml-2 text-sm">
+                                                    {{ $line['sub_total_discounted'] }} <span class="text-xs line-through">{{ $line['sub_total'] }}</span>
                                                 </p>
 
                                                 <button class="p-2 ml-auto text-gray-600 transition-colors rounded-lg hover:bg-gray-100 hover:text-gray-700"
@@ -113,7 +113,7 @@
                     </dt>
 
                     <dd class="w-1/2 text-right">
-                        {{ $this->cart->subTotal->formatted() }}
+                        {{ $this->cart->subTotalDiscounted->formatted() }}
                     </dd>
                 </dl>
             @else

@@ -19,8 +19,8 @@
                                         {{ $line->purchasable->getDescription() }}
                                     </p>
 
-                                    <span class="block mt-1 text-xs text-gray-500">
-                                        {{ $line->quantity }} @ {{ $line->subTotal->formatted() }}
+                                    <span class="block mt-1 text-sm text-gray-500">
+                                        {{ $line->quantity }} @ {{ $line->subTotalDiscounted->formatted() }} <span class="text-xs text-red-600">You save {{ $line->discountTotal->formatted() }}</span>
                                     </span>
                                 </div>
                             </div>
@@ -30,13 +30,13 @@
 
                 <div class="flow-root">
                     <dl class="-my-4 text-sm divide-y divide-gray-100">
-                        <div class="flex flex-wrap py-4">
+                        <div class="flex flex-wrap py-4 text-base">
                             <dt class="w-1/2 font-medium">
                                 Sub Total
                             </dt>
 
                             <dd class="w-1/2 text-right">
-                                {{ $cart->subTotal->formatted() }}
+                                {{ $cart->subTotalDiscounted->formatted() }}
                             </dd>
                         </div>
 
@@ -64,12 +64,12 @@
                             </div>
                         @endforeach
 
-                        <div class="flex flex-wrap py-4">
-                            <dt class="w-1/2 font-medium">
+                        <div class="flex flex-wrap py-4 text-lg">
+                            <dt class="w-1/2 font-bold">
                                 Total
                             </dt>
 
-                            <dd class="w-1/2 text-right">
+                            <dd class="w-1/2 text-right font-bold">
                                 {{ $cart->total->formatted() }}
                             </dd>
                         </div>

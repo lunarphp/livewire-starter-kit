@@ -9,7 +9,7 @@
 
     <div class="grid grid-cols-2 my-4 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
         @forelse($this->collection->products as $product)
-            <x-product-card :product="$product" />
+            <x-product-card :product="$product" :discount="$this->collection->discounts->first()" />
         @empty
         @endforelse
     </div>
