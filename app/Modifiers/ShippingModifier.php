@@ -37,7 +37,7 @@ class ShippingModifier
                     name: 'Express Delivery',
                     description: 'Estimated in 2 working days',
                     identifier: 'EXDEL',
-                    price: new Price(10000, $cart->currency, 1),
+                    price: new Price(100, $cart->currency, 1),
                     taxClass: $taxClass
                 )
             );

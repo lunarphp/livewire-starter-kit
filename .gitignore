@@ -24,7 +24,6 @@ composer.lock
 package-lock.json
 yarn.lock
 config/lunar
-public/build
 meilisearch/
 .phpunit.cache/test-results
 .htaccess

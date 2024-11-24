@@ -1,5 +1,5 @@
 <div>
-    <x-welcome-banner class="bg-gray-100" />
+    <x-promo-banner class="bg-gray-100 px-2 py-2 mb-4" />
 
     <div class="max-w-screen-xl p-4 mx-auto space-y-12 sm:px-6 lg:px-8">
         @if ($this->saleCollection)
