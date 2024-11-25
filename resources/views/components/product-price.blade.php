@@ -5,7 +5,7 @@
         <span class="text-xs text-gray-500 line-through">{{ $price?->price->formatted() }}</span>
     @else
         <span class="font-bold">{{ $price?->price->formatted() }}</span>
-        @if ($price?->compare_price)
+        @if ($price?->compare_price->value > 0)
         <span class="text-xs text-gray-500 line-through">{{ $price?->compare_price->formatted() }}</span>
         @endif
     @endif

@@ -6,9 +6,6 @@ on:
   push:
     branches:
       - production
-  pull_request:
-    branches:
-      - production
       
 # Authenticate to the the server via ssh 
 # and run our deployment script 

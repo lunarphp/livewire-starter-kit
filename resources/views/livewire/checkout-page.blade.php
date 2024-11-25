@@ -20,7 +20,10 @@
                                     </p>
 
                                     <span class="block mt-1 text-sm text-gray-500">
-                                        {{ $line->quantity }} @ {{ $line->subTotalDiscounted->formatted() }} <span class="text-xs text-red-600">You save {{ $line->discountTotal->formatted() }}</span>
+                                        {{ $line->quantity }} @ {{ $line->subTotalDiscounted->formatted() }} 
+                                        @if ($line->discountTotal->value)
+                                        <span class="text-xs text-red-600">You save {{ $line->discountTotal->formatted() }}</span>
+                                        @endif
                                     </span>
                                 </div>
                             </div>

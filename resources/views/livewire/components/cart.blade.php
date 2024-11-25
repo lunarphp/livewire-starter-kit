@@ -68,7 +68,12 @@
                                                        wire:model.live="lines.{{ $index }}.quantity" />
 
                                                 <p class="ml-2 text-sm">
-                                                    {{ $line['sub_total_discounted'] }} <span class="text-xs line-through">{{ $line['sub_total'] }}</span>
+                                                @if ($line['discount_total'])
+                                                    {{ $line['sub_total_discounted'] }} 
+                                                    <span class="text-xs line-through">{{ $line['sub_total'] }}</span>
+                                                @else
+                                                    {{ $line['sub_total'] }} 
+                                                @endif
                                                 </p>
 
                                                 <button class="p-2 ml-auto text-gray-600 transition-colors rounded-lg hover:bg-gray-100 hover:text-gray-700"

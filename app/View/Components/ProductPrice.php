@@ -35,7 +35,7 @@ class ProductPrice extends Component
 
     private function calculateDiscountedPrice($product): ?\Lunar\DataTypes\Price
     {
-        $discount = $product->collections->first()->discounts->first();
+        $discount = $product->discount();
         $data = $discount?->data;
         if (!empty($data['percentage'])) {
             $discountValue = $data['percentage'] ?? 0;

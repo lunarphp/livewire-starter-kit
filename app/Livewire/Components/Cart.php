@@ -86,6 +86,7 @@ class Cart extends Component
                 'option' => $line->purchasable->getOption(),
                 'options' => $line->purchasable->getOptions()->implode(' / '),
                 'sub_total' => $line->subTotal->formatted(),
+                'discount_total' => $line->discountTotal->value,
                 'sub_total_discounted' => $line->subTotalDiscounted->formatted(),
                 'unit_price' => $line->unitPrice->formatted(),
             ];
