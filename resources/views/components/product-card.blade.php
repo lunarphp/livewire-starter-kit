@@ -1,4 +1,4 @@
-@props(['product', 'discount'])
+@props(['product'])
 
 <a class="group relative"
    href="{{ route('product.view', $product->defaultUrl->slug) }}"
@@ -9,7 +9,7 @@
             <img class="object-cover transition-transform duration-300 group-hover:scale-105"
                  src="{{ $product->thumbnail->getUrl('medium') }}"
                  alt="{{ $product->translateAttribute('name') }}" />
-            <x-flag :text="$discount?->name" />
+            <x-flag :text="$product->discount()?->name" />
         @endif
     </div>
 

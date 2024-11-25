@@ -27,7 +27,7 @@ class Navigation extends Component
      */
     public function getCollectionsProperty()
     {
-        return Collection::with(['defaultUrl'])->get()->toTree();
+        return Collection::with(['defaultUrl'])->defaultOrder()->get()->toTree();
     }
 
     public function render(): View

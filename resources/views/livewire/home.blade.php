@@ -6,8 +6,16 @@
             <x-collection-sale />
         @endif
 
-        @if ($this->randomCollection)
-            <livewire:components.carousel :collection="$this->randomCollection" />
+        @if ($this->latestProducts)
+            <livewire:components.carousel title="New Styles" collectionUrl="collections/sale" 
+                :products="$this->latestProducts" />
+        @endif
+
+        @if ($collection = $this->randomCollection)
+            <livewire:components.carousel 
+                :title="$collection->translateAttribute('name')" 
+                :collectionUrl="$collection->defaultUrl->slug" 
+                :products="$collection->products" />
         @endif
     </div>
 </div>

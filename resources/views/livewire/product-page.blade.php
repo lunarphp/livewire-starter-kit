@@ -7,7 +7,7 @@
                         <img class="object-cover rounded-xl"
                              src="{{ $this->image->getUrl('large') }}"
                              alt="{{ $this->product->translateAttribute('name') }}" />
-                        <x-flag :text="$this->discount?->name" />
+                        <x-flag :text="$this->product->discount()?->name" />
                     </div>
                 @endif
 

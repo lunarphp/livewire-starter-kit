@@ -109,14 +109,6 @@ class ProductPage extends Component
         return $this->images->first();
     }
 
-    /**
-     * Computed property to return discount.
-     */
-    public function getDiscountProperty(): ?Discount
-    {
-        return $this->product->collections->first()->discounts->first();
-    }
-
     public function render(): View
     {
         return view('livewire.product-page');

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Product;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Collection;
@@ -54,6 +55,11 @@ class Home extends Component
         }
 
         return $collections->inRandomOrder()->first()?->element;
+    }
+
+    public function getLatestProductsProperty()
+    {
+        return Product::status('published')->orderBy('created_at')->take(8)->get();
     }
 
     public function render(): View
