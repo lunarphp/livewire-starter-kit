@@ -13,8 +13,8 @@
             <ul class="space-y-3 text-gray-500">
                 <li><a href="javascript:void(0)">Order History</a></li>
                 <li><a href="javascript:void(0)">Track your parcel</a></li>
-                <li><a href="javascript:void(0)">About Us</a></li>
-                <li><a href="javascript:void(0)">Contact Us</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
             </ul>
         </div>
         <div class="w-full px-4 lg:w-4/12">
@@ -28,9 +28,9 @@
             &copy; {{ now()->year }} | <a href="https://aurastyle.pk/">{{ config('app.name') }}</a> | All Rights Reserved
         </p>
         <div class="text-sm text-gray-500 flex justify-center sm:justify-end">
-            <a href="https://aurastyle.pk/privacy-policy">Privacy Policy</a>
+            <a href="/privacy-policy">Privacy Policy</a>
             &nbsp;|&nbsp;
-            <a href="https://aurastyle.pk/terms-of-use">Terms and Conditions</a>
+            <a href="/terms-of-use">Terms and Conditions</a>
         </div>
     </div>
 </footer>

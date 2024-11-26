@@ -1,9 +1,11 @@
 <?php
 
+use App\Livewire\AboutPage;
 use App\Livewire\CheckoutPage;
 use App\Livewire\CheckoutSuccessPage;
 use App\Livewire\CollectionPage;
 use App\Livewire\Home;
+use App\Livewire\PrivacyPage;
 use App\Livewire\ProductPage;
 use App\Livewire\SearchPage;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +32,11 @@ Route::get('search', SearchPage::class)->name('search.view');
 Route::get('checkout', CheckoutPage::class)->name('checkout.view');
 
 Route::get('checkout/success', CheckoutSuccessPage::class)->name('checkout-success.view');
+
+Route::get('privacy-policy', PrivacyPage::class);
+
+Route::get('terms-of-use', PrivacyPage::class);
+
+Route::get('about-us', AboutPage::class);
+
+Route::get('contact-us', AboutPage::class);
