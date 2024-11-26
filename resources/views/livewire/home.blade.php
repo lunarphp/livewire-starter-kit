@@ -7,7 +7,7 @@
         @endif
 
         @if ($this->latestProducts)
-            <livewire:components.carousel title="New Styles" collectionUrl="collections/sale" 
+            <livewire:components.carousel title="New Styles" collectionUrl="sale" 
                 :products="$this->latestProducts" />
         @endif
 

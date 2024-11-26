@@ -13,13 +13,13 @@
     </a>
     <a href="/collections/ladies" class="group overflow-hidden col-span-1 sm:col-span-2 text-center">
     <span>
-        <img alt="Dress Women" src="{{ asset('images/banner-women-dress.webp') }}" class="min-h-full transition-transform duration-300 group-hover:scale-105" >
+        <img alt="Dress Women" src="{{ asset('images/banner-women-dress.jpg') }}" class="min-h-full transition-transform duration-300 group-hover:scale-105" >
     </span>
     </a>
     <!-- Row 2: Boxes -->
     <a href="#box4" class="group overflow-hidden col-span-1 sm:col-span-2 text-center">
     <span>
-        <img alt="Exclusive Sunglasses" src="{{ asset('images/banner-sunglasses.webp') }}" class="min-h-full transition-transform duration-300 group-hover:scale-105">
+        <img alt="Exclusive Sunglasses" src="{{ asset('images/banner-sunglasses.jpg') }}" class="min-h-full transition-transform duration-300 group-hover:scale-105">
     </span>
     </a>
     <a href="/collections/kids" class="group overflow-hidden col-span-1 sm:col-span-2 text-center">

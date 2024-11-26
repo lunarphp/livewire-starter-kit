@@ -27,3 +27,4 @@ config/lunar
 meilisearch/
 .phpunit.cache/test-results
 .htaccess
+sitemap.xml

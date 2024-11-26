@@ -27,6 +27,7 @@
                             @foreach ($imageGroup as $image)
                                 <img class="object-cover w-48 h-48 rounded-lg lg:h-72 lg:w-72 odd:mt-8"
                                      src="{{ $image->getUrl('medium') }}"
+                                     alt="{{ $image->name }}"
                                      loading="lazy" />
                             @endforeach
                         </div>

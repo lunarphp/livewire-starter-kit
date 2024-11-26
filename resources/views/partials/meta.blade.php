@@ -8,11 +8,11 @@
 <meta name="keywords" content="{{ $meta->keywords }}"/>
 <meta name="description" content="{{ $meta->description }}">
 <meta name="robots" content="index,follow"/>
-<meta name="url" content="{{ request()->fullUrl() }}">
+<meta name="url" content="{{ url()->current() }}">
 
 <meta property=”og:title” content="{{ $meta->title }}"/>
 <meta property="og:description" content="{{ $meta->description }}"/>
 <meta property=”og:type” content="website"/>
 <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}" />
 <meta property="og:site_name" content="{{ config('app.name') }}" />
-<meta property="og:url" content="{{ request()->fullUrl() }}"/>
+<meta property="og:url" content="{{ url()->current() }}"/>
