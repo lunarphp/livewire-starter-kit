@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Rules\ReCaptcha;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Lunar\Facades\CartSession;
 use Lunar\Facades\Payments;
@@ -58,6 +60,11 @@ class CheckoutPage extends Component
      * The payment type we want to use.
      */
     public string $paymentType = 'cash-in-hand';
+
+    /**
+     * The g-recaptcha-response
+     */
+    public string $token = '';
 
     /**
      * {@inheritDoc}
@@ -243,9 +250,14 @@ class CheckoutPage extends Component
 
         $this->determineCheckoutStep();
     }
-
+    
+    #[On('onCheckout')]
     public function checkout()
     {
+        $this->validate([
+            'token' => ['required', new ReCaptcha]
+        ]);
+
         $payment = Payments::cart($this->cart)->withData([
             'payment_intent_client_secret' => $this->payment_intent_client_secret,
             'payment_intent' => $this->payment_intent,

@@ -3,7 +3,7 @@
     <!-- Row 1: Boxes -->
     <a href="/collections/men" class="group overflow-hidden col-span-2 sm:col-span-5 text-center">
     <span>
-        <img alt="Men's Collection" src="{{ asset('images/banner-men-2024.webp') }}" alt="" class="transition-transform duration-300 group-hover:scale-105">
+        <img alt="Men's Collection" src="{{ asset('images/banner-men-2024.jpg') }}" alt="" class="transition-transform duration-300 group-hover:scale-105">
     </span>
     </a>
     <a href="#box2" class="group overflow-hidden col-span-1 sm:col-span-2 text-center">

@@ -1,3 +1,6 @@
+@push('scripts')
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+@endpush
 <div class="bg-white border border-gray-100 rounded-xl">
     <div class="flex items-center h-16 px-6 border-b border-gray-100">
         <h3 class="text-lg font-medium">
@@ -35,20 +38,41 @@
             @endif
 
             @if ($paymentType == 'cash-in-hand')
-                <form wire:submit="checkout">
+            @error('recaptcha')
+                <div class="bg-red-300 text-red-700 p-3 rounded">{{ $message }}</div>
+            @enderror
+                <form id="cashInHand" 
+                {{-- wire:submit="checkout"  --}}
+                @submit.prevent="doCaptcha"
+                x-data="{
+                    siteKey: @js(config('services.recaptcha.key')),
+                    {{-- doCheckout(token) {
+                            @this.set('token', token);
+                            Livewire.dispatch('formSubmitted');
+                    }, --}}
+                    doCaptcha() {
+                    {{-- grecaptcha.ready(function() { --}}
+                        grecaptcha.execute(this.siteKey, {action: 'submit'}).then(token => {
+                            @this.set('token', token);
+                            Livewire.dispatch('onCheckout');
+                        });
+                    {{-- }); --}}
+                    },
+                }">
                     <div class="p-4 text-sm text-center text-blue-700 rounded-lg bg-blue-50">
                         Payment is offline, no card details needed.
                     </div>
 
-                    <button class="px-5 py-3 mt-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500"
+                    <button class="g-recaptcha px-5 py-3 mt-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500"
+                            {{-- data-sitekey="{{ config('services.recaptcha.key') }}" 
+                            data-callback='onSubmit'
+                            data-action='submit' --}}
                             type="submit"
                             wire:key="payment_submit_btn">
-                        <span wire:loading.remove.delay
-                              wire:target="checkout">
+                        <span wire:loading.remove.delay>
                             Submit Order
                         </span>
-                        <span wire:loading.delay
-                              wire:target="checkout">
+                        <span wire:loading.delay>
                             <svg class="w-5 h-5 text-white animate-spin"
                                  xmlns="http://www.w3.org/2000/svg"
                                  fill="none"
@@ -67,6 +91,13 @@
                         </span>
                     </button>
                 </form>
+            {{-- @push('scripts')
+            <script type="text/javascript">
+                function onSubmit(token) {
+                    Alpine.$data(document.getElementById("cashInHand")).doCheckout(token);
+                }
+            </script>
+            @endpush --}}
             @endif
         </div>
     @endif

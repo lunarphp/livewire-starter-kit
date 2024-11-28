@@ -6,7 +6,6 @@ use App\Traits\FetchesUrls;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
-use Lunar\Models\Discount;
 use Lunar\Models\Product;
 use Lunar\Models\ProductVariant;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
