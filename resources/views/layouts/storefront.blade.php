@@ -1,9 +1,10 @@
+@inject('meta', \App\Models\Meta::class)
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('partials.meta')
-    <title>{{ config('app.name') }} - One stop for Fashion, Style and Accessories | Cheap | Branded</title>
+    @include('partials.meta', [$meta])
+    <title>{{ $meta->title }}</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">

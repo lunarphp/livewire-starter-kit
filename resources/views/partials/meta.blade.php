@@ -1,5 +1,3 @@
-@inject('meta', \App\Models\Meta::class)
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="msapplication-TileColor" content="#da532c">
