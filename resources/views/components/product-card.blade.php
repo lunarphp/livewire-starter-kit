@@ -11,6 +11,12 @@
                  alt="{{ $product->translateAttribute('name') }}" />
             <x-flag :text="$product->discount()?->name" />
         @endif
+        <!-- Out of Stock Overlay -->
+        @if (!$product->isAvailable())
+            <div class="absolute inset-0 rounded-lg flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold">
+                Out of Stock
+            </div>
+        @endif
     </div>
 
     <div class="mt-1 flex justify-between">

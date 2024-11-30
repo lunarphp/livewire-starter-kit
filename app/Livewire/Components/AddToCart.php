@@ -40,6 +40,11 @@ class AddToCart extends Component
         $this->dispatch('add-to-cart');
     }
 
+    public function getAvailableProperty(): bool 
+    {
+        return $this->purchasable->canBeFulfilledAtQuantity(1);
+    }
+
     public function render(): View
     {
         return view('livewire.components.add-to-cart');

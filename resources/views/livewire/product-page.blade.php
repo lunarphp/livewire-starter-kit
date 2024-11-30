@@ -1,3 +1,6 @@
+@php
+    $outOfStock = "Out of Stock";
+@endphp
 <section>
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
@@ -7,7 +10,11 @@
                         <img class="object-cover rounded-xl"
                              src="{{ $this->image->getUrl('large') }}"
                              alt="{{ $this->product->translateAttribute('name') }}" />
+                        @if ($this->variant->canBeFulfilledAtQuantity(1))
                         <x-flag :text="$this->product->discount()?->name" />
+                        @else 
+                        <x-flag :text="$outOfStock" />
+                        @endif
                     </div>
                 @endif
 

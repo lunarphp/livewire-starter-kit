@@ -7,17 +7,16 @@
             </label>
 
             <input class="w-16 px-1 py-4 text-sm text-center transition border border-gray-100 rounded-lg no-spinner"
-                   type="number"
-                   id="quantity"
-                   min="1"
-                   value="1"
-                   wire:model.live="quantity" />
+                   type="number" id="quantity" min="1" value="1"
+                   wire:model.live="quantity"
+                   @if (!$this->available) x-bind:disabled="true" @endif />
         </div>
 
         <button type="submit"
-                class="w-full px-6 py-4 text-sm font-medium text-center text-white bg-indigo-600 rounded-lg hover:bg-indigo-700"
-                wire:click.prevent="addToCart">
-            Add to Cart
+                class="w-full px-6 py-4 text-sm font-medium text-center text-white rounded-lg @if ($this->available) bg-indigo-600 hover:bg-indigo-700 @else bg-gray-400 @endif"
+                wire:click.prevent="addToCart"
+                @if (!$this->available) x-bind:disabled="true" @endif>
+                {{ $this->available ? "Add to Cart" : "Out of Stock" }}
         </button>
     </div>
 

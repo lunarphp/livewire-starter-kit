@@ -8,10 +8,6 @@ config:
   cache: redis
   xdebug: false
 
-proxy:
-  appserver_nginx:
-    - aura.lndo.site
-
 services:
   database:
     portforward: 3306

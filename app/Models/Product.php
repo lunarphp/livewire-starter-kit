@@ -26,4 +26,13 @@ class Product extends LunarProduct
         ->orderBy('id')
         ->first();
     }
+    /**
+     * Check if product is available for purchase
+     */
+    public function isAvailable(): bool
+    {
+        return $this->variants->reject(function ($variant) {
+            return !$variant->canBeFulfilledAtQuantity(1);
+        })->count();
+    }
 }
