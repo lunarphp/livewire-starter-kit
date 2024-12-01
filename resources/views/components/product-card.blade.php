@@ -4,18 +4,22 @@
    href="{{ route('product.view', $product->defaultUrl->slug) }}"
    wire:navigate
 >
-    <div class="overflow-hidden rounded-lg">
+    <div class="relative overflow-hidden rounded-lg">
         @if ($product->thumbnail)
             <img class="object-cover transition-transform duration-300 group-hover:scale-105"
                  src="{{ $product->thumbnail->getUrl('medium') }}"
                  alt="{{ $product->translateAttribute('name') }}" />
-            <x-flag :text="$product->discount()?->name" />
         @endif
         <!-- Out of Stock Overlay -->
         @if (!$product->isAvailable())
-            <div class="absolute inset-0 rounded-lg flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold">
-                Out of Stock
+            <div class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 text-red text-lg font-semibold">
+             
             </div>
+        @endif
+        @if ($product->isAvailable())
+        <x-flag :text="$product->discount()?->name" />
+        @else 
+        <x-flag :text="'Sold out'" />
         @endif
     </div>
 
@@ -25,6 +29,8 @@
         <h3 class="mt-1 text-sm font-medium">{{ $product->translateAttribute('name') }}</h3>
     </div>
 
+    @if ($product->isAvailable())
     <x-product-price class="text-right" :product="$product" />
+    @endif
     </div>
 </a>

@@ -1,6 +1,3 @@
-@php
-    $outOfStock = "Out of Stock";
-@endphp
 <section>
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
@@ -13,7 +10,7 @@
                         @if ($this->variant->canBeFulfilledAtQuantity(1))
                         <x-flag :text="$this->product->discount()?->name" />
                         @else 
-                        <x-flag :text="$outOfStock" />
+                        <x-flag :text="'Sold out'" />
                         @endif
                     </div>
                 @endif
@@ -37,7 +34,9 @@
                         {{ $this->product->translateAttribute('name') }}
                     </h1>
 
+                    @if ($this->variant->canBeFulfilledAtQuantity(1))
                     <x-product-price class="text-right" :variant="$this->variant" />
+                    @endif
                 </div>
 
                 <p class="mt-1 text-sm text-gray-500">
