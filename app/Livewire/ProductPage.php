@@ -89,7 +89,7 @@ class ProductPage extends Component
      */
     public function getImagesProperty(): Collection
     {
-        return $this->product->media;
+        return $this->product->media->sortBy('order_column');
     }
 
     /**
