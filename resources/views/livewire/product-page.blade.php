@@ -1,11 +1,11 @@
 <section>
     <div class="max-w-screen-xl px-4 py-8 space-y-6 mx-auto sm:px-6 lg:px-8">
         <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-6">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-6"
+                @if ($this->image) x-data="{active: '{{ $this->image->getUrl('large') }}'}" @endif>
                 @if ($this->image)
                     <div class="relative aspect-w-1 aspect-h-1 lg:col-span-5">
-                        <img class="object-cover rounded-xl"
-                             src="{{ $this->image->getUrl('large') }}"
+                        <img class="object-cover rounded-xl" x-bind:src="active"
                              alt="{{ $this->product->translateAttribute('name') }}" />
                         @if ($this->variant->canBeFulfilledAtQuantity(1))
                         <x-flag :text="$this->product->discount()?->name" />
@@ -15,10 +15,11 @@
                     </div>
                 @endif
 
-                <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-1">
+                <div class="grid grid-cols-2 content-start cursor-pointer gap-4 sm:grid-cols-4 lg:grid-cols-1">
                     @foreach ($this->images as $image)
                         <div class="aspect-w-1 aspect-h-1"
-                             wire:key="image_{{ $image->id }}">
+                             wire:key="image_{{ $image->id }}"
+                             x-on:mouseover="active = '{{ $image->getUrl('large') }}';">
                             <img loading="lazy"
                                  class="object-cover rounded-xl"
                                  src="{{ $image->getUrl('small') }}"
