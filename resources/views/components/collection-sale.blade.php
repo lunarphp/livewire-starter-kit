@@ -8,7 +8,7 @@
 
                 @if ($this->saleCollection->translateAttribute('description'))
                     <p class="mt-1 text-lg font-medium">
-                        {{ $this->saleCollection->translateAttribute('description') }}
+                        {!! $this->saleCollection->translateAttribute('description') !!}
                     </p>
                 @endif
 
