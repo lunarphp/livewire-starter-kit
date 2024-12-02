@@ -1,21 +1,21 @@
 <section>
-    <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-screen-xl px-4 py-8 space-y-6 mx-auto sm:px-6 lg:px-8">
         <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-6">
                 @if ($this->image)
-                    <div class="relative aspect-w-1 aspect-h-1">
+                    <div class="relative aspect-w-1 aspect-h-1 lg:col-span-5">
                         <img class="object-cover rounded-xl"
                              src="{{ $this->image->getUrl('large') }}"
                              alt="{{ $this->product->translateAttribute('name') }}" />
                         @if ($this->variant->canBeFulfilledAtQuantity(1))
                         <x-flag :text="$this->product->discount()?->name" />
                         @else 
-                        <x-flag :text="'Sold out'" />
+                        <x-flag text="Sold out" />
                         @endif
                     </div>
                 @endif
 
-                <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-1">
                     @foreach ($this->images as $image)
                         <div class="aspect-w-1 aspect-h-1"
                              wire:key="image_{{ $image->id }}">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="ml-2">
                 <div class="flex items-center justify-between">
                     <h1 class="text-xl font-bold">
                         {{ $this->product->translateAttribute('name') }}
@@ -90,5 +90,10 @@
                 </form>
             </div>
         </div>
+
+        @if ($this->product->associations()->count() && $products = $this->product->associations()->alternate()->get()->map(fn ($a) => $a->target))
+        <livewire:components.carousel title="How about these?" collectionUrl="sale" 
+            :products="$products" />
+        @endif
     </div>
 </section>

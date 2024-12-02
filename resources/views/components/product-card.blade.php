@@ -1,25 +1,20 @@
 @props(['product'])
 
-<a class="group relative"
+<a class="block group"
    href="{{ route('product.view', $product->defaultUrl->slug) }}"
    wire:navigate
 >
     <div class="relative overflow-hidden rounded-lg">
         @if ($product->thumbnail)
-            <img class="object-cover transition-transform duration-300 group-hover:scale-105"
+            <img class="object-cover transition-transform duration-300 group-hover:scale-105 @if (!$product->isAvailable()) opacity-25 @endif"
                  src="{{ $product->thumbnail->getUrl('medium') }}"
                  alt="{{ $product->translateAttribute('name') }}" />
         @endif
-        <!-- Out of Stock Overlay -->
-        @if (!$product->isAvailable())
-            <div class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 text-red text-lg font-semibold">
-             
-            </div>
-        @endif
+
         @if ($product->isAvailable())
-        <x-flag :text="$product->discount()?->name" />
+            <x-flag :text="$product->discount()?->name" />
         @else 
-        <x-flag :text="'Sold out'" />
+            <x-flag text="Sold out" />
         @endif
     </div>
 
@@ -30,7 +25,7 @@
     </div>
 
     @if ($product->isAvailable())
-    <x-product-price class="text-right" :product="$product" />
+        <x-product-price class="text-right" :product="$product" />
     @endif
     </div>
 </a>
