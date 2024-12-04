@@ -59,7 +59,7 @@ class Home extends Component
 
     public function getLatestProductsProperty()
     {
-        return Product::status('published')->orderBy('created_at')->take(8)->get();
+        return Product::status('published')->orderBy('created_at', 'DESC')->take(8)->get();
     }
 
     public function render(): View

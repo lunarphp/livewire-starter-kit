@@ -1,12 +1,12 @@
 <footer class="bg-gray-50 sm:px-2 lg:px-4">
     <div class="max-w-screen-xl flex flex-wrap mx-auto py-6">
         <div class="w-full px-4 sm:w-1/2 lg:w-5/12">
-        <x-brand.logo class="h-16 text-gray-500" />
-        <p class="max-w-sm mt-4 text-gray-700">
+        <x-brand.logo class="h-16 text-gray-500 mb-4" />
+        <p class="max-w-sm text-gray-700 mb-4">
             This is a classic e-commerce store built with <a href="https://zabrdast.com">Zabrdast</a>.
             We are currently making a tutorial series to show you how we did it!
         </p>
-        <x-icon.social class="mt-4 text-gray-500 flex items-center" />
+        <x-icon.social class="text-gray-500 flex items-center" />
         </div>
         <div class="w-full px-4 sm:w-1/2 lg:w-3/12">
             <h4 class="my-4 text-2xl font-semibold">Customer</h4>

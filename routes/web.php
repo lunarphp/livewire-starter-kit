@@ -4,10 +4,12 @@ use App\Livewire\AboutPage;
 use App\Livewire\CheckoutPage;
 use App\Livewire\CheckoutSuccessPage;
 use App\Livewire\CollectionPage;
+use App\Livewire\ContactPage;
 use App\Livewire\Home;
 use App\Livewire\PrivacyPage;
 use App\Livewire\ProductPage;
 use App\Livewire\SearchPage;
+use App\Livewire\TermsPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +37,8 @@ Route::get('checkout/success', CheckoutSuccessPage::class)->name('checkout-succe
 
 Route::get('privacy-policy', PrivacyPage::class);
 
-Route::get('terms-of-use', PrivacyPage::class);
+Route::get('terms-of-use', TermsPage::class);
 
 Route::get('about-us', AboutPage::class);
 
-Route::get('contact-us', AboutPage::class);
+Route::get('contact-us', ContactPage::class);

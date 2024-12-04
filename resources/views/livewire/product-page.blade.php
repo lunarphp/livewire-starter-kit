@@ -40,15 +40,15 @@
                     @endif
                 </div>
 
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="mt-1 text-sm text-gray-500 mb-4">
                     {{ $this->variant->sku }}
                 </p>
 
-                <article class="mt-4 text-gray-700">
+                <article class="mt-4 text-gray-700 mb-4">
                     {!! $this->product->translateAttribute('description') !!}
                 </article>
 
-                <form class="mt-4">
+                <form>
                     <div class="space-y-4">
                         @foreach ($this->productOptions as $option)
                             <fieldset>
