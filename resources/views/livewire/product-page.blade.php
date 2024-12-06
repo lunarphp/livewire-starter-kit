@@ -31,8 +31,12 @@
 
             <div class="ml-2">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold">
-                        {{ $this->product->translateAttribute('name') }}
+                    <h1 class="text-2xl">
+                        @if ($brand = $this->product->brand)
+                        <a href="{{ route('brand.view', $brand->defaultUrl->slug) }}" class="block" wire:navigate>
+                            <span>{{ $brand->name }}</span></a>
+                        @endif
+                        <span class="font-bold">{{ $this->product->translateAttribute('name') }}</span>
                     </h1>
 
                     @if ($this->variant->canBeFulfilledAtQuantity(1))
