@@ -22,7 +22,7 @@
         <div class="p-8 border-t md:border-l">
             <h2 class="text-2xl font-medium text-indigo-600 mb-4">Contact Us</h2>
             <p class="text-sm">If you have any questions or concerns or any urgent issue, please contact us at:</p>
-            <p class="text-sm mt-2">Email: <a href="mailto:support@aurastyle.pk" class="text-indigo-600 hover:underline">support@aurastyle.pk</a></p>
+            <p class="text-sm mt-2">Email: <a href="mailto:{{ env('SUPPORT_EMAIL') }}" class="text-indigo-600 hover:underline">{{ env('SUPPORT_EMAIL') }}</a></p>
             <p class="text-sm mt-2">Phone: +92 300 1234567</p>
         </div>
     </section>

@@ -25,7 +25,7 @@
 
     <div class="items-centers grid grid-cols-1 justify-between gap-4 md:grid-cols-2 border-t border-gray-200 p-4">
         <p class="text-sm text-gray-500 max-sm:text-center">
-            &copy; {{ now()->year }} | <a href="https://aurastyle.pk/">{{ config('app.name') }}</a> | All Rights Reserved
+            &copy; {{ now()->year }} | <a href="{{ config('app.url') }}">{{ config('app.name') }}</a> | All Rights Reserved
         </p>
         <div class="text-sm text-gray-500 flex justify-center sm:justify-end">
             <a href="/privacy-policy">Privacy Policy</a>

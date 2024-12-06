@@ -4,7 +4,7 @@
             <h1 class="text-3xl font-extrabold sm:text-5xl">
                 Welcome to
 
-                <span class="text-gray-500">aura style</span>
+                <span class="text-gray-500">{{ strtolower(config('app.name')) }}</span>
                 Store
                 <span role="img" aria-hidden="true">👋</span>
             </h1>
