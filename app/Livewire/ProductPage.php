@@ -34,13 +34,13 @@ class ProductPage extends Component
             ]
         );
 
+        if (! $this->url) {
+            abort(404);
+        }
+
         $this->selectedOptionValues = $this->productOptions->mapWithKeys(function ($data) {
             return [$data['option']->id => $data['values']->first()->id];
         })->toArray();
-
-        if (! $this->variant) {
-            abort(404);
-        }
     }
 
     /**
