@@ -20,7 +20,7 @@
 
     <div class="mt-1 flex justify-between">
     <div>
-        <h3 class="text-sm text-gray-700">{{ $product->brand->name }}</h3>
+        <h3 class="text-sm text-gray-700">{{ $product->brand?->name }}</h3>
         <h3 class="mt-1 text-sm font-medium">{{ $product->translateAttribute('name') }}</h3>
     </div>
 

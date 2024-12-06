@@ -19,6 +19,8 @@ class ProductPage extends Component
      */
     public array $selectedOptionValues = [];
 
+    public $largeImageURL = null;
+
     public function mount($slug): void
     {
         $this->url = $this->fetchUrl(
@@ -98,14 +100,32 @@ class ProductPage extends Component
     public function getImageProperty(): Media
     {
         if (count($this->variant->images)) {
+            $this->largeImageURL = $this->variant->images->first()->getUrl('large');
             return $this->variant->images->first();
         }
 
         if ($primary = $this->images->first(fn ($media) => $media->getCustomProperty('primary'))) {
+            $this->largeImageURL = $primary->getUrl('large');
             return $primary;
         }
 
+        $this->largeImageURL = $this->images->first()->getUrl('large');
         return $this->images->first();
+    }
+
+    public function getCrossSellProductsProperty()
+    {
+        return $this->product->associations()->crossSell()->get()->map(fn ($a) => $a->target);
+    }
+
+    public function getUpSellProductsProperty()
+    {
+        return $this->product->associations()->upSell()->get()->map(fn ($a) => $a->target);
+    }
+
+    public function getAlternateProductsProperty()
+    {
+        return $this->product->associations()->alternate()->get()->map(fn ($a) => $a->target);
     }
 
     public function render(): View

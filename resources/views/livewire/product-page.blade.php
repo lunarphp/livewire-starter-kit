@@ -2,7 +2,7 @@
     <div class="max-w-screen-xl px-4 py-8 space-y-6 mx-auto sm:px-6 lg:px-8">
         <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
             <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-6"
-                @if ($this->image) x-data="{active: '{{ $this->image->getUrl('large') }}'}" @endif>
+                @if ($this->image) x-data="{ active: @entangle('largeImageURL') }" @endif>
                 @if ($this->image)
                     <div class="relative aspect-w-1 aspect-h-1 lg:col-span-5">
                         <img class="object-cover rounded-xl" x-bind:src="active"
@@ -92,9 +92,19 @@
             </div>
         </div>
 
-        @if ($this->product->associations()->count() && $products = $this->product->associations()->alternate()->get()->map(fn ($a) => $a->target))
+        @if (count($this->crossSellProducts))
+        <livewire:components.carousel title="You might also like these" collectionUrl="sale" 
+            :products="$this->crossSellProducts" />
+        @endif
+
+        @if (count($this->upSellProducts))
+        <livewire:components.carousel title="Get the complete style" collectionUrl="sale" 
+            :products="$this->upSellProducts" />
+        @endif
+
+        @if (count($this->alternateProducts))
         <livewire:components.carousel title="How about these?" collectionUrl="sale" 
-            :products="$products" />
+            :products="$this->alternateProducts" />
         @endif
     </div>
 </section>
