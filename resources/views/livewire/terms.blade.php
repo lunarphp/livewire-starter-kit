@@ -68,7 +68,7 @@
     <!-- Section 9 -->
     <section>
     <h2 class="text-2xl font-medium text-indigo-600 mb-4">9. Privacy and Data Protection</h2>
-    <p class="text-sm">Your privacy is important to us. Please review our <span class="font-medium"><a href="[Privacy Policy URL]" class="text-indigo-600 hover:underline">Privacy Policy</a></span> to understand how we collect, use, and protect your personal information.</p>
+    <p class="text-sm">Your privacy is important to us. Please review our <span class="font-medium"><a href="/privacy-policy" class="text-indigo-600 hover:underline">Privacy Policy</a></span> to understand how we collect, use, and protect your personal information.</p>
     </section>
 
     <!-- Section 10 -->
