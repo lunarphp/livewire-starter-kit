@@ -95,7 +95,7 @@ class ProductPage extends Component
     /**
      * Computed property to return current image.
      */
-    public function getImageProperty(): Media
+    public function getImageProperty(): ?Media
     {
         if (count($this->variant->images)) {
             return $this->variant->images->first();

@@ -50,8 +50,10 @@
                                 <li>
                                     <div class="flex py-4"
                                          wire:key="line_{{ $line['id'] }}">
+                                        @if($line['thumbnail'])
                                         <img class="object-cover w-16 h-16 rounded"
                                              src="{{ $line['thumbnail'] }}">
+                                        @endif
 
                                         <div class="flex-1 ml-4">
                                             <p class="max-w-[20ch] text-sm font-medium">
