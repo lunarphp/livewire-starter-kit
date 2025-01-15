@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Livewire\Traits\WithSearch;
 use App\Traits\FetchesUrls;
 use Illuminate\Support\Collection;
-use Illuminate\View\View;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -47,8 +46,10 @@ class CollectionPage extends Component
         return $this->url->element;
     }
 
-    public function render(): View
+    public function render(): \Illuminate\Contracts\View\View
     {
-        return view('livewire.collection-page');
+        return view('livewire.search-page', [
+            'isCollection' => true,
+        ]);
     }
 }

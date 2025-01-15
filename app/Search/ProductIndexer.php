@@ -21,11 +21,6 @@ class ProductIndexer extends \Lunar\Search\ProductIndexer
 
     public function toSearchableArray(Model $model): array
     {
-//        $productOptions = $product->get();
-//        dd($product->variants->pluck('values'));
-//
-//        dd($model->variants->pluck('values')->flatten());
-
         $priceModels = $model->prices;
 
         $basePrice = $priceModels->first(function ($price) {
@@ -52,7 +47,7 @@ class ProductIndexer extends \Lunar\Search\ProductIndexer
             'id' => (string) $model->id,
             'name' => $model->attr('name'),
             'description' => $model->attr('description'),
-            'brand' => $model->brand->name,
+            'brand' => $model->brand?->name,
             'thumbnail' => $model->thumbnail?->getUrl('small'),
             'slug' => $model->defaultUrl?->slug,
             'price' => [
