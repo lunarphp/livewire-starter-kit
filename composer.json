@@ -20,6 +20,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "lunarphp/lunar": "^1.0@beta",
         "lunarphp/stripe": "^1.0@beta",
+        "lunarphp/search": "^0.1@alpha",
         "lunarphp/table-rate-shipping": "^1.0@beta",
         "meilisearch/meilisearch-php": "^1.6",
         "predis/predis": "^2.2"
