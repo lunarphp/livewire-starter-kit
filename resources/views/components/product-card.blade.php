@@ -1,26 +1,31 @@
-@props(['product'])
+@props([
+    'name',
+    'slug',
+    'thumbnail' => null,
+    'price'
+])
 
-<a class="block group"
-   href="{{ route('product.view', $product->defaultUrl->slug) }}"
-   wire:navigate
->
+<div class="space-y-2">
     <div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1">
-        @if ($product->thumbnail)
-            <img class="object-cover transition-transform duration-300 group-hover:scale-105"
-                 src="{{ $product->thumbnail->getUrl('medium') }}"
-                 alt="{{ $product->translateAttribute('name') }}" />
+        @if ($thumbnail)
+            <a href="{{ route('product.view', $slug) }}">
+                <img class="object-cover transition-transform duration-300 group-hover:scale-105"
+                     src="{{ $thumbnail }}"
+                     alt="{{ $name }}" />
+            </a>
         @endif
     </div>
 
-    <strong class="mt-2 text-sm font-medium">
-        {{ $product->translateAttribute('name') }}
-    </strong>
+    <a href="{{ route('product.view', $slug) }}" class="text-sm font-medium hover:underline block">
+        {{ $name }}
+    </a>
 
     <p class="mt-1 text-sm text-gray-600">
         <span class="sr-only">
             Price
         </span>
-
-        <x-product-price :product="$product" />
     </p>
-</a>
+    <div>
+        {{ $price }}
+    </div>
+</div>

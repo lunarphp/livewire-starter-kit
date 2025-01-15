@@ -1,6 +1,6 @@
 <form {{ $attributes->merge(['class' => 'w-full relative']) }}
       action="{{ route('search.view') }}">
-    <input name="term"
+    <input name="query"
            type="search"
            placeholder="Search for products"
            class="w-full pl-10 text-sm border-2 border-gray-100 rounded-lg"
