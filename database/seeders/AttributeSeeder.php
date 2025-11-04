@@ -18,6 +18,18 @@ class AttributeSeeder extends AbstractSeeder
 
         $attributeGroup = AttributeGroup::first();
 
+        // Create a default attribute group if none exists
+        if (!$attributeGroup) {
+            $attributeGroup = AttributeGroup::create([
+                'attributable_type' => 'Lunar\\Models\\Product',
+                'name' => [
+                    'en' => 'Default',
+                ],
+                'handle' => 'default',
+                'position' => 1,
+            ]);
+        }
+
         DB::transaction(function () use ($attributes, $attributeGroup) {
             foreach ($attributes as $attribute) {
                 Attribute::create([

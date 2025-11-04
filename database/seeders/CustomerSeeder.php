@@ -7,6 +7,7 @@ use Faker\Factory;
 use Illuminate\Support\Facades\DB;
 use Lunar\Models\Address;
 use Lunar\Models\Customer;
+use Lunar\Models\Country;
 
 class CustomerSeeder extends AbstractSeeder
 {
@@ -20,6 +21,16 @@ class CustomerSeeder extends AbstractSeeder
             $faker = Factory::create();
             $customers = Customer::factory(100)->create();
 
+            // Get the first available country, or create one if none exists
+            $country = Country::first();
+            if (!$country) {
+                $country = Country::factory()->create([
+                    'name' => 'United Kingdom',
+                    'iso3' => 'GBR',
+                    'iso2' => 'GB',
+                ]);
+            }
+
             foreach ($customers as $customer) {
                 for ($i = 0; $i < $faker->numberBetween(1, 10); $i++) {
                     $user = User::factory()->create();
@@ -29,27 +40,27 @@ class CustomerSeeder extends AbstractSeeder
 
                 Address::factory()->create([
                     'shipping_default' => true,
-                    'country_id' => 235,
+                    'country_id' => $country->id,
                     'customer_id' => $customer->id,
                 ]);
 
                 Address::factory()->create([
                     'shipping_default' => false,
-                    'country_id' => 235,
+                    'country_id' => $country->id,
                     'customer_id' => $customer->id,
                 ]);
 
                 Address::factory()->create([
                     'shipping_default' => false,
                     'billing_default' => true,
-                    'country_id' => 235,
+                    'country_id' => $country->id,
                     'customer_id' => $customer->id,
                 ]);
 
                 Address::factory()->create([
                     'shipping_default' => false,
                     'billing_default' => false,
-                    'country_id' => 235,
+                    'country_id' => $country->id,
                     'customer_id' => $customer->id,
                 ]);
             }

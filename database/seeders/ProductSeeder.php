@@ -20,6 +20,7 @@ use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
+use Lunar\Models\Url;
 use App\Jobs\GenerateVariants;
 
 class ProductSeeder extends AbstractSeeder
@@ -37,20 +38,52 @@ class ProductSeeder extends AbstractSeeder
 
         $productType = ProductType::first();
 
+        // Create default product type if none exists
+        if (!$productType) {
+            $productType = ProductType::create([
+                'name' => 'Default',
+            ]);
+        }
+
         $taxClass = TaxClass::getDefault();
 
+        // Create default tax class if none exists
+        if (!$taxClass) {
+            $taxClass = TaxClass::create([
+                'name' => 'Default',
+                'default' => true,
+            ]);
+        }
+
         $currency = Currency::getDefault();
+
+        // Create default currency if none exists
+        if (!$currency) {
+            $currency = Currency::create([
+                'code' => 'USD',
+                'name' => 'US Dollar',
+                'exchange_rate' => 1,
+                'decimal_places' => 2,
+                'enabled' => true,
+                'default' => true,
+            ]);
+        }
 
         $collections = Collection::get();
 
         $language = Language::getDefault();
 
-        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections) {
-            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections) {
+        DB::transaction(function () use ($products, $attributes, $productType, $taxClass, $currency, $collections, $language) {
+            $products->each(function ($product) use ($attributes, $productType, $taxClass, $currency, $collections, $language) {
                 $attributeData = [];
 
                 foreach ($product->attributes as $attributeHandle => $value) {
                     $attribute = $attributes->first(fn ($att) => $att->handle == $attributeHandle);
+
+                    // Skip if attribute not found
+                    if (!$attribute) {
+                        continue;
+                    }
 
                     if ($attribute->type == TranslatedText::class) {
                         $attributeData[$attributeHandle] = new TranslatedText([
@@ -65,6 +98,18 @@ class ProductSeeder extends AbstractSeeder
                     }
                 }
 
+                // Ensure product has a name and description
+                if (!isset($attributeData['name'])) {
+                    $attributeData['name'] = new TranslatedText([
+                        'en' => new Text($product->name ?? 'Product ' . time()),
+                    ]);
+                }
+                if (!isset($attributeData['description'])) {
+                    $attributeData['description'] = new TranslatedText([
+                        'en' => new Text($product->description ?? 'Product description'),
+                    ]);
+                }
+
                 $brand = Brand::firstOrCreate([
                     'name' => $product->brand,
                 ]);
@@ -76,6 +121,26 @@ class ProductSeeder extends AbstractSeeder
                     'brand_id' => $brand->id,
                 ]);
 
+                // Generate URL for the product
+                $productName = $product->name ?? "Product {$productModel->id}";
+                $slug = Str::slug($productName);
+                
+                // Ensure unique slug
+                $originalSlug = $slug;
+                $counter = 1;
+                while (Url::where('slug', $slug)->exists()) {
+                    $slug = $originalSlug . '-' . $counter;
+                    $counter++;
+                }
+
+                Url::create([
+                    'element_type' => $productModel->getMorphClass(),
+                    'element_id' => $productModel->id,
+                    'slug' => $slug,
+                    'default' => true,
+                    'language_id' => $language->id,
+                ]);
+
                 $variant = ProductVariant::create([
                     'product_id' => $productModel->id,
                     'purchasable' => 'always',
@@ -84,6 +149,11 @@ class ProductSeeder extends AbstractSeeder
                     'sku' => $product->sku,
                     'tax_class_id' => $taxClass->id,
                     'stock' => 500,
+                    'attribute_data' => [
+                        'description' => new TranslatedText([
+                            'en' => new Text($product->description ?? 'Product description'),
+                        ]),
+                    ],
                 ]);
 
                 if (!count($product->options ?? [])) {
@@ -192,6 +262,11 @@ class ProductSeeder extends AbstractSeeder
                             'sku' => $variant['sku'],
                             'tax_class_id' => $taxClass->id,
                             'stock' => 500,
+                            'attribute_data' => [
+                                'description' => new TranslatedText([
+                                    'en' => new Text($product->description ?? 'Product variant description'),
+                                ]),
+                            ],
                         ]);
                         $variant['variant_id'] = $variantModel->id;
                     } else {

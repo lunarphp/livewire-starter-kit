@@ -20,6 +20,14 @@ class CollectionSeeder extends AbstractSeeder
 
         $collectionGroup = CollectionGroup::first();
 
+        // Create a default collection group if none exists
+        if (!$collectionGroup) {
+            $collectionGroup = CollectionGroup::create([
+                'name' => 'Default',
+                'handle' => 'default',
+            ]);
+        }
+
         DB::transaction(function () use ($collections, $collectionGroup) {
             foreach ($collections as $collection) {
                 Collection::create([

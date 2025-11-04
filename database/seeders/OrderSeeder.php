@@ -12,6 +12,7 @@ use Lunar\Base\ValueObjects\Cart\TaxBreakdownAmount;
 use Lunar\DataTypes\Price;
 use Lunar\Facades\Pricing;
 use Lunar\Models\Channel;
+use Lunar\Models\Country;
 use Lunar\Models\Currency;
 use Lunar\Models\Order;
 use Lunar\Models\OrderAddress;
@@ -31,6 +32,32 @@ class OrderSeeder extends Seeder
             $faker = Factory::create();
             $channel = Channel::getDefault();
             $currency = Currency::getDefault();
+            
+            // Get first available country
+            $country = Country::first();
+
+            // Create default channel if none exists
+            if (!$channel) {
+                $channel = Channel::create([
+                    'name' => 'Default',
+                    'handle' => 'default',
+                    'default' => true,
+                ]);
+            }
+
+            // Create default currency if none exists
+            if (!$currency) {
+                $currency = Currency::firstOrCreate(
+                    ['code' => 'USD'],
+                    [
+                        'name' => 'US Dollar',
+                        'exchange_rate' => 1,
+                        'decimal_places' => 2,
+                        'enabled' => true,
+                        'default' => true,
+                    ]
+                );
+            }
 
             $cardTypes = ['visa', 'mastercard'];
 
@@ -44,7 +71,7 @@ class OrderSeeder extends Seeder
                 foreach ($itemModels as $variant) {
                     $quantity = $faker->numberBetween(1, 10);
 
-                    $pricing = Pricing::for($variant, $quantity)->get();
+                    $pricing = Pricing::for($variant, $quantity)->currency($currency)->get();
                     $price = $pricing->matched->price->value;
                     $subTotal = $price * $quantity;
                     $tax = (int) ($subTotal * .2);
@@ -55,7 +82,7 @@ class OrderSeeder extends Seeder
                         'purchasable_type' => (new ProductVariant)->getMorphClass(),
                         'purchasable_id' => $variant->id,
                         'type' => 'physical',
-                        'description' => $variant->product->translateAttribute('name'),
+                        'description' => $variant->product->translateAttribute('name') ?: 'Product',
                         'option' => $options->join(', '),
                         'identifier' => $variant->sku,
                         'unit_price' => $price,
@@ -115,7 +142,7 @@ class OrderSeeder extends Seeder
                 $shipping = OrderAddress::factory()->create([
                     'order_id' => $orderModel->id,
                     'type' => 'shipping',
-                    'country_id' => 235, // UK
+                    'country_id' => $country->id,
                 ]);
 
                 if ($faker->boolean()) {
@@ -127,7 +154,7 @@ class OrderSeeder extends Seeder
                     OrderAddress::factory()->create([
                         'order_id' => $orderModel->id,
                         'type' => 'billing',
-                        'country_id' => 235, // UK
+                        'country_id' => $country->id,
                     ]);
                 }
 

@@ -21,6 +21,20 @@ class ShippingSeeder extends Seeder
     {
         $currency = Currency::getDefault();
 
+        // Create default currency if none exists
+        if (!$currency) {
+            $currency = Currency::firstOrCreate(
+                ['code' => 'USD'],
+                [
+                    'name' => 'US Dollar',
+                    'exchange_rate' => 1,
+                    'decimal_places' => 2,
+                    'enabled' => true,
+                    'default' => true,
+                ]
+            );
+        }
+
         $standardShipping = ShippingMethod::create([
             'name' => 'Standard Shipping',
             'code' => 'STNDRD',
@@ -86,9 +100,16 @@ class ShippingSeeder extends Seeder
             'enabled' => true,
         ]);
 
-        $usShippingZone->countries()->sync(
-            Country::where('iso3', '=', 'USA')->first()->id,
-        );
+        $usCountry = Country::where('iso3', '=', 'USA')->first();
+        if (!$usCountry) {
+            $usCountry = Country::factory()->create([
+                'name' => 'United States',
+                'iso3' => 'USA',
+                'iso2' => 'US',
+            ]);
+        }
+
+        $usShippingZone->countries()->sync($usCountry->id);
 
         Price::create([
             'priceable_type' => (new ShippingRate)->getMorphClass(),

@@ -19,7 +19,24 @@ class TaxSeeder extends Seeder
     {
         $taxClass = TaxClass::first();
 
+        // Create default tax class if none exists
+        if (!$taxClass) {
+            $taxClass = TaxClass::create([
+                'name' => 'Default',
+                'default' => true,
+            ]);
+        }
+
         $ukCountry = Country::firstWhere('iso3', 'GBR');
+
+        // Create UK country if it doesn't exist  
+        if (!$ukCountry) {
+            $ukCountry = Country::factory()->create([
+                'name' => 'United Kingdom',
+                'iso3' => 'GBR',
+                'iso2' => 'GB',
+            ]);
+        }
 
         $ukTaxZone = TaxZone::factory()->create([
             'name' => 'UK',
