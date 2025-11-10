@@ -31,7 +31,7 @@
 
             @if ($paymentType == 'card')
                 <livewire:stripe.payment :cart="$cart"
-                                         :returnUrl="route('checkout.view')" />
+                                         :returnUrl="route('checkout.processing')" />
             @endif
 
             @if ($paymentType == 'cash-in-hand')

@@ -34,6 +34,9 @@ return [
     'stripe' => [
         'public_key' => env('STRIPE_KEY'),
         'key' => env('STRIPE_SECRET'),
+        'webhooks' => [
+            'lunar' => env('STRIPE_SIGNING_SECRET'),
+        ]
     ],
 
 ];

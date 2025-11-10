@@ -99,19 +99,6 @@ class CheckoutPage extends Component
             return;
         }
 
-        if ($this->payment_intent) {
-            $payment = Payments::driver($this->paymentType)->cart($this->cart)->withData([
-                'payment_intent_client_secret' => $this->payment_intent_client_secret,
-                'payment_intent' => $this->payment_intent,
-            ])->authorize();
-
-            if ($payment->success) {
-                redirect()->route('checkout-success.view');
-
-                return;
-            }
-        }
-
         // Do we have a shipping address?
         $this->shipping = $this->cart->shippingAddress ?: new CartAddress;
 
@@ -252,12 +239,16 @@ class CheckoutPage extends Component
         ])->authorize();
 
         if ($payment->success) {
-            redirect()->route('checkout-success.view');
+            redirect()->route('checkout-success.view', [
+                'cartId' => $this->cart->id,
+            ]);
 
             return;
         }
 
-        return redirect()->route('checkout-success.view');
+        return redirect()->route('checkout-success.view', [
+            'cartId' => $this->cart->id,
+        ]);
     }
 
     /**
