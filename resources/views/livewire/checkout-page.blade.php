@@ -52,17 +52,19 @@
                             </div>
                         @endif
 
-                        @foreach ($cart->taxBreakdown->amounts as $tax)
-                            <div class="flex flex-wrap py-4">
-                                <dt class="w-1/2 font-medium">
-                                    {{ $tax->description }}
-                                </dt>
+                        @if(config('lunar.pricing.stored_inclusive_of_tax') === false)
+                            @foreach ($cart->taxBreakdown->amounts as $tax)
+                                <div class="flex flex-wrap py-4">
+                                    <dt class="w-1/2 font-medium">
+                                        {{ $tax->description }}
+                                    </dt>
 
-                                <dd class="w-1/2 text-right">
-                                    {{ $tax->price->formatted() }}
-                                </dd>
-                            </div>
-                        @endforeach
+                                    <dd class="w-1/2 text-right">
+                                        {{ $tax->price->formatted() }}
+                                    </dd>
+                                </div>
+                            @endforeach
+                        @endif
 
                         <div class="flex flex-wrap py-4">
                             <dt class="w-1/2 font-medium">
