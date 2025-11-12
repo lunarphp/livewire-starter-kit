@@ -27,6 +27,15 @@ docker-compose up
 
 The demo store will be available to `http://localhost` in your browser.
 
+### Searching
+
+Out the box, the starter kit is configured to use Meilisearch. You will need to ensure you have this set up, you should also check the following config files to familiarise yourself how search is configured to work.
+
+- `config/lunar/search.php`
+- `config/scout.php`
+
+To customise what is indexed, you should look at the `Search/ProductIndexer` class.
+
 ####  Log into Lunar panel
 
 Once the project is prepared, the Lunar panel will start and available to `http://localhost/lunar`. 

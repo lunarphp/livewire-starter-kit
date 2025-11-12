@@ -116,4 +116,15 @@ return [
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
 
+    'meilisearch' => [
+        'host' => env('MEILISEARCH_HOST', 'http://127.0.0.1:7700'),
+        'key' => env('MEILISEARCH_KEY'),
+        'index-settings' => [
+            \App\Models\Product::class => [
+                'filterableAttributes' => ['brand', 'size', 'shoe-size', 'colour', 'collection_ids'],
+                'sortableAttributes' => ['name', 'sku', 'min_price']
+            ],
+        ],
+    ],
+
 ];

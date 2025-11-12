@@ -14,7 +14,12 @@
 
                 <div class="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
                     @foreach ($this->randomCollection->products as $product)
-                        <x-product-card :product="$product" />
+                        <x-product-card
+                            :name="$product->attr('name')"
+                            :slug="$product->defaultUrl->slug"
+                            :thumbnail="$product->thumbnail?->getUrl('small')"
+                            :price="\Lunar\Facades\Pricing::for($product->variants->first())->get()->matched->price->formatted"
+                        />
                     @endforeach
                 </div>
             </section>
