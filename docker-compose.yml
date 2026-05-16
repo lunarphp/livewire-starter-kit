@@ -58,12 +58,12 @@ services:
     depends_on:
         - mysql
 
-  meilisearch-ui:
-      container_name: demostore-meilisearch-ui
-      image: riccoxie/meilisearch-ui:latest
+  meilisearch-manager:
+      container_name: demostore-meilisearch-manager
+      image: cabbas23/meilisearch-manager:nginx-latest
       restart: unless-stopped
       ports:
-          - ${MEILISEARCH_UI_PORT}:24900
+          - ${MEILISEARCH_MANAGER_PORT}:8080
       depends_on:
           - meilisearch
 
